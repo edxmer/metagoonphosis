@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 [GlobalClass]
-public partial class ChestCavity : Node2D
+public partial class ChestCavity : Resource
 {
 	/// <summary>
 	/// O for available position,
@@ -14,22 +14,23 @@ public partial class ChestCavity : Node2D
 	/// consider the rest of it not available.
 	/// </summary>
 	[Export(PropertyHint.MultilineText)]
-	public string CavityShapeString { get; set; }
+	public string CavityShapeString
+	{
+		get => _cavityShapeString; 
+		set
+		{
+			_cavityShapeString = value;
+			(_width, _height) = ShapeStringHelper.GetDimensions(value);
+			_shape = ShapeStringHelper.ParseShape(value, _width, _height);
+		}
+	}
+
+	public List<Organ> Organs;
 
 	private int _width, _height;
 	private bool[,] _shape;
 	private bool[,] _takenPositions;
-
-	public override void _Ready()
-	{
-		// Parsing shape from shape string
-		(_width, _height) = ShapeStringHelper.GetDimensions(CavityShapeString);
-		_shape = ShapeStringHelper.ParseShape(CavityShapeString, _width, _height);
-
-		LoadOrgans();
-	}
-
-	public List<Organ> GetOrgans() => GetChildren().OfType<Organ>().ToList();
+	private string _cavityShapeString;
 
 	public void LoadOrgans()
 	{
@@ -37,32 +38,30 @@ public partial class ChestCavity : Node2D
 		// TODO: finish this
 	}
 
-	public bool DoesFit(Organ organ)
+	public bool DoesFit(Organ organ, int posI, int posJ)
 	{
-		int iOffset = organ.TopLeftPositionY;
-		int jOffset = organ.TopLeftPositionX;
-
 		for (int i = 0; i<organ.Height; ++i)
 		{
 			for (int j = 0; j<organ.Width; ++j)
 			{
-				if (
-					organ.Shape[i, j] 
-					&& !((i+iOffset < _height) 
-						&& (j+jOffset < _width)
-						&& !_shape[i+iOffset, j+jOffset]
-						)
-					) return false;
+				if 
+				(
+					organ.Shape[i, j] && 
+					!(
+						(i+posI < _height) &&
+						(j+posJ < _width)  &&
+						!_shape[i+posI, j+posJ]
+					)
+				) return false;
 			}
 		}
 
 		return true;
 	}
 
-	public void AddOrgan(Organ organ)
+	public void AddOrgan(Organ organ, int posI, int posJ)
 	{
-		// TODO: is this really needed? Maybe we will use a different system
-		if (!DoesFit(organ)) throw new Exception("Organ does not fit!");
+		
 	}
 
 	
