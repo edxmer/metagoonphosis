@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://d2kclnl6rbuq5" path="res://assets/sprites/goon/idle_backwards/spr_goon_idle_backwards.png" id="1_8as5d"]
 [ext_resource type="Script" uid="uid://bsqvcg8ubro6g" path="res://map/Player.cs" id="1_g6b87"]
 [ext_resource type="Texture2D" uid="uid://2db5315qsc7k" path="res://assets/sprites/goon/idle_forward/spr_goon_idle_forward.png" id="2_cx36e"]
+[ext_resource type="Script" uid="uid://b4h20mqy0eufh" path="res://map/AllSpritesPlace.cs" id="2_oycjb"]
 [ext_resource type="Texture2D" uid="uid://x6v65ss0bf12" path="res://assets/sprites/goon/walk_forward/spr_walk_forward_1.png" id="3_gktsd"]
 [ext_resource type="Texture2D" uid="uid://bo6bkypjdcbaj" path="res://assets/sprites/goon/walk_backwards/spr_goon_walk_backwards_1.png" id="4_oycjb"]
 [ext_resource type="Texture2D" uid="uid://c2bnql05m0w0x" path="res://assets/sprites/goon/walk_forward/spr_walk_forward_2.png" id="4_t5noc"]
@@ -74,7 +75,10 @@ size = Vector2(5, 6)
 [node name="Player" type="CharacterBody2D" unique_id=1403057204]
 script = ExtResource("1_g6b87")
 
-[node name="Animation" type="AnimatedSprite2D" parent="." unique_id=431010446]
+[node name="AllSpritesPlace" type="Node2D" parent="." unique_id=1812498363]
+script = ExtResource("2_oycjb")
+
+[node name="Animation" type="AnimatedSprite2D" parent="AllSpritesPlace" unique_id=431010446]
 sprite_frames = SubResource("SpriteFrames_oycjb")
 animation = &"walk_forward"
 
