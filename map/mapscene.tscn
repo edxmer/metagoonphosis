@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://c7xle76tqp8n5"]
+
+[node name="map_root" type="Node" unique_id=1322223587]
+
+[node name="map_ground" type="Node2D" parent="." unique_id=526196557]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="map_ground" unique_id=1580991642]
+
+[node name="player_root" type="Node2D" parent="." unique_id=491350348]
+
+[node name="Camera2D" type="Camera2D" parent="player_root" unique_id=25084040]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="player_root" unique_id=626194348]
