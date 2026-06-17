@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 [GlobalClass]
-public partial class ChestCavity : Node
+public partial class ChestCavity : Node2D
 {
     /// <summary>
     /// O for available position,
