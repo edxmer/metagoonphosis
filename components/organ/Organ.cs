@@ -9,7 +9,7 @@ public enum OrganType
 }
 
 [GlobalClass]
-public partial class Organ : Node
+public partial class Organ : Node2D
 {
     [Export]
     public OrganType Type { get; set; } = OrganType.OTHER;
