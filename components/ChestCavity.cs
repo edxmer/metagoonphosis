@@ -6,12 +6,6 @@ using System.Linq;
 [GlobalClass]
 public partial class ChestCavity : Node
 {
-    [Export]
-    public int Width { get; set; }
-
-    [Export]
-    public int Height { get; set; }
-
     /// <summary>
     /// O for available position,
     /// X (or anything else) for not available position.
@@ -22,43 +16,25 @@ public partial class ChestCavity : Node
     [Export(PropertyHint.MultilineText)]
     public string CavityShapeString { get; set; }
 
+    private int _width, _height;
     private bool[,] _shape;
     private bool[,] _takenPositions;
 
     public override void _Ready()
     {
-        ParseCavityShape();
+        // Parsing shape from shape string
+        (_width, _height) = ShapeStringHelper.GetDimensions(CavityShapeString);
+        _shape = ShapeStringHelper.ParseShape(CavityShapeString, _width, _height);
+
         LoadOrgans();
-    }
-
-    public void ParseCavityShape()
-    {
-        _shape = new bool[Height, Width];
-
-        int i = 0;
-        foreach(string line in CavityShapeString.Split('\n'))
-        {
-            if (Height <= i) throw new Exception("Cavity height does not match the height of the provided cavity string.");
-
-            int j = 0;
-            foreach (char c in line)
-            {
-                if (Width <= j) throw new Exception("Cavity width does not match the width of the provided cavity string.");
-
-                if (c == 'O') _shape[i, j] = true;
-                
-                ++j;
-            }
-
-            ++i;
-        }
     }
 
     public List<Organ> GetOrgans() => GetChildren().OfType<Organ>().ToList();
 
     public void LoadOrgans()
     {
-        _takenPositions = new bool[Width, Height];
+        _takenPositions = new bool[_width, _height];
+        // TODO: finish this
     }
 
     public bool DoesFit(Organ organ)
@@ -72,8 +48,8 @@ public partial class ChestCavity : Node
             {
                 if (
                     organ.Shape[i, j] 
-                    && !((i+iOffset < Height) 
-                        && (j+jOffset < Width) 
+                    && !((i+iOffset < _height) 
+                        && (j+jOffset < _width)
                         && !_shape[i+iOffset, j+jOffset]
                         )
                     ) return false;
@@ -85,6 +61,7 @@ public partial class ChestCavity : Node
 
     public void AddOrgan(Organ organ)
     {
+        // TODO: is this really needed? Maybe we will use a different system
         if (!DoesFit(organ)) throw new Exception("Organ does not fit!");
     }
 
