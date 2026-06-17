@@ -29,7 +29,9 @@ public partial class Attack : Node
     public void Apply(Creature attacker, Creature attackee)
     {
         // attackee sounds so stupid
-        attackee.TakeDamage(attacker.GetBaseAttackDamage());
+        
+        // TODO: add these methods to Creature
+        //attackee.TakeDamage(attacker.GetBaseAttackDamage());
 
         // TODO: attack effect   
     }
