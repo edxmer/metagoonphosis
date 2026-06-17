@@ -27,13 +27,13 @@ public partial class Organ : Node2D
 
 	public int Width, Height;
 
-    public override void _Ready()
-    {
-        (Width, Height) = ShapeStringHelper.GetDimensions(OrganShapeString);
-        Shape = ShapeStringHelper.ParseShape(OrganShapeString, Width, Height);
-    }
+	public override void _Ready()
+	{
+		(Width, Height) = ShapeStringHelper.GetDimensions(OrganShapeString);
+		Shape = ShapeStringHelper.ParseShape(OrganShapeString, Width, Height);
+	}
 
-    public virtual void ModifyStats(CreatureStats stats)
-    {
-    }
+	public virtual void ModifyStats(CreatureStats stats)
+	{
+	}
 }

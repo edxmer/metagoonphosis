@@ -4,13 +4,18 @@ using System;
 public partial class Player : CharacterBody2D
 {
 	[Export] public float Speed = 32.0f;
+	private static int HitboxDistance=16;
 	private AnimatedSprite2D animation;
+	private Area2D lookingAt;
 	public bool faceForward;
+	public Vector2 facingDir;
 	public override void _Ready()
 	{
 		faceForward=true;
 		animation = GetNode<AnimatedSprite2D>("Animation");
+		lookingAt = GetNode<Area2D>("LookingAtHitbox");
 		animation.FlipH=false;
+		facingDir=Vector2.Down;
 	}
 	public override void _PhysicsProcess(double delta)
 	{
@@ -21,6 +26,7 @@ public partial class Player : CharacterBody2D
 		Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
 		if (direction != Vector2.Zero)
 		{
+			facingDir=direction;
 			velocity=direction*Speed;
 			if (velocity.Y>0)
 			{
@@ -33,10 +39,12 @@ public partial class Player : CharacterBody2D
 			if (velocity.X<0)
 			{
 				animation.FlipH=true;
+				animation.Offset = new Vector2(-5, 0);
 			}
-			else if (velocity.X>0)
+			else
 			{
 				animation.FlipH=false;
+				animation.Offset = new Vector2(0, 0);
 			}
 			if (faceForward)
 			{
@@ -46,6 +54,7 @@ public partial class Player : CharacterBody2D
 			{
 				animation.Play("walk_backwards");
 			}
+			lookingAt.Position=facingDir.Normalized()*HitboxDistance;
 		}
 		else
 		{

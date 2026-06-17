@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://dexpadysimv3m" path="res://assets/sprites/goon/walk_forward/spr_walk_forward_4.png" id="6_g6b87"]
 [ext_resource type="Texture2D" uid="uid://f3e5oa0makq6" path="res://assets/sprites/goon/walk_backwards/spr_goon_walk_backwards_3.png" id="6_kf1ei"]
 [ext_resource type="Texture2D" uid="uid://bxgw0peom4c1i" path="res://assets/sprites/goon/walk_backwards/spr_goon_walk_backwards_4.png" id="7_w5q0d"]
-[ext_resource type="Script" uid="uid://cbypbaelrtg71" path="res://map/Animation.cs" id="12_oycjb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oycjb"]
 animations = [{
@@ -32,16 +31,16 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 0.9,
 "texture": ExtResource("4_oycjb")
 }, {
-"duration": 1.0,
+"duration": 0.9,
 "texture": ExtResource("5_vvtxx")
 }, {
-"duration": 1.0,
+"duration": 0.9,
 "texture": ExtResource("6_kf1ei")
 }, {
-"duration": 1.0,
+"duration": 0.9,
 "texture": ExtResource("7_w5q0d")
 }],
 "loop": true,
@@ -49,16 +48,16 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 0.9,
 "texture": ExtResource("3_gktsd")
 }, {
-"duration": 1.0,
+"duration": 0.9,
 "texture": ExtResource("4_t5noc")
 }, {
-"duration": 1.0,
+"duration": 0.9,
 "texture": ExtResource("5_ir6rj")
 }, {
-"duration": 1.0,
+"duration": 0.9,
 "texture": ExtResource("6_g6b87")
 }],
 "loop": true,
@@ -69,14 +68,15 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oajqt"]
 size = Vector2(16, 16)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oycjb"]
+size = Vector2(5, 6)
+
 [node name="Player" type="CharacterBody2D" unique_id=1403057204]
 script = ExtResource("1_g6b87")
 
 [node name="Animation" type="AnimatedSprite2D" parent="." unique_id=431010446]
 sprite_frames = SubResource("SpriteFrames_oycjb")
-animation = &"idle_forward"
-frame_progress = 0.75988436
-script = ExtResource("12_oycjb")
+animation = &"walk_forward"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=910602540]
 shape = SubResource("RectangleShape2D_oajqt")
@@ -84,3 +84,8 @@ shape = SubResource("RectangleShape2D_oajqt")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1046681063]
 position = Vector2(0, 2)
 zoom = Vector2(4, 4)
+
+[node name="LookingAtHitbox" type="Area2D" parent="." unique_id=877398258]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LookingAtHitbox" unique_id=1055010728]
+shape = SubResource("RectangleShape2D_oycjb")

@@ -2,11 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://co1m13orlkeep" path="res://map/player.tscn" id="1_m47sm"]
 
+[sub_resource type="TileSet" id="TileSet_m47sm"]
+
 [node name="map_root" type="Node" unique_id=1322223587]
+
+[node name="player" parent="." unique_id=1403057204 instance=ExtResource("1_m47sm")]
+position = Vector2(1, 0)
 
 [node name="map_ground" type="Node2D" parent="." unique_id=526196557]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="map_ground" unique_id=1580991642]
-
-[node name="player" parent="." unique_id=1403057204 instance=ExtResource("1_m47sm")]
-position = Vector2(1, 0)
+tile_set = SubResource("TileSet_m47sm")
