@@ -1,5 +1,69 @@
 [gd_scene format=3 uid="uid://c7xle76tqp8n5"]
 
+[ext_resource type="Texture2D" uid="uid://d2kclnl6rbuq5" path="res://assets/sprites/goon/idle_backwards/spr_goon_idle_backwards.png" id="1_klxn7"]
+[ext_resource type="Texture2D" uid="uid://2db5315qsc7k" path="res://assets/sprites/goon/idle_forward/spr_goon_idle_forward.png" id="2_ruy6l"]
+[ext_resource type="Texture2D" uid="uid://x6v65ss0bf12" path="res://assets/sprites/goon/walk_forward/spr_walk_forward_1.png" id="3_aqgif"]
+[ext_resource type="Texture2D" uid="uid://bo6bkypjdcbaj" path="res://assets/sprites/goon/walk_backwards/spr_goon_walk_backwards_1.png" id="3_rpil6"]
+[ext_resource type="Texture2D" uid="uid://c2bnql05m0w0x" path="res://assets/sprites/goon/walk_forward/spr_walk_forward_2.png" id="4_t7vmu"]
+[ext_resource type="Texture2D" uid="uid://7q1a2kvj5vjf" path="res://assets/sprites/goon/walk_backwards/spr_goon_walk_backwards_2.png" id="4_u8xy2"]
+[ext_resource type="Texture2D" uid="uid://f3e5oa0makq6" path="res://assets/sprites/goon/walk_backwards/spr_goon_walk_backwards_3.png" id="5_k2qd1"]
+[ext_resource type="Texture2D" uid="uid://t36ivny12vfl" path="res://assets/sprites/goon/walk_forward/spr_walk_forward_3.png" id="5_rpil6"]
+[ext_resource type="Texture2D" uid="uid://bxgw0peom4c1i" path="res://assets/sprites/goon/walk_backwards/spr_goon_walk_backwards_4.png" id="6_h00ai"]
+[ext_resource type="Texture2D" uid="uid://dexpadysimv3m" path="res://assets/sprites/goon/walk_forward/spr_walk_forward_4.png" id="6_u8xy2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k2qd1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_klxn7")
+}],
+"loop": true,
+"name": &"idle_backwards",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ruy6l")
+}],
+"loop": true,
+"name": &"idle_forward",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.9,
+"texture": ExtResource("3_rpil6")
+}, {
+"duration": 0.9,
+"texture": ExtResource("4_u8xy2")
+}, {
+"duration": 0.9,
+"texture": ExtResource("5_k2qd1")
+}, {
+"duration": 0.9,
+"texture": ExtResource("6_h00ai")
+}],
+"loop": true,
+"name": &"walk_backwards",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.9,
+"texture": ExtResource("3_aqgif")
+}, {
+"duration": 0.9,
+"texture": ExtResource("4_t7vmu")
+}, {
+"duration": 0.9,
+"texture": ExtResource("5_rpil6")
+}, {
+"duration": 0.9,
+"texture": ExtResource("6_u8xy2")
+}],
+"loop": true,
+"name": &"walk_forward",
+"speed": 5.0
+}]
+
 [node name="map_root" type="Node" unique_id=1322223587]
 
 [node name="map_ground" type="Node2D" parent="." unique_id=526196557]
@@ -11,3 +75,6 @@
 [node name="Camera2D" type="Camera2D" parent="player_root" unique_id=25084040]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="player_root" unique_id=626194348]
+sprite_frames = SubResource("SpriteFrames_k2qd1")
+animation = &"walk_forward"
+frame_progress = 0.28230208
