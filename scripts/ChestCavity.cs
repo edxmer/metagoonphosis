@@ -27,14 +27,13 @@ public partial class ChestCavity : Resource
 
 	public List<Organ> Organs;
 
+	private string _cavityShapeString;
 	private int _width, _height;
 	private bool[,] _shape;
-	private bool[,] _takenPositions;
-	private string _cavityShapeString;
+	private CavitySlot[,] _items;
 
 	public void LoadOrgans()
 	{
-		_takenPositions = new bool[_width, _height];
 		// TODO: finish this
 	}
 
