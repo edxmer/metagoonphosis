@@ -9,31 +9,28 @@ public enum OrganType
 }
 
 [GlobalClass]
-public partial class Organ : Node2D
+public partial class Organ : Resource
 {
 	[Export]
 	public OrganType Type { get; set; } = OrganType.OTHER;
 
-	// Top left position
-	[Export]
-	public int TopLeftPositionX { get; set; }
-	[Export]
-	public int TopLeftPositionY { get; set; }
+    [Export]
+    public Texture2D Icon { get; set; }
 
 	[Export(PropertyHint.MultilineText)]
-	public string OrganShapeString { get; set; }
-
-	public bool[,] Shape;
+	public string OrganShapeString 
+    { 
+        get => _organShapeString; 
+        set
+        {
+            _organShapeString = value;
+            (Width, Height) = ShapeStringHelper.GetDimensions(value);
+            Shape = ShapeStringHelper.ParseShape(value, Width, Height);
+        }
+    }
 
 	public int Width, Height;
+	public bool[,] Shape;
 
-    public override void _Ready()
-    {
-        (Width, Height) = ShapeStringHelper.GetDimensions(OrganShapeString);
-        Shape = ShapeStringHelper.ParseShape(OrganShapeString, Width, Height);
-    }
-
-    public virtual void ModifyStats(CreatureStats stats)
-    {
-    }
+    private string _organShapeString;
 }
