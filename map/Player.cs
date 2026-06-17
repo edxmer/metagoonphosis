@@ -3,14 +3,19 @@ using System;
 
 public partial class Player : CharacterBody2D
 {
-	[Export] public float Speed = 32.0f;
-	private AnimatedSprite2D animation;
+	[Export] public float Speed = 48.0f;
+	private static int HitboxDistance=16;
+	private AllSpritesPlace animationAll;
+	private Area2D lookingAt;
 	public bool faceForward;
+	public Vector2 facingDir;
 	public override void _Ready()
 	{
 		faceForward=true;
-		animation = GetNode<AnimatedSprite2D>("Animation");
-		animation.FlipH=false;
+		animationAll = GetNode<AllSpritesPlace>("AllSpritesPlace");
+		lookingAt = GetNode<Area2D>("LookingAtHitbox");
+		animationAll.FlipH(false);
+		facingDir=Vector2.Down;
 	}
 	public override void _PhysicsProcess(double delta)
 	{
@@ -21,42 +26,46 @@ public partial class Player : CharacterBody2D
 		Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
 		if (direction != Vector2.Zero)
 		{
+			facingDir=direction;
 			velocity=direction*Speed;
-			if (velocity.Y>0)
+			if (velocity.Y>=0)
 			{
 				faceForward=true;
 			}
-			else if (velocity.Y<0)
+			else
 			{
 				faceForward=false;
 			}
 			if (velocity.X<0)
 			{
-				animation.FlipH=true;
+				animationAll.FlipH(true);
+				animationAll.Position = new Vector2(-5, 0);
 			}
 			else if (velocity.X>0)
 			{
-				animation.FlipH=false;
+				animationAll.FlipH(false);
+				animationAll.Position = new Vector2(0, 0);
 			}
 			if (faceForward)
 			{
-				animation.Play("walk_forward");
+				animationAll.changeAnim("walk_forward");
 			}
 			else
 			{
-				animation.Play("walk_backwards");
+				animationAll.changeAnim("walk_backwards");
 			}
+			lookingAt.Position=facingDir.Normalized()*HitboxDistance;
 		}
 		else
 		{
 			velocity= Vector2.Zero;
 			if (faceForward)
 			{
-				animation.Play("idle_forward");
+				animationAll.changeAnim("idle_forward");
 			}
 			else
 			{
-				animation.Play("idle_backwards");
+				animationAll.changeAnim("idle_backwards");
 			}
 		}
 
