@@ -32,4 +32,8 @@ public partial class Organ : Node2D
         (Width, Height) = ShapeStringHelper.GetDimensions(OrganShapeString);
         Shape = ShapeStringHelper.ParseShape(OrganShapeString, Width, Height);
     }
+
+    public virtual void ModifyStats(CreatureStats stats)
+    {
+    }
 }
