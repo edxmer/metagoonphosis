@@ -10,6 +10,7 @@ public partial class Interactable : Area2D
 	private bool amISeen=false;
 	public override void _Ready()
 	{
+		base._Ready();
 		AreaEntered += OnAreaEntered;
 		AreaExited += OnAreaExited;
 		animation=GetNode<AnimatedSprite2D>("Sprite");
@@ -44,9 +45,10 @@ public partial class Interactable : Area2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		
+		base._Process(delta);
 		if (amISeen &&Input.IsActionJustPressed("ui_accept"))
 		{
+			
 			ActionOnInteract();
 			
 		}

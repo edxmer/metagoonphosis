@@ -3,8 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://co1m13orlkeep" path="res://map/player.tscn" id="1_m47sm"]
 [ext_resource type="TileSet" uid="uid://gjslkcp5wqsa" path="res://assets/sprites/tilesets/spr_tileset_mapmain/tileset_map_main.tres" id="1_urpp8"]
 [ext_resource type="Texture2D" uid="uid://mwgr37ftjksl" path="res://assets/sprites/tilesets/spr_tileset_walls/spr_tileset_walls.png" id="2_v3biw"]
-[ext_resource type="PackedScene" uid="uid://c611ksnhxgho" path="res://map/interactable.tscn" id="3_m5rww"]
+[ext_resource type="PackedScene" uid="uid://ci055m22kuflt" path="res://map/npcs/NPC_Talkable_Throwaway.tscn" id="5_klxn7"]
 [ext_resource type="PackedScene" uid="uid://dvnwsuoquiijf" path="res://map/ui.tscn" id="5_pspey"]
+[ext_resource type="Script" uid="uid://cxewj0u8p6arq" path="res://resources/talkBubbles/TalkBubblePage.cs" id="6_ruy6l"]
+[ext_resource type="Script" uid="uid://bgri4p6kj3a17" path="res://resources/talkBubbles/TalkBubbleArray.cs" id="7_aqgif"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pspey"]
 resource_name = "walls"
@@ -17,6 +19,25 @@ texture = ExtResource("2_v3biw")
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_pspey")
+
+[sub_resource type="Resource" id="Resource_ruy6l"]
+script = ExtResource("6_ruy6l")
+myText = "Kepzelj el 16§§§§ TONNA§§§§ feketeszenet"
+myName = "Buta kis polip"
+myTalkSpeed = 0.1
+metadata/_custom_type_script = "uid://cxewj0u8p6arq"
+
+[sub_resource type="Resource" id="Resource_aqgif"]
+script = ExtResource("6_ruy6l")
+myText = "16 Tonna fekete szen tesom"
+myName = "Buta kis polip"
+myTalkSpeed = 0.4
+metadata/_custom_type_script = "uid://cxewj0u8p6arq"
+
+[sub_resource type="Resource" id="Resource_rpil6"]
+script = ExtResource("7_aqgif")
+myText = Array[Object]([SubResource("Resource_ruy6l"), SubResource("Resource_aqgif")])
+metadata/_custom_type_script = "uid://bgri4p6kj3a17"
 
 [node name="map_root" type="Node" unique_id=1322223587]
 
@@ -35,5 +56,5 @@ tile_set = SubResource("TileSet_klxn7")
 [node name="player" parent="." unique_id=1403057204 instance=ExtResource("1_m47sm")]
 position = Vector2(1, 0)
 
-[node name="Interactable" parent="." unique_id=916331531 instance=ExtResource("3_m5rww")]
-position = Vector2(-77, -90)
+[node name="TalkNPC" parent="." unique_id=916331531 instance=ExtResource("5_klxn7")]
+myCurrentLines = SubResource("Resource_rpil6")
