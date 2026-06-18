@@ -109,6 +109,7 @@ size = Vector2(16, 16)
 size = Vector2(5, 6)
 
 [node name="Player" type="CharacterBody2D" unique_id=1403057204]
+collision_mask = 0
 script = ExtResource("1_g6b87")
 
 [node name="AllSpritesPlace" type="Node2D" parent="." unique_id=1812498363]
@@ -130,6 +131,8 @@ position = Vector2(0, 2)
 zoom = Vector2(4, 4)
 
 [node name="LookingAtHitbox" type="Area2D" parent="." unique_id=877398258]
+collision_layer = 2
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LookingAtHitbox" unique_id=1055010728]
 shape = SubResource("RectangleShape2D_oycjb")

@@ -29,12 +29,13 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ismc3"]
 
 [node name="Interactable" type="Area2D" unique_id=916331531]
+collision_mask = 2
 script = ExtResource("1_hcdsd")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=756789201]
 sprite_frames = SubResource("SpriteFrames_q8y6q")
 animation = &"idle"
-frame_progress = 0.20340165
+frame_progress = 0.42686775
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1166412815]
 shape = SubResource("RectangleShape2D_ismc3")
