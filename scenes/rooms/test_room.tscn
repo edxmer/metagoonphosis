@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://ndwsvc1wv0up" path="res://resources/payer_starting_organs/starting_lung.tres" id="4_betf1"]
 [ext_resource type="Resource" uid="uid://cr75pkcbucump" path="res://resources/cavity/chest_cavity.tres" id="4_vf0v6"]
 
-[node name="Main" type="Node" unique_id=1202688869]
+[node name="Cavity" type="Node" unique_id=1202688869]
 
 [node name="CavityUI" type="PanelContainer" parent="." unique_id=992292754]
 offset_right = 40.0
