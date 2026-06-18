@@ -35,7 +35,7 @@ script = ExtResource("1_hcdsd")
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=756789201]
 sprite_frames = SubResource("SpriteFrames_q8y6q")
 animation = &"idle"
-frame_progress = 0.42686775
+frame_progress = 0.4507529
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1166412815]
 shape = SubResource("RectangleShape2D_ismc3")
