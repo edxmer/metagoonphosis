@@ -39,8 +39,6 @@ public partial class CavityGridUI : Control
 		}
     }
 
-
-
 	public void ReloadVisualItems()
     {
 		// Free all children of this node
@@ -80,7 +78,9 @@ public partial class CavityGridUI : Control
 
 		Vector2I targetGridPosition = CalculateTargetGridPosition(atPosition, offset);
 
-		return _cavity.CanChangeSlotPosition(slot, targetGridPosition);
+		bool canDropData = _cavity.CanChangeSlotPosition(slot, targetGridPosition);
+
+		return canDropData;
     }
 
     public override void _DropData(Vector2 atPosition, Variant data)
