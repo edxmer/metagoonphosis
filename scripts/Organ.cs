@@ -11,11 +11,9 @@ public enum OrganType
 [GlobalClass]
 public partial class Organ : Resource
 {
-	[Export]
-	public OrganType Type { get; set; } = OrganType.OTHER;
-
-    [Export]
-    public Texture2D Icon { get; set; }
+	[Export] public OrganType Type { get; set; } = OrganType.OTHER;
+    [Export] public string OrganName { get; set; }
+    [Export] public Texture2D Texture { get; set; }
 
 	[Export(PropertyHint.MultilineText)]
 	public string OrganShapeString 
