@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Organ" format=3 uid="uid://dwlglw35e51qw"]
+
+[ext_resource type="Texture2D" uid="uid://bep13wmgqmfp5" path="res://assets/sprites/creatures/alien_octopus/spr_creature_alien_octopus_1.png" id="1_ndarf"]
+[ext_resource type="Script" uid="uid://c4a42xia0dqi5" path="res://scripts/Organ.cs" id="2_gp2na"]
+
+[resource]
+script = ExtResource("2_gp2na")
+Type = 0
+OrganName = "Sad Little Lung"
+Texture = ExtResource("1_ndarf")
+OrganShapeString = "O
+O"
+metadata/_custom_type_script = "uid://c4a42xia0dqi5"
