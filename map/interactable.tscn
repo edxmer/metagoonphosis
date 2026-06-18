@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://c611ksnhxgho"]
+
+[ext_resource type="Texture2D" uid="uid://bjw2pohc02ny3" path="res://assets/sprites/creatures/big_fat_guy/spr_creature_fat_guy_1.png" id="1_0avxw"]
+[ext_resource type="Script" uid="uid://d25pmmd8kcgpx" path="res://map/Interactable.cs" id="1_hcdsd"]
+[ext_resource type="Texture2D" uid="uid://j0fbqv3iy0k1" path="res://assets/sprites/creatures/big_fat_guy/spr_creature_fat_guy_2.png" id="2_hcdsd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q8y6q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_0avxw")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_0avxw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_hcdsd")
+}],
+"loop": true,
+"name": &"talk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ismc3"]
+
+[node name="Interactable" type="Area2D" unique_id=916331531]
+collision_mask = 2
+script = ExtResource("1_hcdsd")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=756789201]
+sprite_frames = SubResource("SpriteFrames_q8y6q")
+animation = &"idle"
+frame_progress = 0.42686775
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1166412815]
+shape = SubResource("RectangleShape2D_ismc3")

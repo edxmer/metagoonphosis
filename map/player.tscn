@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dexpadysimv3m" path="res://assets/sprites/goon/walk_forward/spr_walk_forward_4.png" id="6_g6b87"]
 [ext_resource type="Texture2D" uid="uid://f3e5oa0makq6" path="res://assets/sprites/goon/walk_backwards/spr_goon_walk_backwards_3.png" id="6_kf1ei"]
 [ext_resource type="Texture2D" uid="uid://bxgw0peom4c1i" path="res://assets/sprites/goon/walk_backwards/spr_goon_walk_backwards_4.png" id="7_w5q0d"]
+[ext_resource type="Texture2D" uid="uid://clpi73e5bkd4j" path="res://assets/sprites/goon/shadow/spr_goon_shadow.png" id="13_vvtxx"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oycjb"]
 animations = [{
@@ -66,6 +67,41 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_vvtxx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_vvtxx")
+}],
+"loop": true,
+"name": &"idle_backwards",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_vvtxx")
+}],
+"loop": true,
+"name": &"idle_forward",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_vvtxx")
+}],
+"loop": true,
+"name": &"walk_backwards",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_vvtxx")
+}],
+"loop": true,
+"name": &"walk_forward",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oajqt"]
 size = Vector2(16, 16)
 
@@ -73,6 +109,7 @@ size = Vector2(16, 16)
 size = Vector2(5, 6)
 
 [node name="Player" type="CharacterBody2D" unique_id=1403057204]
+collision_mask = 0
 script = ExtResource("1_g6b87")
 
 [node name="AllSpritesPlace" type="Node2D" parent="." unique_id=1812498363]
@@ -80,6 +117,10 @@ script = ExtResource("2_oycjb")
 
 [node name="Animation" type="AnimatedSprite2D" parent="AllSpritesPlace" unique_id=431010446]
 sprite_frames = SubResource("SpriteFrames_oycjb")
+animation = &"walk_forward"
+
+[node name="Shadow" type="AnimatedSprite2D" parent="AllSpritesPlace" unique_id=288985162]
+sprite_frames = SubResource("SpriteFrames_vvtxx")
 animation = &"walk_forward"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=910602540]
@@ -90,6 +131,8 @@ position = Vector2(0, 2)
 zoom = Vector2(4, 4)
 
 [node name="LookingAtHitbox" type="Area2D" parent="." unique_id=877398258]
+collision_layer = 2
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LookingAtHitbox" unique_id=1055010728]
 shape = SubResource("RectangleShape2D_oycjb")
