@@ -8,5 +8,5 @@ script = ExtResource("1_eswto")
 Type = 0
 OrganName = "Sad Little Heart"
 Texture = ExtResource("1_g7vy2")
-OrganShapeString = "OOO"
+OrganShapeString = "O"
 metadata/_custom_type_script = "uid://c4a42xia0dqi5"
