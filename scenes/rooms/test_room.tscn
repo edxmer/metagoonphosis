@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://c8rgxsn1ny7eo"]
+
+[ext_resource type="Script" uid="uid://cys1hag4cjwqp" path="res://scripts/CavityGridUI.cs" id="1_i7p6j"]
+[ext_resource type="Script" uid="uid://ccryf1r6efekp" path="res://scripts/PlayerCavityManager.cs" id="2_betf1"]
+[ext_resource type="Resource" uid="uid://b303reyacbc3h" path="res://resources/payer_starting_organs/starting_heart.tres" id="3_nnide"]
+[ext_resource type="Resource" uid="uid://ndwsvc1wv0up" path="res://resources/payer_starting_organs/starting_lung.tres" id="4_betf1"]
+[ext_resource type="Resource" uid="uid://cr75pkcbucump" path="res://resources/cavity/chest_cavity.tres" id="4_vf0v6"]
+
+[node name="Main" type="Node" unique_id=1202688869]
+
+[node name="CavityUI" type="PanelContainer" parent="." unique_id=992292754]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CavityUI" unique_id=147345809]
+layout_mode = 2
+
+[node name="CavityGridUI" type="Control" parent="CavityUI/MarginContainer" unique_id=1220805766]
+layout_mode = 2
+script = ExtResource("1_i7p6j")
+metadata/_custom_type_script = "uid://cys1hag4cjwqp"
+
+[node name="PlayerCavityManager" type="Node" parent="." unique_id=963921171 node_paths=PackedStringArray("CavityGridUI")]
+script = ExtResource("2_betf1")
+StartingOrgans = Array[Resource]([ExtResource("3_nnide"), ExtResource("4_betf1")])
+Cavity = ExtResource("4_vf0v6")
+CavityGridUI = NodePath("../CavityUI/MarginContainer/CavityGridUI")
+metadata/_custom_type_script = "uid://ccryf1r6efekp"
