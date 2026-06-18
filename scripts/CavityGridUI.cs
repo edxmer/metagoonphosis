@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Linq;
 
 [GlobalClass]
 public partial class CavityGridUI : Control
@@ -7,28 +8,29 @@ public partial class CavityGridUI : Control
 	// Visual size of a slot, in pixels
 	[Export] public int SlotSizePx { get; set; } = 64;
 
-	private ChestCavity _chestCavity;
-	private Vector2 PositionOffset = Vector2.Zero; // Offset to centre the draw functions
-
+	private Vector2 _dragPointerOffset;
+	private ChestCavity _cavity;
 
 	public void Initialize(ChestCavity cavity)
 	{
-		_chestCavity = cavity;
-		PositionOffset = new Vector2(-cavity.Width * SlotSizePx * 0.5f, -cavity.Height * SlotSizePx * 0.5f);
+		_dragPointerOffset = new Vector2(SlotSizePx * 0.5f, SlotSizePx * 0.5f);
+		_cavity = cavity;
 		ReloadVisualItems();
+		CustomMinimumSize = new Vector2(_cavity.Width * SlotSizePx, _cavity.Height * SlotSizePx);
+		cavity.OrgansChanged += ReloadVisualItems;
 	}
 
     public override void _Draw()
     {
 		Color lineColor = new Color(1, 1, 1, 0.2f);
 
-        for (int x=0; x<_chestCavity.Width; ++x) for (int y=0; y<_chestCavity.Height; ++y)
-		if (_chestCavity.Shape[x, y])
+        for (int x=0; x<_cavity.Width; ++x) for (int y=0; y<_cavity.Height; ++y)
+		if (_cavity.Shape[x, y])
 		{
-			Vector2 topLeftCorner = new Vector2(x*SlotSizePx, y*SlotSizePx) + PositionOffset;
-			Vector2 topRightCorner = new Vector2((x+1)*SlotSizePx, y*SlotSizePx) + PositionOffset;
-			Vector2 botLeftCorner = new Vector2(x*SlotSizePx, (y+1)*SlotSizePx) + PositionOffset;
-			Vector2 botRightCorner = new Vector2((x+1)*SlotSizePx, (y+1)*SlotSizePx) + PositionOffset;
+			Vector2 topLeftCorner = new Vector2(x*SlotSizePx, y*SlotSizePx);
+			Vector2 topRightCorner = new Vector2((x+1)*SlotSizePx, y*SlotSizePx);
+			Vector2 botLeftCorner = new Vector2(x*SlotSizePx, (y+1)*SlotSizePx);
+			Vector2 botRightCorner = new Vector2((x+1)*SlotSizePx, (y+1)*SlotSizePx);
 
 			DrawLine(topLeftCorner, topRightCorner, lineColor);
 			DrawLine(topRightCorner, botRightCorner, lineColor);
@@ -49,7 +51,7 @@ public partial class CavityGridUI : Control
 
 		// Spawn in all items in chestcavity
 
-		foreach (var (slot, origin) in _chestCavity.GetItems())
+		foreach (var (slot, origin) in _cavity.GetItems())
 		{
 			GD.Print($"Spawning visual item: {slot.Organ.OrganName}, {origin.ToString()}");
 			SpawnVisualItem(slot, origin);
@@ -61,8 +63,52 @@ public partial class CavityGridUI : Control
 		var view = new OrganViewUI();
 		view.Initialize(slot, SlotSizePx);
 
-		view.Position = new Vector2(origin.X * SlotSizePx, origin.Y * SlotSizePx) + PositionOffset;
+		view.Position = new Vector2(origin.X * SlotSizePx, origin.Y * SlotSizePx);
 
 		AddChild(view);
+	}
+
+    public override bool _CanDropData(Vector2 atPosition, Variant data)
+    {
+		atPosition += _dragPointerOffset;
+
+        var dragData = data.AsGodotDictionary();
+		if (!dragData.ContainsKey("slot") || !dragData.ContainsKey("grab_offset")) return false;
+
+		CavitySlot slot = (CavitySlot)dragData["slot"];
+		Vector2 offset = (Vector2)dragData["grab_offset"];
+
+		Vector2I targetGridPosition = CalculateTargetGridPosition(atPosition, offset);
+
+		return _cavity.CanChangeSlotPosition(slot, targetGridPosition);
+    }
+
+    public override void _DropData(Vector2 atPosition, Variant data)
+    {
+		atPosition += _dragPointerOffset;
+
+		var dragData = data.AsGodotDictionary();
+		if (!dragData.ContainsKey("slot") || !dragData.ContainsKey("grab_offset")) return;
+
+		CavitySlot slot = (CavitySlot)dragData["slot"];
+		Vector2 offset = (Vector2)dragData["grab_offset"];
+
+		Vector2I targetGridPosition = CalculateTargetGridPosition(atPosition, offset);
+
+		_cavity.RemoveSlot(slot);
+		bool success = _cavity.TryPlaceSlot(slot, targetGridPosition);
+		if (!success) GD.PushWarning($"Unsuccessful slot placing at {targetGridPosition}.");
+    }
+
+	private Vector2I CalculateTargetGridPosition(Vector2 mousePosition, Vector2 offset)
+	{
+		Vector2 positionFromZero = mousePosition - offset;
+
+		var flooredPosition = new Vector2I(
+			Mathf.FloorToInt(positionFromZero.X / SlotSizePx),
+			Mathf.FloorToInt(positionFromZero.Y / SlotSizePx)
+		);
+
+		return flooredPosition;
 	}
 }
