@@ -1,6 +1,5 @@
 using Godot;
 using System;
-using System.Runtime.CompilerServices;
 
 public partial class ShapeStringHelper
 {
@@ -8,39 +7,43 @@ public partial class ShapeStringHelper
 	
 	public static (int, int) GetDimensions(string shape)
 	{
-		int maxI=0, maxJ=0;
+		int maxHeight=0, maxWidth=0;
 
-		int i=0;
+		int y=0;
 		foreach (string line in shape.Split('\n'))
 		{
-			int j=0;
+			int x=0;
 			foreach (char c in line)
 			{
 				if (c == 'O')
 				{
-					maxI = Math.Max(maxI, i);
-					maxJ = Math.Max(maxJ, j);
+					maxHeight = Math.Max(maxHeight, y);
+					maxWidth = Math.Max(maxWidth, x);
 				}
-			}   
+				
+				++x;
+			}
+
+			++y;
 		}
 
-		return (maxI+1, maxJ+1);
+		return (maxWidth+1, maxHeight+1);
 	}
 
 	public static bool[,] ParseShape(string shapeString, int width, int height)
 	{
-		bool[,] shape = new bool[height, width];
+		bool[,] shape = new bool[width, height];
 
-		int i = 0;
+		int y = 0;
 		foreach(string line in shapeString.Split('\n'))
 		{
-			int j = 0;
+			int x = 0;
 			foreach (char c in line)
 			{
-				if (c == 'O') shape[i, j] = true;
-				++j;
+				if (c == 'O') shape[x, y] = true;
+				++x;
 			}
-			++i;
+			++y;
 		}
 		
 		return shape;
