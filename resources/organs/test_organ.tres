@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Organ" format=3 uid="uid://c7vxll01gghu3"]
+
+[ext_resource type="Script" uid="uid://c4a42xia0dqi5" path="res://scripts/Organ.cs" id="1_glrok"]
+
+[resource]
+script = ExtResource("1_glrok")
+metadata/_custom_type_script = "uid://c4a42xia0dqi5"
