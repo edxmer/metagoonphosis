@@ -1,11 +1,12 @@
 using Godot;
 using System;
 
-[GlobalClass]
+
 /// <summary>
 /// A node used to create attack types that the creature can use.
 /// </summary>
-public partial class Attack : Node
+[GlobalClass]
+public partial class Attack : Resource
 {
     [Export]
     public string AttackName { get; set; } = "Attack Name";
@@ -15,16 +16,10 @@ public partial class Attack : Node
     public int TotalCooldown { get; set; } = 0;
 
     //[Export]
-    //public PackedScene AttackEffect { get; set; }
+    //public AttackEffect Effect { get; set; }
 
     public int RealAttackDamage { get; set; } = 0;
     public int CurrentCooldown { get; set; } = 0;
-
-    public override void _Ready()
-    {
-        // TODO
-        // Check if proper child nodes exist, throw error otherwise.
-    }
 
     public void Apply(Creature attacker, Creature attackee)
     {
