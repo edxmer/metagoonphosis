@@ -46,4 +46,17 @@ public partial class OrganViewUI : TextureRect
 
 		return dragData;
     }
+
+	    public override void _Notification(int what)
+    {
+        base._Notification(what);
+
+		if (what == NotificationDragEnd)
+		{
+			if (!GetViewport().GuiIsDragSuccessful())
+			{
+				Modulate = new Color(1, 1, 1, 1.0f);
+			}
+		}
+    }
 }
