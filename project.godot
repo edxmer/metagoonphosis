@@ -15,6 +15,10 @@ run/main_scene="uid://c7xle76tqp8n5"
 config/features=PackedStringArray("4.6", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [dotnet]
 
 project/assembly_name="Metagoonphosis"

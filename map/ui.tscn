@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dvnwsuoquiijf"]
+
+[ext_resource type="Script" uid="uid://0158mfvrpuw4" path="res://map/Ui.cs" id="1_0p6dh"]
+[ext_resource type="PackedScene" uid="uid://c0efo3v62dwrm" path="res://map/talkBubbles/talkBubble.tscn" id="1_hx7fn"]
+
+[node name="UI" type="CanvasLayer" unique_id=1266661091]
+script = ExtResource("1_0p6dh")
+
+[node name="TalkBubble" parent="." unique_id=1088389143 instance=ExtResource("1_hx7fn")]
+position = Vector2(151, 390)
+scale = Vector2(0.8, 0.8)

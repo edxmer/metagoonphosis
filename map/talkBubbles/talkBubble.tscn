@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://c0efo3v62dwrm"]
+
+[ext_resource type="Script" uid="uid://bo80sdtugokuv" path="res://map/talkBubbles/TalkBubble.cs" id="1_cuxwd"]
+[ext_resource type="Texture2D" uid="uid://csbak3ji28xt8" path="res://assets/sprites/ui/talkBubble/spr_ui_talkBubble.png" id="1_joco0"]
+[ext_resource type="FontFile" uid="uid://dk7sro3h40irq" path="res://assets/fonts/determination/determination.ttf" id="2_px43m"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nkx1e"]
+font = ExtResource("2_px43m")
+font_size = 34
+
+[sub_resource type="LabelSettings" id="LabelSettings_joco0"]
+font = ExtResource("2_px43m")
+font_size = 39
+outline_size = 8
+outline_color = Color(0.69803923, 0.69803923, 0.69803923, 1)
+
+[node name="TalkBubble" type="Node2D" unique_id=1088389143]
+script = ExtResource("1_cuxwd")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1797072819]
+position = Vector2(546.54944, 188.25)
+scale = Vector2(5.7088485, 5.6484375)
+texture = ExtResource("1_joco0")
+
+[node name="SaidTextLabel" type="Label" parent="." unique_id=1745947670]
+offset_left = 99.0
+offset_top = 76.0
+offset_right = 753.0
+offset_bottom = 273.0
+text = "Hellosziahossszszzsuusuuuuuuuuuuu
+negy
+sor
+igy"
+label_settings = SubResource("LabelSettings_nkx1e")
+
+[node name="NameLabel" type="Label" parent="." unique_id=1692735404]
+offset_left = 49.99997
+offset_top = 24.0
+offset_right = 136.99997
+offset_bottom = 93.0
+text = "Guy"
+label_settings = SubResource("LabelSettings_joco0")

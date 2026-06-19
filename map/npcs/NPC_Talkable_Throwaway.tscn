@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://ci055m22kuflt"]
+
+[ext_resource type="PackedScene" uid="uid://c611ksnhxgho" path="res://map/npcs/interactable.tscn" id="1_dy08c"]
+[ext_resource type="Script" uid="uid://jcjdc4np7bg8" path="res://map/npcs/NpcTalkableThrowaway.cs" id="2_wktrp"]
+[ext_resource type="Texture2D" uid="uid://bep13wmgqmfp5" path="res://assets/sprites/creatures/alien_octopus/spr_creature_alien_octopus_1.png" id="3_6uhed"]
+[ext_resource type="Script" uid="uid://cxewj0u8p6arq" path="res://resources/talkBubbles/TalkBubblePage.cs" id="3_ds06h"]
+[ext_resource type="Script" uid="uid://bgri4p6kj3a17" path="res://resources/talkBubbles/TalkBubbleArray.cs" id="3_ta586"]
+[ext_resource type="Texture2D" uid="uid://bk706qh7cccvd" path="res://assets/sprites/creatures/alien_octopus/spr_creature_alien_octopus_2.png" id="4_oknk4"]
+
+[sub_resource type="Resource" id="Resource_v46kr"]
+script = ExtResource("3_ds06h")
+myText = "Helo
+Pici a "
+myName = "Polip"
+myTalkSpeed = 1.0
+metadata/_custom_type_script = "uid://cxewj0u8p6arq"
+
+[sub_resource type="Resource" id="Resource_ds06h"]
+script = ExtResource("3_ta586")
+myText = Array[Object]([SubResource("Resource_v46kr")])
+metadata/_custom_type_script = "uid://bgri4p6kj3a17"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wktrp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_6uhed")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.4,
+"texture": ExtResource("3_6uhed")
+}, {
+"duration": 0.4,
+"texture": ExtResource("4_oknk4")
+}],
+"loop": true,
+"name": &"talk",
+"speed": 5.0
+}]
+
+[node name="TalkNPC" unique_id=916331531 instance=ExtResource("1_dy08c")]
+script = ExtResource("2_wktrp")
+myCurrentLines = SubResource("Resource_ds06h")
+
+[node name="Sprite" parent="." index="0" unique_id=756789201]
+sprite_frames = SubResource("SpriteFrames_wktrp")
+animation = &"talk"
+frame_progress = 0.6539122

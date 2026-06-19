@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://f3e5oa0makq6" path="res://assets/sprites/goon/walk_backwards/spr_goon_walk_backwards_3.png" id="6_kf1ei"]
 [ext_resource type="Texture2D" uid="uid://bxgw0peom4c1i" path="res://assets/sprites/goon/walk_backwards/spr_goon_walk_backwards_4.png" id="7_w5q0d"]
 [ext_resource type="Texture2D" uid="uid://clpi73e5bkd4j" path="res://assets/sprites/goon/shadow/spr_goon_shadow.png" id="13_vvtxx"]
+[ext_resource type="Script" uid="uid://bi2lvofgin6fl" path="res://map/LookingAtHitbox.cs" id="14_kf1ei"]
+[ext_resource type="Texture2D" uid="uid://bep13wmgqmfp5" path="res://assets/sprites/creatures/alien_octopus/spr_creature_alien_octopus_1.png" id="15_w5q0d"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oycjb"]
 animations = [{
@@ -103,13 +105,12 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oajqt"]
-size = Vector2(16, 16)
+size = Vector2(13, 14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oycjb"]
 size = Vector2(5, 6)
 
 [node name="Player" type="CharacterBody2D" unique_id=1403057204]
-collision_mask = 0
 script = ExtResource("1_g6b87")
 
 [node name="AllSpritesPlace" type="Node2D" parent="." unique_id=1812498363]
@@ -124,6 +125,7 @@ sprite_frames = SubResource("SpriteFrames_vvtxx")
 animation = &"walk_forward"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=910602540]
+position = Vector2(-3, 2)
 shape = SubResource("RectangleShape2D_oajqt")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1046681063]
@@ -133,6 +135,11 @@ zoom = Vector2(4, 4)
 [node name="LookingAtHitbox" type="Area2D" parent="." unique_id=877398258]
 collision_layer = 2
 collision_mask = 0
+script = ExtResource("14_kf1ei")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LookingAtHitbox" unique_id=1055010728]
 shape = SubResource("RectangleShape2D_oycjb")
+
+[node name="Sprite2D" type="Sprite2D" parent="LookingAtHitbox" unique_id=1300228245]
+visible = false
+texture = ExtResource("15_w5q0d")
