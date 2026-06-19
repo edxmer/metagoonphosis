@@ -3,10 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://co1m13orlkeep" path="res://map/player.tscn" id="1_m47sm"]
 [ext_resource type="TileSet" uid="uid://gjslkcp5wqsa" path="res://assets/sprites/tilesets/spr_tileset_mapmain/tileset_map_main.tres" id="1_urpp8"]
 [ext_resource type="Texture2D" uid="uid://mwgr37ftjksl" path="res://assets/sprites/tilesets/spr_tileset_walls/spr_tileset_walls.png" id="2_v3biw"]
-[ext_resource type="PackedScene" uid="uid://ci055m22kuflt" path="res://map/npcs/NPC_Talkable_Throwaway.tscn" id="5_klxn7"]
+[ext_resource type="PackedScene" uid="uid://ci055m22kuflt" path="res://map/npcs/npc_talk_base/NPC_Talkable_Throwaway.tscn" id="5_klxn7"]
 [ext_resource type="PackedScene" uid="uid://dvnwsuoquiijf" path="res://map/ui.tscn" id="5_pspey"]
 [ext_resource type="Script" uid="uid://cxewj0u8p6arq" path="res://resources/talkBubbles/TalkBubblePage.cs" id="6_ruy6l"]
 [ext_resource type="Script" uid="uid://bgri4p6kj3a17" path="res://resources/talkBubbles/TalkBubbleArray.cs" id="7_aqgif"]
+[ext_resource type="PackedScene" uid="uid://t3tnk64uhae5" path="res://map/npcs/testNPC2/NPC_test_1.tscn" id="8_aqgif"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pspey"]
 resource_name = "walls"
@@ -50,11 +51,17 @@ tile_map_data = PackedByteArray("AAD//wEAAAABAAAAAAD+/wEAAAABAAAAAAD+/wAAAAABAAA
 tile_set = ExtResource("1_urpp8")
 
 [node name="TilesWalls" type="TileMapLayer" parent="map_ground" unique_id=1766248843]
-tile_map_data = PackedByteArray("AAABAP3/AAABAAAAAAABAPz/AAABAAAAAAACAPz/AAABAAAAAAADAPz/AAABAAAAAAADAP3/AAABAAAAAAACAP3/AAABAAAAAAA=")
+tile_map_data = PackedByteArray("AAABAP3/AAABAAAAAAABAPz/AAABAAAAAAACAPz/AAABAAAAAAADAPz/AAABAAAAAAADAP3/AAABAAAAAAACAP3/AAABAAAAAAD6//v/AAABAAAAAAD5//v/AAABAAAAAAD6//r/AAABAAAAAAD5//r/AAABAAAAAAA=")
 tile_set = SubResource("TileSet_klxn7")
+
+[node name="NPCS" type="Node2D" parent="." unique_id=1842851896]
+
+[node name="TalkNPC" parent="NPCS" unique_id=916331531 instance=ExtResource("5_klxn7")]
+position = Vector2(39, -44)
+myCurrentLines = SubResource("Resource_rpil6")
+
+[node name="paradicsom" parent="NPCS" unique_id=730409003 instance=ExtResource("8_aqgif")]
+position = Vector2(-95, -76)
 
 [node name="player" parent="." unique_id=1403057204 instance=ExtResource("1_m47sm")]
 position = Vector2(1, 0)
-
-[node name="TalkNPC" parent="." unique_id=916331531 instance=ExtResource("5_klxn7")]
-myCurrentLines = SubResource("Resource_rpil6")

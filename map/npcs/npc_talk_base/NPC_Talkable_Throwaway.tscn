@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ci055m22kuflt"]
 
-[ext_resource type="PackedScene" uid="uid://c611ksnhxgho" path="res://map/npcs/interactable.tscn" id="1_dy08c"]
-[ext_resource type="Script" uid="uid://jcjdc4np7bg8" path="res://map/npcs/NpcTalkableThrowaway.cs" id="2_wktrp"]
+[ext_resource type="PackedScene" uid="uid://c611ksnhxgho" path="res://map/npcs/interactable_base/interactable.tscn" id="1_dy08c"]
+[ext_resource type="Script" uid="uid://jcjdc4np7bg8" path="res://map/npcs/npc_talk_base/NpcTalkableThrowaway.cs" id="2_wktrp"]
 [ext_resource type="Texture2D" uid="uid://bep13wmgqmfp5" path="res://assets/sprites/creatures/alien_octopus/spr_creature_alien_octopus_1.png" id="3_6uhed"]
 [ext_resource type="Script" uid="uid://cxewj0u8p6arq" path="res://resources/talkBubbles/TalkBubblePage.cs" id="3_ds06h"]
 [ext_resource type="Script" uid="uid://bgri4p6kj3a17" path="res://resources/talkBubbles/TalkBubbleArray.cs" id="3_ta586"]

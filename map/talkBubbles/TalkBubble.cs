@@ -20,10 +20,10 @@ public partial class TalkBubble : Node2D
 	
 	private void closeUp()
 	{
-		amITalking=false;
 		Visible=false;
 		displayName="";
 		displayText="";
+		GetTree().CallGroup("canTalkNPC", "StopTalking");
 	}
 	
 	public void openUp()
@@ -95,7 +95,11 @@ public partial class TalkBubble : Node2D
 			nextLetterTimer-=delta;
 			if (Input.IsActionPressed("ui_accept"))
 			{
-				nextLetterTimer-=delta*4;
+				nextLetterTimer-=delta*9;
+			}
+			if (Input.IsActionPressed("ui_close_dialog"))
+			{
+				closeUp();
 			}
 		}
 		else if (Input.IsActionJustPressed("ui_accept"))
@@ -106,7 +110,7 @@ public partial class TalkBubble : Node2D
 	
 	public override void _Ready()
 	{
-		amITalking=false;
+		
 		AddToGroup("talkBubble");
 		currentPages=new ();
 		Visible = false;
@@ -117,11 +121,16 @@ public partial class TalkBubble : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if (!Visible)
+		{
+			amITalking=false;
+		}
 		if (amITalking)
 		{
 			doTextStep(delta);
 			myNameNode.Text=displayName;
 			myTextNode.Text=displayText;
 		}
+		
 	}
 }
