@@ -105,7 +105,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oajqt"]
-size = Vector2(13, 14)
+size = Vector2(8, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oycjb"]
 size = Vector2(5, 6)
@@ -125,7 +125,7 @@ sprite_frames = SubResource("SpriteFrames_vvtxx")
 animation = &"walk_forward"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=910602540]
-position = Vector2(-3, 2)
+position = Vector2(-3, 5)
 shape = SubResource("RectangleShape2D_oajqt")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1046681063]
