@@ -59,10 +59,10 @@ public partial class Stats : Resource
     private Godot.Collections.Array<IntStatEntry> _intStatEntries = [];
     private Godot.Collections.Array<BoolStatEntry> _boolStatEntries = [];
 
-    private Dictionary<IntStatTypes, int> _intStats { get; set; } = [];
-    private Dictionary<BoolStatTypes, bool> _boolStats { get; set; } = [];
+    private Dictionary<IntStatType, int> _intStats { get; set; } = [];
+    private Dictionary<BoolStatType, bool> _boolStats { get; set; } = [];
 
-    public int GetIntStat(IntStatTypes key)
+    public int GetIntStat(IntStatType key)
     {
         if (_intStats.ContainsKey(key))
         {
@@ -71,13 +71,13 @@ public partial class Stats : Resource
         else return 0;
     }
 
-    public void SetIntStat(IntStatTypes key, int value)
+    public void SetIntStat(IntStatType key, int value)
     {
         if (value == 0 && !_intStats.ContainsKey(key)) return;
         _intStats[key] = value;
     }
 
-    public bool GetBoolStat(BoolStatTypes key)
+    public bool GetBoolStat(BoolStatType key)
     {
         if (_boolStats.ContainsKey(key))
         {
@@ -86,7 +86,7 @@ public partial class Stats : Resource
         else return false;
     }
 
-    public void SetBoolStat(BoolStatTypes key, bool value)
+    public void SetBoolStat(BoolStatType key, bool value)
     {
         if (value == false && !_boolStats.ContainsKey(key)) return;
         _boolStats[key] = value;
@@ -96,12 +96,12 @@ public partial class Stats : Resource
     {
         Stats stats = new();
 
-        foreach (var key in Enum.GetValues<IntStatTypes>())
+        foreach (var key in Enum.GetValues<IntStatType>())
         {
             stats.SetIntStat(key, left.GetIntStat(key) + right.GetIntStat(key));
         }
 
-        foreach (var key in Enum.GetValues<BoolStatTypes>())
+        foreach (var key in Enum.GetValues<BoolStatType>())
         {
             stats.SetBoolStat(key, left.GetBoolStat(key) || right.GetBoolStat(key));
         }
@@ -112,12 +112,12 @@ public partial class Stats : Resource
     public override string ToString()
     {
         List<string> keyValueStringPairs = [];
-        foreach (var key in Enum.GetValues<IntStatTypes>())
+        foreach (var key in Enum.GetValues<IntStatType>())
         {
             keyValueStringPairs.Add($"{key.ToString()}: {GetIntStat(key)}");
         }
 
-        foreach (var key in Enum.GetValues<BoolStatTypes>())
+        foreach (var key in Enum.GetValues<BoolStatType>())
         {
             keyValueStringPairs.Add($"{key.ToString()}: {GetBoolStat(key)}");
         }

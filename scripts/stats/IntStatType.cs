@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public enum IntStatTypes
+public enum IntStatType
 {
     Hp,
 	Coolness,

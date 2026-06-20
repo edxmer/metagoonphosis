@@ -1,7 +1,7 @@
 using System;
 using Godot;
 
-public enum BoolStatTypes
+public enum BoolStatType
 {
     HasHair,
 	CanSwim,
