@@ -130,7 +130,7 @@ shape = SubResource("RectangleShape2D_oajqt")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1046681063]
 position = Vector2(0, 2)
-zoom = Vector2(4, 4)
+zoom = Vector2(3.5, 3.5)
 
 [node name="LookingAtHitbox" type="Area2D" parent="." unique_id=877398258]
 collision_layer = 2

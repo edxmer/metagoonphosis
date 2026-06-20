@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bio8ecd2tl7ck"
-path="res://.godot/imported/spr_tileset_map_main_old.png-96a80727d2b904919adfe53f6f5c9247.ctex"
+uid="uid://dhe3th4ylqd8m"
+path="res://.godot/imported/spr_tileset_map_main_nohouses.png-8d025471e710b1045a7f671bb7a23380.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/tilesets/spr_tileset_mapmain/spr_tileset_map_main_old.png"
-dest_files=["res://.godot/imported/spr_tileset_map_main_old.png-96a80727d2b904919adfe53f6f5c9247.ctex"]
+source_file="res://assets/sprites/tilesets/spr_tileset_mapmain/spr_tileset_map_main_nohouses.png"
+dest_files=["res://.godot/imported/spr_tileset_map_main_nohouses.png-8d025471e710b1045a7f671bb7a23380.ctex"]
 
 [params]
 

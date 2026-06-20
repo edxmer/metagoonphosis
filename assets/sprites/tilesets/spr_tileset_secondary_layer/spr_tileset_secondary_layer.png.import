@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmmx0403ekn0i"
-path="res://.godot/imported/spr_tileset_map_main_bleh.png-a1770a03d48fc5bd9a1443c19cf056b2.ctex"
+uid="uid://2yg5gi0422v3"
+path="res://.godot/imported/spr_tileset_secondary_layer.png-f6ea690321c90fc36f82f1537600f8b7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/tilesets/spr_tileset_mapmain/spr_tileset_map_main_bleh.png"
-dest_files=["res://.godot/imported/spr_tileset_map_main_bleh.png-a1770a03d48fc5bd9a1443c19cf056b2.ctex"]
+source_file="res://assets/sprites/tilesets/spr_tileset_secondary_layer/spr_tileset_secondary_layer.png"
+dest_files=["res://.godot/imported/spr_tileset_secondary_layer.png-f6ea690321c90fc36f82f1537600f8b7.ctex"]
 
 [params]
 
