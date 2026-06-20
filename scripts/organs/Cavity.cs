@@ -123,6 +123,8 @@ public partial class Cavity : Resource
 		
 		EmitSignal(SignalName.OrgansChanged);
 	}
+	
+	public bool Contains(OrganSlot slot) => _slotOrigins.ContainsKey(slot);
 
 	public List<Organ> GetOrgans() => _slotOrigins.Keys.Select(x => x.Organ).ToList();
 	public List<KeyValuePair<OrganSlot, Vector2I>> GetItems() => _slotOrigins.ToList();
