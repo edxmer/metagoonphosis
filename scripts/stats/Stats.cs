@@ -17,9 +17,9 @@ public partial class Stats : Resource
 
             _intStats = [];
 
-            foreach (var entry in _intStatEntries)
+            foreach (IntStatEntry entry in _intStatEntries)
             {
-                if (entry != null) _intStats.Add(entry.Key, entry.Value);
+                if (entry is not null) _intStats.Add(entry.Key, entry.Value);
             }
         }
     }
@@ -35,9 +35,9 @@ public partial class Stats : Resource
 
             _boolStats = [];
 
-            foreach (var entry in _boolStatEntries)
+            foreach (BoolStatEntry entry in _boolStatEntries)
             {
-                if (entry != null) _boolStats.Add(entry.Key, entry.Value);
+                if (entry is not null) _boolStats.Add(entry.Key, entry.Value);
             }
         }
     }
