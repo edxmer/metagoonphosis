@@ -33,9 +33,8 @@ public partial class PlayerStats : Node
 
 		// Add event listener to Organs Changed event to update stats
 		Cavity.OrgansChanged += UpdateStats;
-
-		// Update Stats
-		UpdateStats();
+		
+		Cavity.EmitSignal(Cavity.SignalName.OrgansChanged);
 	}
 
 	public void UpdateStats()
