@@ -8,15 +8,16 @@ public partial class PlayerStats : Node
 	public Stats Stats { get; set; }
 
 	public ChestCavity ChestCavity { get; set; }
-
+	public PlayerInventory PlayerInventory {get;set;}
+	public bool IsSomethingOpenInMap;
 	public override void _Ready()
 	{
 		// Set singleton instance
 		Instance = this;
-
+		IsSomethingOpenInMap=false;
 		// By default every stat is zero, but the organs change the stats
 		Stats = new();
-		
+		PlayerInventory=new();
 		// Load chest cavity from resource file
 		ChestCavity = GD.Load<ChestCavity>("res://resources/cavity/player_chest_cavity.tres");
 
@@ -25,10 +26,10 @@ public partial class PlayerStats : Node
 				GD.Load<StartingOrganConfig>("res://resources/payer_starting_organs/starting_heart.tres"),
 		];
 		foreach (var organConfig in startingOrgans)
-        {
-            bool success = ChestCavity.TryPlaceOrgan(organConfig.Organ, organConfig.Origin);
-            if (!success) GD.PushWarning($"Could not place starting organ into cavity: {organConfig.Organ.OrganName}");
-        }
+		{
+			bool success = ChestCavity.TryPlaceOrgan(organConfig.Organ, organConfig.Origin);
+			if (!success) GD.PushWarning($"Could not place starting organ into cavity: {organConfig.Organ.OrganName}");
+		}
 
 
 		// Add event listener to Organs Changed event to update stats
