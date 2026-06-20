@@ -5,19 +5,19 @@ using System;
 public partial class OrganViewUI : TextureRect
 {
 	private CavitySlot _slot;
-	private int _slotSize;
+	private int _slotSizePx;
 
 	public void Initialize(CavitySlot slot, int slotSize)
 	{
 		_slot = slot;
-		_slotSize = slotSize;
+		_slotSizePx = slotSize;
 
 		Organ organ = _slot.Organ;
 
 		Texture = organ.Texture;
 		ExpandMode = ExpandModeEnum.IgnoreSize;
 
-		CustomMinimumSize = new Vector2(organ.Width * _slotSize, organ.Height * _slotSize);
+		CustomMinimumSize = new Vector2(organ.Width * _slotSizePx, organ.Height * _slotSizePx);
 	}
 
     public override Variant _GetDragData(Vector2 atPosition)
@@ -58,5 +58,13 @@ public partial class OrganViewUI : TextureRect
 				Modulate = new Color(1, 1, 1, 1.0f);
 			}
 		}
+    }
+
+    public override bool _HasPoint(Vector2 point)
+    {
+        int localGridX = Mathf.FloorToInt(point.X / _slotSizePx);
+        int localGridY = Mathf.FloorToInt(point.Y / _slotSizePx);
+
+		return _slot.Organ.Shape[localGridX, localGridY];
     }
 }

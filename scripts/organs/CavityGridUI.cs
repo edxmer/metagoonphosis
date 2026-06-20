@@ -83,9 +83,9 @@ public partial class CavityGridUI : Control
 
 		Vector2I targetGridPosition = CalculateTargetGridPosition(atPosition, offset);
 
-		bool canDropData = _cavity.CanChangeSlotPosition(slot, targetGridPosition);
+		bool fitsInCavity = _cavity.CanChangeSlotPosition(slot, targetGridPosition);
 
-		return canDropData;
+		return fitsInCavity;
     }
 
     public override void _DropData(Vector2 atPosition, Variant data)
