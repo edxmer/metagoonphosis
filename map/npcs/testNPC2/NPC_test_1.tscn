@@ -33,3 +33,6 @@ script = ExtResource("2_xotav")
 [node name="Sprite" parent="." index="0" unique_id=756789201]
 sprite_frames = SubResource("SpriteFrames_edsao")
 frame_progress = 0.0
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=1166412815]
+position = Vector2(0, 1)

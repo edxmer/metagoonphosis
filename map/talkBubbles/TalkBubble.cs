@@ -9,7 +9,9 @@ public partial class TalkBubble : Node2D
 {
 	// Called when the node enters the scene tree for the first time.
 	public bool amITalking {get;private set;}
+	private const int playSoundAfter=3;
 	private string displayName="Gduy";
+	private string audioPath="mute";
 	private string displayText="";
 	private List<TalkBubblePage> currentPages;
 	private string currentTextPage="";
@@ -17,6 +19,7 @@ public partial class TalkBubble : Node2D
 	private double nextLetterTimer=0;
 	private Label myNameNode;
 	private Label myTextNode;
+	private AudioStreamPlayer2D mySoundPlayer;
 	
 	private void closeUp()
 	{
@@ -24,6 +27,7 @@ public partial class TalkBubble : Node2D
 		PlayerStats.Instance.IsSomethingOpenInMap=false;
 		displayName="";
 		displayText="";
+		audioPath="mute";
 		GetTree().CallGroup("canTalkNPC", "StopTalking");
 	}
 	
@@ -53,6 +57,7 @@ public partial class TalkBubble : Node2D
 		currentPages.RemoveAt(0);
 		displayName=nextP.myName;
 		currentTextPage=nextP.myText;
+		audioPath=nextP.audioPath;
 		waitBetweenLetters=nextP.myTalkSpeed;
 		nextLetterTimer=waitBetweenLetters;
 	}
@@ -78,6 +83,10 @@ public partial class TalkBubble : Node2D
 			}
 			else
 			{
+				if (displayText.Length%3==0)
+				{
+					PlaySound(audioPath);
+				}
 				displayText+=charc;
 			}
 			
@@ -117,6 +126,17 @@ public partial class TalkBubble : Node2D
 		Visible = false;
 		myNameNode=GetNode<Label>("NameLabel");
 		myTextNode=GetNode<Label>("SaidTextLabel");
+		mySoundPlayer=GetNode<AudioStreamPlayer2D>("SoundPlayer");
+	}
+	
+	public void PlaySound(string soundPath)
+	{
+		if (soundPath==null || soundPath=="mute")
+		{
+			return;
+		}
+		mySoundPlayer.Stream = GD.Load<AudioStream>(soundPath);
+		mySoundPlayer.Play();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

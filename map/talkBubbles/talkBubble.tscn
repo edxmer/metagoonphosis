@@ -40,3 +40,5 @@ offset_right = 136.99997
 offset_bottom = 93.0
 text = "Guy"
 label_settings = SubResource("LabelSettings_joco0")
+
+[node name="SoundPlayer" type="AudioStreamPlayer2D" parent="." unique_id=524875689]

@@ -23,12 +23,18 @@ public partial class NpcTalkableThrowaway : Interactable
 			return true;
 		}
 	}
+	protected virtual void AfterTalkedEvent()
+	{
+		
+	}
+	
 	public virtual void StopTalking()
 	{
 		if (isSpeaking)
 		{
 			isSpeaking=false;
 			animation.Play(currentIdleAnimation);
+			AfterTalkedEvent();
 		}
 	}
 	
