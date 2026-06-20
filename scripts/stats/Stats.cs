@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 [GlobalClass]
 public partial class Stats : Resource
@@ -10,13 +11,15 @@ public partial class Stats : Resource
         get => _intStatEntries;
         set
         {
+            if (value == null) return;
+
             _intStatEntries = value;
 
             _intStats = [];
 
             foreach (var entry in _intStatEntries)
             {
-                _intStats.Add(entry.Key, entry.Value);
+                if (entry != null) _intStats.Add(entry.Key, entry.Value);
             }
         }
     }
@@ -26,13 +29,15 @@ public partial class Stats : Resource
          get => _boolStatEntries;
         set
         {
+            if (value == null) return;
+
             _boolStatEntries = value;
 
             _boolStats = [];
 
             foreach (var entry in _boolStatEntries)
             {
-                _boolStats.Add(entry.Key, entry.Value);
+                if (entry != null) _boolStats.Add(entry.Key, entry.Value);
             }
         }
     }
@@ -88,5 +93,21 @@ public partial class Stats : Resource
         }
 
         return stats;
+    }
+
+    public override string ToString()
+    {
+        List<string> keyValueStringPairs = [];
+        foreach (var key in Enum.GetValues<IntStatTypes>())
+        {
+            keyValueStringPairs.Add($"{key.ToString()}: {GetIntStat(key)}");
+        }
+
+        foreach (var key in Enum.GetValues<BoolStatTypes>())
+        {
+            keyValueStringPairs.Add($"{key.ToString()}: {GetBoolStat(key)}");
+        }
+
+        return string.Join("; ", keyValueStringPairs);
     }
 }

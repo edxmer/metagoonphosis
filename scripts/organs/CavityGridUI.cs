@@ -11,7 +11,12 @@ public partial class CavityGridUI : Control
 	private Vector2 _dragPointerOffset;
 	private ChestCavity _cavity;
 
-	public void Initialize(ChestCavity cavity)
+	public override void _Ready()
+	{
+		Initialize(PlayerStats.Instance.ChestCavity);
+	}
+	
+	private void Initialize(ChestCavity cavity)
 	{
 		_dragPointerOffset = new Vector2(SlotSizePx * 0.5f, SlotSizePx * 0.5f);
 		_cavity = cavity;
@@ -51,7 +56,7 @@ public partial class CavityGridUI : Control
 
 		foreach (var (slot, origin) in _cavity.GetItems())
 		{
-			GD.Print($"Spawning visual item: {slot.Organ.OrganName}, {origin.ToString()}");
+			//($"Spawning visual item: {slot.Organ.OrganName}, {origin.ToString()}");
 			SpawnVisualItem(slot, origin);
 		}
     }

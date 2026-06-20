@@ -27,7 +27,7 @@ public partial class ChestCavity : Resource
 			_cavityShapeString = value;
 			if (string.IsNullOrEmpty(_cavityShapeString)) return;
 			(Width, Height) = ShapeStringHelper.GetDimensions(value);
-			GD.Print($"Cavity width: {Width}, height: {Height}");
+			//GD.Print($"Cavity width: {Width}, height: {Height}");
 			Shape = ShapeStringHelper.ParseShape(value, Width, Height);
 			_slots = new CavitySlot[Width, Height];
 		}
