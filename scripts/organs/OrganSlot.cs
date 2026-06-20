@@ -2,13 +2,13 @@ using Godot;
 using System;
 
 [GlobalClass]
-public partial class CavitySlot : Resource
+public partial class OrganSlot : Resource
 {
     [Export] public Organ Organ { get; set; }
 
-    public CavitySlot() {}
+    public OrganSlot() {}
 
-    public CavitySlot(Organ organ)
+    public OrganSlot(Organ organ)
     {
         Organ = organ;
     }
