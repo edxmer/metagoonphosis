@@ -65,6 +65,11 @@ public partial class OrganViewUI : TextureRect
         int localGridX = Mathf.FloorToInt(point.X / _slotSizePx);
         int localGridY = Mathf.FloorToInt(point.Y / _slotSizePx);
 
-		return _slot.Organ.Shape[localGridX, localGridY];
+		Organ organ = _slot.Organ;
+		
+		if (0 <= localGridX && localGridX < organ.Width && 0 <= localGridY &&  localGridY < organ.Height)
+			return organ.Shape[localGridX, localGridY];
+		
+		return false;
     }
 }
