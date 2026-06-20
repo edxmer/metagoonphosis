@@ -14,6 +14,10 @@ public partial class InventoryUi : Node2D
 		Open=false;
 	}
 	
+	private void OnOpened()
+	{
+		
+	}
 	
 	
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
