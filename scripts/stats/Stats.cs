@@ -5,9 +5,6 @@ using System.Collections.Generic;
 [GlobalClass]
 public partial class Stats : Resource
 {
-    public Dictionary<IntStatTypes, int> IntStats { get; set; }
-    public Dictionary<BoolStatTypes, bool> BoolStats { get; set; }
-
     [Export] private Godot.Collections.Array<IntStatEntry> IntStatEntries
     {
         get => _intStatEntries;
@@ -15,11 +12,11 @@ public partial class Stats : Resource
         {
             _intStatEntries = value;
 
-            IntStats = new();
+            _intStats = [];
 
             foreach (var entry in _intStatEntries)
             {
-                IntStats.Add(entry.Key, entry.Value);
+                _intStats.Add(entry.Key, entry.Value);
             }
         }
     }
@@ -31,11 +28,11 @@ public partial class Stats : Resource
         {
             _boolStatEntries = value;
 
-            BoolStats = new();
+            _boolStats = [];
 
             foreach (var entry in _boolStatEntries)
             {
-                BoolStats.Add(entry.Key, entry.Value);
+                _boolStats.Add(entry.Key, entry.Value);
             }
         }
     }
@@ -43,20 +40,49 @@ public partial class Stats : Resource
     private Godot.Collections.Array<IntStatEntry> _intStatEntries;
     private Godot.Collections.Array<BoolStatEntry> _boolStatEntries;
 
-    public static Stats GetDefaultStats()
+    private Dictionary<IntStatTypes, int> _intStats { get; set; } = [];
+    private Dictionary<BoolStatTypes, bool> _boolStats { get; set; } = [];
+
+    public int GetIntStat(IntStatTypes key)
+    {
+        if (_intStats.ContainsKey(key))
+        {
+            return _intStats[key];
+        }
+        else return 0;
+    }
+
+    public void SetIntStat(IntStatTypes key, int value)
+    {
+        _intStats[key] = value;
+    }
+
+    public bool GetBoolStat(BoolStatTypes key)
+    {
+        if (_boolStats.ContainsKey(key))
+        {
+            return _boolStats[key];
+        }
+        else return false;
+    }
+
+    public void SetBoolStat(BoolStatTypes key, bool value)
+    {
+        _boolStats[key] = value;
+    }
+
+    public static Stats operator + (Stats left, Stats right)
     {
         Stats stats = new();
-        
-        stats.IntStats = [];
-        foreach (var type in Enum.GetValues<IntStatTypes>())
+
+        foreach (var key in Enum.GetValues<IntStatTypes>())
         {
-            stats.IntStats.Add(type, 0);
+            stats.SetIntStat(key, left.GetIntStat(key) + right.GetIntStat(key));
         }
 
-        stats.BoolStats = [];
-        foreach (var type in Enum.GetValues<BoolStatTypes>())
+        foreach (var key in Enum.GetValues<BoolStatTypes>())
         {
-            stats.BoolStats.Add(type, false);
+            stats.SetBoolStat(key, left.GetBoolStat(key) || right.GetBoolStat(key));
         }
 
         return stats;
