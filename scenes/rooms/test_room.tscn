@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c8rgxsn1ny7eo"]
 
 [ext_resource type="Script" uid="uid://cys1hag4cjwqp" path="res://scripts/organs/CavityGridUI.cs" id="1_i7p6j"]
+[ext_resource type="Script" uid="uid://bdvg7q0xtfow8" path="res://scripts/organs/UnusedOrganListUI.cs" id="2_fn815"]
 
 [node name="Cavity" type="Node" unique_id=1202688869]
 
@@ -16,6 +17,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1, 0.9482657)
 
 [node name="MarginContainer" type="MarginContainer" parent="CavityUI" unique_id=147345809]
 layout_mode = 2
@@ -30,3 +32,31 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_i7p6j")
 metadata/_custom_type_script = "uid://cys1hag4cjwqp"
+
+[node name="UnusedOrgansUI" type="PanelContainer" parent="." unique_id=678212517]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -199.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(1, 1.0142502)
+metadata/_edit_group_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="UnusedOrgansUI" unique_id=1478646016]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="UnusedOrganListUI" type="ScrollContainer" parent="UnusedOrgansUI/MarginContainer" unique_id=1274496501]
+layout_mode = 2
+script = ExtResource("2_fn815")
+metadata/_custom_type_script = "uid://bdvg7q0xtfow8"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UnusedOrgansUI/MarginContainer/UnusedOrganListUI" unique_id=174627786]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/separation = 12
