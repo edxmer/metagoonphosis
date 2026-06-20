@@ -12,13 +12,32 @@ public partial class InventoryUi : Node2D
 	{
 		Visible=false;
 		Open=false;
+		itemspos=GetNode<Node2D>("ItemsContained");
 	}
 	
 	private void OnOpened()
 	{
-		
+		KillItemsCur();
+		ListChildren
 	}
-	
+	private void ListChildren(PlayerInventory inv)
+	{
+		string[] items=inv.ListItems();
+		foreach (string item in items)
+		{
+			InventoryItemFactory()
+		}
+	}
+	private void KillItemsCur()
+	{
+		foreach (Node child in itemspos.GetChildren())
+		{
+			if (child is InventoryItem item)
+			{
+				item.Free();
+			}
+		}
+	}
 	
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
