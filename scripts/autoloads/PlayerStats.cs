@@ -5,19 +5,19 @@ using System.Collections.Generic;
 public partial class PlayerStats : Node
 {
 	public static PlayerStats Instance { get; private set; }
-	public Stats Stats { get; set; }
-	public Cavity Cavity { get; set; }
-	public PlayerInventory PlayerInventory { get;set; }
-	public bool IsSomethingOpenInMap { get; set; }
+
+	public Stats Stats { get; private set; } = new(); // By default every stat is zero, but the organs change the stats
+	public Cavity Cavity { get; private set; }
+	public UnusedOrgans UnusedOrgans { get; private set; } = new();
+	public PlayerInventory PlayerInventory { get;set; } = new();
+
+	public bool IsSomethingOpenInMap { get; set; } = false;
 
 	public override void _Ready()
 	{
 		// Set singleton instance
 		Instance = this;
-		IsSomethingOpenInMap=false;
-		// By default every stat is zero, but the organs change the stats
-		Stats = new();
-		PlayerInventory=new();
+
 		// Load chest cavity from resource file
 		Cavity = GD.Load<Cavity>("res://resources/cavity/player_cavity.tres");
 
