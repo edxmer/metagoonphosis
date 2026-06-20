@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://dgbhxqb31koyn"]
+
+[ext_resource type="PackedScene" uid="uid://ci055m22kuflt" path="res://map/npcs/npc_talk_base/NPC_Talkable_Throwaway.tscn" id="1_7c16p"]
+[ext_resource type="Script" uid="uid://d3aghsibx1qcx" path="res://map/npcs/fly/CreatureFly.cs" id="2_varlm"]
+[ext_resource type="Texture2D" uid="uid://8u8m5ohnypkj" path="res://assets/sprites/creatures/fly/spr_creature_fly (1).png" id="3_bx1h5"]
+[ext_resource type="Script" uid="uid://cxewj0u8p6arq" path="res://resources/talkBubbles/TalkBubblePage.cs" id="3_nv8rb"]
+[ext_resource type="Script" uid="uid://bgri4p6kj3a17" path="res://resources/talkBubbles/TalkBubbleArray.cs" id="4_j5j7s"]
+[ext_resource type="Texture2D" uid="uid://b7mkuk0tfi5rq" path="res://assets/sprites/creatures/fly/spr_creature_fly (4).png" id="4_tobsl"]
+[ext_resource type="Texture2D" uid="uid://lgjvnv50usfj" path="res://assets/sprites/creatures/fly/spr_creature_fly (2).png" id="5_nv8rb"]
+[ext_resource type="Texture2D" uid="uid://cspvpf3csvk3m" path="res://assets/sprites/creatures/fly/spr_creature_fly (3).png" id="6_j5j7s"]
+[ext_resource type="Texture2D" uid="uid://2qmcrb1e6446" path="res://assets/sprites/creatures/fly/spr_creature_fly (5).png" id="7_i06ko"]
+
+[sub_resource type="Resource" id="Resource_i06ko"]
+script = ExtResource("3_nv8rb")
+myText = "Oooooh you found me
+"
+myName = "Little Fly"
+myTalkSpeed = 0.08
+metadata/_custom_type_script = "uid://cxewj0u8p6arq"
+
+[sub_resource type="Resource" id="Resource_w0yf8"]
+script = ExtResource("4_j5j7s")
+myText = Array[Object]([SubResource("Resource_i06ko"), null])
+metadata/_custom_type_script = "uid://bgri4p6kj3a17"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w0yf8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_bx1h5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.6,
+"texture": ExtResource("3_bx1h5")
+}, {
+"duration": 0.6,
+"texture": ExtResource("4_tobsl")
+}, {
+"duration": 0.6,
+"texture": ExtResource("5_nv8rb")
+}, {
+"duration": 0.6,
+"texture": ExtResource("6_j5j7s")
+}, {
+"duration": 0.6,
+"texture": ExtResource("7_i06ko")
+}],
+"loop": true,
+"name": &"talk",
+"speed": 5.0
+}]
+
+[node name="TalkNPC" unique_id=916331531 instance=ExtResource("1_7c16p")]
+script = ExtResource("2_varlm")
+myCurrentLines = SubResource("Resource_w0yf8")
+
+[node name="Sprite" parent="." index="0" unique_id=756789201]
+sprite_frames = SubResource("SpriteFrames_w0yf8")
+animation = &"idle"
+frame_progress = 0.39765745

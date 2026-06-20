@@ -10,7 +10,10 @@ public partial class NpcTest1 : NpcTalkableThrowaway
 		base._Ready();
 		AddedStatue=false;
 	}
-
+	protected override void AfterTalkedEvent()
+	{
+		Position=new Vector2(Position.X,Position.Y+10);
+	}
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
