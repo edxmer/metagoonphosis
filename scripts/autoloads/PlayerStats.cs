@@ -49,5 +49,10 @@ public partial class PlayerStats : Node
 		}
 	}
 
+	public void GiveOrgan(Organ organ)
+	{
+		UnusedOrgans.Add(new OrganSlot(organ));
+	}
+
 
 }
