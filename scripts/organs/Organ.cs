@@ -1,17 +1,10 @@
 using Godot;
 using System;
 
-public enum OrganType
-{
-	HEART,
-	LUNG,
-	OTHER
-}
-
 [GlobalClass]
 public partial class Organ : Resource
 {
-	[Export] public OrganType Type { get; set; } = OrganType.OTHER;
+	[Export] public OrganType Type { get; set; } = OrganType.Other;
     [Export] public string OrganName { get; set; }
     [Export] public Texture2D Texture { get; set; }
     [Export] public Stats StatIncreases { get; set; } = new();
