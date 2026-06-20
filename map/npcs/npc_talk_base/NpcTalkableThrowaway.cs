@@ -11,7 +11,7 @@ public partial class NpcTalkableThrowaway : Interactable
 	[Export] public TalkBubbleArray myCurrentLines;
 	public bool SaySomething()
 	{
-		if (myTalker.amITalking || isSpeaking)
+		if (myTalker.amITalking || isSpeaking || PlayerStats.Instance.IsSomethingOpenInMap)
 		{
 			return false;
 		}

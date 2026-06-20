@@ -21,6 +21,7 @@ public partial class TalkBubble : Node2D
 	private void closeUp()
 	{
 		Visible=false;
+		PlayerStats.Instance.IsSomethingOpenInMap=false;
 		displayName="";
 		displayText="";
 		GetTree().CallGroup("canTalkNPC", "StopTalking");
@@ -28,7 +29,7 @@ public partial class TalkBubble : Node2D
 	
 	public void openUp()
 	{
-		
+		 PlayerStats.Instance.IsSomethingOpenInMap=true;
 	}
 	
 	public void NewText(List<TalkBubblePage> newTexts)

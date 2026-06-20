@@ -17,6 +17,7 @@ public partial class InventoryUi : Node2D
 	
 	private void OnOpened()
 	{
+		
 		Visible=true;
 		KillItemsCur();
 		PlayerStats.Instance.IsSomethingOpenInMap=true;
@@ -56,7 +57,7 @@ public partial class InventoryUi : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		
+
 		if (Input.IsActionJustPressed("ui_open_inventory") )
 		{
 			if (Visible)
