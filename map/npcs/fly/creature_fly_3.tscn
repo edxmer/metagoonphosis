@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bvu5cwlu1m3g5"]
+
+[ext_resource type="PackedScene" uid="uid://dgbhxqb31koyn" path="res://map/npcs/fly/creature_fly.tscn" id="1_kday7"]
+[ext_resource type="Script" uid="uid://cvir8hxoi1yds" path="res://map/npcs/fly/CreatureFlyThree.cs" id="2_8o5yh"]
+
+[node name="TalkNPC" unique_id=916331531 instance=ExtResource("1_kday7")]
+script = ExtResource("2_8o5yh")

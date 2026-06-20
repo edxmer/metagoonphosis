@@ -25,6 +25,11 @@ metadata/_custom_type_script = "uid://bgri4p6kj3a17"
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w0yf8"]
 animations = [{
+"frames": [],
+"loop": true,
+"name": &"disappear",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("3_bx1h5")
@@ -61,4 +66,4 @@ myCurrentLines = SubResource("Resource_w0yf8")
 [node name="Sprite" parent="." index="0" unique_id=756789201]
 sprite_frames = SubResource("SpriteFrames_w0yf8")
 animation = &"idle"
-frame_progress = 0.39765745
+frame_progress = 0.0
