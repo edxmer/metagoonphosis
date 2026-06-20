@@ -27,7 +27,7 @@ public partial class UnusedOrganListUI : ScrollContainer
 		// Free all children of this node
 		foreach (Node c in container.GetChildren())
 		{
-			c.QueueFree();
+            if (c is OrganViewUI) c.QueueFree();
 		}
 
 		// Spawn in all visual items from _unusedOrgans
@@ -43,6 +43,7 @@ public partial class UnusedOrganListUI : ScrollContainer
 
         var view = new OrganViewUI();
 		view.Initialize(slot, SlotSizePx);
+        view.SizeFlagsHorizontal = SizeFlags.ShrinkCenter;
 
 		parent.AddChild(view);
     }
