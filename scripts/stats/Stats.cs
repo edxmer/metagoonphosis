@@ -13,13 +13,20 @@ public partial class Stats : Resource
         {
             if (value == null) return;
 
-            _intStatEntries = value;
+            _intStatEntries.Clear();
+            _intStats.Clear();
 
-            _intStats = [];
-
-            foreach (IntStatEntry entry in _intStatEntries)
+            foreach (var item in value)
             {
-                if (entry is not null) _intStats.Add(entry.Key, entry.Value);
+                if (item is IntStatEntry entry)
+                {
+                    _intStatEntries.Add(entry);
+                    _intStats.Add(entry.Key, entry.Value);
+                }
+                else if (item is not null)
+                {
+                    GD.PushError($"Corrupt Stats data found! Expected IntStatEntry, got {item.GetType()}");
+                }
             }
         }
     }
@@ -31,19 +38,26 @@ public partial class Stats : Resource
         {
             if (value == null) return;
 
-            _boolStatEntries = value;
+            _boolStatEntries.Clear();
+            _boolStats.Clear();
 
-            _boolStats = [];
-
-            foreach (BoolStatEntry entry in _boolStatEntries)
+            foreach (var item in value)
             {
-                if (entry is not null) _boolStats.Add(entry.Key, entry.Value);
+                if (item is BoolStatEntry entry)
+                {
+                    _boolStatEntries.Add(entry);
+                    _boolStats.Add(entry.Key, entry.Value);
+                }
+                else if (item is not null)
+                {
+                    GD.PushError($"Corrupt Stats data found! Expected BoolStatEntry, got {item.GetType()}");
+                }
             }
         }
     }
 
-    private Godot.Collections.Array<IntStatEntry> _intStatEntries;
-    private Godot.Collections.Array<BoolStatEntry> _boolStatEntries;
+    private Godot.Collections.Array<IntStatEntry> _intStatEntries = [];
+    private Godot.Collections.Array<BoolStatEntry> _boolStatEntries = [];
 
     private Dictionary<IntStatTypes, int> _intStats { get; set; } = [];
     private Dictionary<BoolStatTypes, bool> _boolStats { get; set; } = [];

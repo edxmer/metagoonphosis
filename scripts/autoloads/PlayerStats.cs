@@ -6,10 +6,10 @@ public partial class PlayerStats : Node
 {
 	public static PlayerStats Instance { get; private set; }
 	public Stats Stats { get; set; }
+	public Cavity Cavity { get; set; }
+	public PlayerInventory PlayerInventory { get;set; }
+	public bool IsSomethingOpenInMap { get; set; }
 
-	public ChestCavity ChestCavity { get; set; }
-	public PlayerInventory PlayerInventory {get;set;}
-	public bool IsSomethingOpenInMap;
 	public override void _Ready()
 	{
 		// Set singleton instance
@@ -19,7 +19,7 @@ public partial class PlayerStats : Node
 		Stats = new();
 		PlayerInventory=new();
 		// Load chest cavity from resource file
-		ChestCavity = GD.Load<ChestCavity>("res://resources/cavity/player_chest_cavity.tres");
+		Cavity = GD.Load<Cavity>("res://resources/cavity/player_cavity.tres");
 
 		// Initializing player starting organs
 		List<StartingOrganConfig> startingOrgans = [
@@ -27,13 +27,12 @@ public partial class PlayerStats : Node
 		];
 		foreach (var organConfig in startingOrgans)
 		{
-			bool success = ChestCavity.TryPlaceOrgan(organConfig.Organ, organConfig.Origin);
+			bool success = Cavity.TryPlaceOrgan(organConfig.Organ, organConfig.Origin);
 			if (!success) GD.PushWarning($"Could not place starting organ into cavity: {organConfig.Organ.OrganName}");
 		}
 
-
 		// Add event listener to Organs Changed event to update stats
-		ChestCavity.OrgansChanged += UpdateStats;
+		Cavity.OrgansChanged += UpdateStats;
 
 		// Update Stats
 		UpdateStats();
@@ -43,7 +42,7 @@ public partial class PlayerStats : Node
 	{
 		Stats = new();
 
-		foreach (var organ in ChestCavity.GetOrgans())
+		foreach (var organ in Cavity.GetOrgans())
 		{
 			GD.Print($"Stat increased of organ '{organ.OrganName}'{organ.StatIncreases}");
 			Stats += organ.StatIncreases;
