@@ -6,10 +6,10 @@ public partial class PlayerStats : Node
 {
 	public static PlayerStats Instance { get; private set; }
 	public Stats Stats { get; set; }
-
 	public ChestCavity ChestCavity { get; set; }
-	public PlayerInventory PlayerInventory {get;set;}
-	public bool IsSomethingOpenInMap;
+	public PlayerInventory PlayerInventory { get;set; }
+	public bool IsSomethingOpenInMap { get; set; }
+
 	public override void _Ready()
 	{
 		// Set singleton instance
@@ -30,7 +30,6 @@ public partial class PlayerStats : Node
 			bool success = ChestCavity.TryPlaceOrgan(organConfig.Organ, organConfig.Origin);
 			if (!success) GD.PushWarning($"Could not place starting organ into cavity: {organConfig.Organ.OrganName}");
 		}
-
 
 		// Add event listener to Organs Changed event to update stats
 		ChestCavity.OrgansChanged += UpdateStats;
