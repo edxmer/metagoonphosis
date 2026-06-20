@@ -2,7 +2,7 @@ using Godot;
 using Godot.NativeInterop;
 using System;
 
-public partial class OrganViewUI : TextureRect
+public partial class CavityOrganViewUI : TextureRect
 {
 	private CavitySlot _slot;
 	private int _slotSizePx;

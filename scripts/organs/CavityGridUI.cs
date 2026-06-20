@@ -9,14 +9,14 @@ public partial class CavityGridUI : Control
 	[Export] public int SlotSizePx { get; set; } = 64;
 
 	private Vector2 _dragPointerOffset;
-	private ChestCavity _cavity;
+	private Cavity _cavity;
 
 	public override void _Ready()
 	{
-		Initialize(PlayerStats.Instance.ChestCavity);
+		Initialize(PlayerStats.Instance.Cavity);
 	}
 	
-	private void Initialize(ChestCavity cavity)
+	private void Initialize(Cavity cavity)
 	{
 		_dragPointerOffset = new Vector2(SlotSizePx * 0.5f, SlotSizePx * 0.5f);
 		_cavity = cavity;
@@ -63,7 +63,7 @@ public partial class CavityGridUI : Control
 
 	public void SpawnVisualItem(CavitySlot slot, Vector2I origin)
 	{
-		var view = new OrganViewUI();
+		var view = new CavityOrganViewUI();
 		view.Initialize(slot, SlotSizePx);
 
 		view.Position = new Vector2(origin.X * SlotSizePx, origin.Y * SlotSizePx);

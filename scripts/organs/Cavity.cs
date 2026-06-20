@@ -7,7 +7,7 @@ using System.Numerics;
 #pragma warning disable CS0649
 
 [GlobalClass]
-public partial class ChestCavity : Resource
+public partial class Cavity : Resource
 {
 	[Signal]
 	public delegate void OrgansChangedEventHandler();
