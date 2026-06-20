@@ -29,7 +29,7 @@ public partial class Cavity : Resource
 			(Width, Height) = ShapeStringHelper.GetDimensions(value);
 			//GD.Print($"Cavity width: {Width}, height: {Height}");
 			Shape = ShapeStringHelper.ParseShape(value, Width, Height);
-			_slots = new CavitySlot[Width, Height];
+			_slots = new OrganSlot[Width, Height];
 		}
 	}
 
@@ -38,10 +38,10 @@ public partial class Cavity : Resource
 
 	private string _cavityShapeString;
 
-	private CavitySlot[,] _slots;
-	private Dictionary<CavitySlot, Vector2I> _slotOrigins = new();
+	private OrganSlot[,] _slots;
+	private Dictionary<OrganSlot, Vector2I> _slotOrigins = new();
 
-	public bool CanChangeSlotPosition(CavitySlot slot, Vector2I origin)
+	public bool CanChangeSlotPosition(OrganSlot slot, Vector2I origin)
 	{
 		Organ organ = slot.Organ;
 
@@ -83,11 +83,11 @@ public partial class Cavity : Resource
 	public bool TryPlaceOrgan(Organ organ, Vector2I origin)
 	{
 		if (!CanPlaceOrgan(organ, origin)) return false;
-		CavitySlot slot = new CavitySlot(organ);
+		OrganSlot slot = new OrganSlot(organ);
 		return TryPlaceSlot(slot, origin);
 	}
 
-	public bool TryPlaceSlot(CavitySlot slot, Vector2I origin)
+	public bool TryPlaceSlot(OrganSlot slot, Vector2I origin)
 	{
 		Organ organ = slot.Organ;
 		_slotOrigins.Add(slot, origin);
@@ -106,7 +106,7 @@ public partial class Cavity : Resource
 	}
 
 
-	public void RemoveSlot(CavitySlot slot)
+	public void RemoveSlot(OrganSlot slot)
 	{
 		Vector2I origin = _slotOrigins[slot];
 		Organ organ = slot.Organ;
@@ -125,7 +125,7 @@ public partial class Cavity : Resource
 	}
 
 	public List<Organ> GetOrgans() => _slotOrigins.Keys.Select(x => x.Organ).ToList();
-	public List<KeyValuePair<CavitySlot, Vector2I>> GetItems() => _slotOrigins.ToList();
+	public List<KeyValuePair<OrganSlot, Vector2I>> GetItems() => _slotOrigins.ToList();
 }
 
 #pragma warning restore CS0649
