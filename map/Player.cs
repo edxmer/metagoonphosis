@@ -4,6 +4,7 @@ using System;
 public partial class Player : CharacterBody2D
 {
 	[Export] public float Speed = 48.0f;
+	private bool canIPassWater=true;
 	private static int HitboxDistance=16;
 	private AllSpritesPlace animationAll;
 	private Area2D lookingAt;
@@ -72,5 +73,11 @@ public partial class Player : CharacterBody2D
 
 		Velocity = velocity;
 		MoveAndSlide();
+	}
+	public override void _Process(double delta)
+	{
+		base._Process(delta);
+		//4 is water
+		SetCollisionMaskValue(4, !canIPassWater);
 	}
 }

@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class CreatureFly : NpcTalkableThrowaway
+public partial class CreatureFlyThree : NpcTalkableThrowaway
 {
 	private bool amICaught=false;
 	protected override void AfterTalkedEvent()
@@ -24,14 +24,14 @@ public partial class CreatureFly : NpcTalkableThrowaway
 			return;
 		}
 		TalkBubblePage[] current_text={new TalkBubblePage(
-			"Oooooh alas i am caught:(((((§§§§\nI'm just a little fly§§§§§§§§§\nPlease let me go please:(§§§§§§§§"
-			,"Weak Little Fly",0.05,"res://assets/sounds/talksounds/sound_talk_chirp.wav"),
-			new TalkBubblePage(
-			"I could've done so much more in this life\n§§§§§§§§§§§§§I haven't even learned to fly§§§§§\nhow ironic..."
-			,"Weak Little Fly",0.05,"res://assets/sounds/talksounds/sound_talk_chirp.wav"),
-			new TalkBubblePage(
-			"Wait...§§§§§§§Before you take me...§§§ please....§§§§§§\nLet me do...§§§one more spin\n§§§§§§§§§§§§§§§§§§§§§§§§§§§Okay I finished:))§§§§\nyou can take me away to §§§certain death"
+			"HEY!§§§§§ DON'T TOUCH ME§§§§§§\nI'm under 18§§§§§§§§§\nI mean§§§§ all flies are, i guess we only live for a §§week"
 			,"Weak Little Fly",0.06,"res://assets/sounds/talksounds/sound_talk_chirp.wav"),
+			new TalkBubblePage(
+			"But §§I feel like what you're doing is §§§still§§\npretty problematic\n§§§§§§I haven't even finished watching Love Island\n§§§§§§§I haven't even started it:(("
+			,"Weak Little Fly",0.05,"res://assets/sounds/talksounds/sound_talk_chirp.wav"),
+			new TalkBubblePage(
+			"How will I §§ever know what whacky adventures\nTommy Fury was up to\n:((((("
+			,"Weak Little Fly",0.05,"res://assets/sounds/talksounds/sound_talk_chirp.wav"),
 			new TalkBubblePage(
 			"* A Fly was added to your Inventory"
 			,"",0.08,"res://assets/sounds/talksounds/sound_talk_sign.wav")
