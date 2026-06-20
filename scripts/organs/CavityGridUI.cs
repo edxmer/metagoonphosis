@@ -13,16 +13,14 @@ public partial class CavityGridUI : Control
 
 	public override void _Ready()
 	{
-		Initialize(PlayerStats.Instance.Cavity);
-	}
-	
-	private void Initialize(Cavity cavity)
-	{
+		_cavity = PlayerStats.Instance.Cavity;
+
 		_dragPointerOffset = new Vector2(SlotSizePx * 0.5f, SlotSizePx * 0.5f);
-		_cavity = cavity;
-		ReloadVisualItems();
 		CustomMinimumSize = new Vector2(_cavity.Width * SlotSizePx, _cavity.Height * SlotSizePx);
-		cavity.OrgansChanged += ReloadVisualItems;
+
+		_cavity.OrgansChanged += ReloadVisualItems;
+
+		ReloadVisualItems();
 	}
 
     public override void _Draw()
@@ -61,9 +59,9 @@ public partial class CavityGridUI : Control
 		}
     }
 
-	public void SpawnVisualItem(CavitySlot slot, Vector2I origin)
+	public void SpawnVisualItem(OrganSlot slot, Vector2I origin)
 	{
-		var view = new CavityOrganViewUI();
+		var view = new OrganViewUI();
 		view.Initialize(slot, SlotSizePx);
 
 		view.Position = new Vector2(origin.X * SlotSizePx, origin.Y * SlotSizePx);
@@ -78,7 +76,7 @@ public partial class CavityGridUI : Control
         var dragData = data.AsGodotDictionary();
 		if (!dragData.ContainsKey("slot") || !dragData.ContainsKey("grab_offset")) return false;
 
-		CavitySlot slot = (CavitySlot)dragData["slot"];
+		OrganSlot slot = (OrganSlot)dragData["slot"];
 		Vector2 offset = (Vector2)dragData["grab_offset"];
 
 		Vector2I targetGridPosition = CalculateTargetGridPosition(atPosition, offset);
@@ -95,7 +93,7 @@ public partial class CavityGridUI : Control
 		var dragData = data.AsGodotDictionary();
 		if (!dragData.ContainsKey("slot") || !dragData.ContainsKey("grab_offset")) return;
 
-		CavitySlot slot = (CavitySlot)dragData["slot"];
+		OrganSlot slot = (OrganSlot)dragData["slot"];
 		Vector2 offset = (Vector2)dragData["grab_offset"];
 
 		Vector2I targetGridPosition = CalculateTargetGridPosition(atPosition, offset);
