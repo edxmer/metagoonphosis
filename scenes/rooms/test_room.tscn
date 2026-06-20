@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://c8rgxsn1ny7eo"]
 
 [ext_resource type="Script" uid="uid://cys1hag4cjwqp" path="res://scripts/organs/CavityGridUI.cs" id="1_i7p6j"]
-[ext_resource type="Texture2D" uid="uid://brtrfkdkwbfgo" path="res://icon.svg" id="2_fn815"]
-[ext_resource type="Texture2D" uid="uid://bg80fpcj4ohpe" path="res://assets/sprites/tilesets/spr_tileset_mapmain/spr_tileset_map_main.png" id="3_6vnwl"]
+[ext_resource type="Script" uid="uid://bdvg7q0xtfow8" path="res://scripts/organs/UnusedOrganListUI.cs" id="2_fn815"]
 
 [node name="Cavity" type="Node" unique_id=1202688869]
 
@@ -39,61 +38,25 @@ anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -250.0
+offset_left = -199.0
 grow_horizontal = 0
 grow_vertical = 2
 scale = Vector2(1, 1.0142502)
 metadata/_edit_group_ = true
 
-[node name="ScrollContainer" type="ScrollContainer" parent="UnusedOrgansUI" unique_id=1930703413]
+[node name="MarginContainer" type="MarginContainer" parent="UnusedOrgansUI" unique_id=1478646016]
 layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UnusedOrgansUI/ScrollContainer" unique_id=174627786]
+[node name="UnusedOrganListUI" type="ScrollContainer" parent="UnusedOrgansUI/MarginContainer" unique_id=1274496501]
+layout_mode = 2
+script = ExtResource("2_fn815")
+metadata/_custom_type_script = "uid://bdvg7q0xtfow8"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UnusedOrgansUI/MarginContainer/UnusedOrganListUI" unique_id=174627786]
 layout_mode = 2
 size_flags_horizontal = 6
 theme_override_constants/separation = 12
-
-[node name="Control" type="Control" parent="UnusedOrgansUI/ScrollContainer/VBoxContainer" unique_id=582087696]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="UnusedOrgansUI/ScrollContainer/VBoxContainer/Control" unique_id=2142720957]
-layout_mode = 0
-offset_top = -840.0
-offset_right = 128.0
-offset_bottom = -712.0
-texture = ExtResource("2_fn815")
-
-[node name="TextureRect2" type="TextureRect" parent="UnusedOrgansUI/ScrollContainer/VBoxContainer/Control" unique_id=1549233379]
-layout_mode = 0
-offset_top = -700.0
-offset_right = 128.0
-offset_bottom = -572.0
-texture = ExtResource("2_fn815")
-
-[node name="TextureRect3" type="TextureRect" parent="UnusedOrgansUI/ScrollContainer/VBoxContainer/Control" unique_id=2010500942]
-layout_mode = 0
-offset_top = -560.0
-offset_right = 128.0
-offset_bottom = -432.0
-texture = ExtResource("3_6vnwl")
-
-[node name="TextureRect4" type="TextureRect" parent="UnusedOrgansUI/ScrollContainer/VBoxContainer/Control" unique_id=1978478676]
-layout_mode = 0
-offset_top = -420.0
-offset_right = 128.0
-offset_bottom = -292.0
-texture = ExtResource("2_fn815")
-
-[node name="TextureRect5" type="TextureRect" parent="UnusedOrgansUI/ScrollContainer/VBoxContainer/Control" unique_id=1914980571]
-layout_mode = 0
-offset_top = -280.0
-offset_right = 128.0
-offset_bottom = -152.0
-texture = ExtResource("2_fn815")
-
-[node name="TextureRect6" type="TextureRect" parent="UnusedOrgansUI/ScrollContainer/VBoxContainer/Control" unique_id=649622398]
-layout_mode = 0
-offset_top = -140.0
-offset_right = 128.0
-offset_bottom = -12.0
-texture = ExtResource("2_fn815")
