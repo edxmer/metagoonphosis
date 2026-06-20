@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cwu6jtxv71yv2"]
+
+[ext_resource type="FontFile" uid="uid://dk7sro3h40irq" path="res://assets/fonts/determination/determination.ttf" id="1_inx2l"]
+[ext_resource type="Script" uid="uid://bpp4as6d8kn4" path="res://map/inventory/InventoryItem.cs" id="1_onxho"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_625ca"]
+font = ExtResource("1_inx2l")
+font_size = 18
+
+[node name="InvetoryItem" type="Node2D" unique_id=1931027641]
+script = ExtResource("1_onxho")
+
+[node name="InventoryItemText" type="Label" parent="." unique_id=241308711]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "asd x1"
+label_settings = SubResource("LabelSettings_625ca")

@@ -1,9 +1,30 @@
 [gd_scene format=3 uid="uid://c4kebterq0ene"]
 
+[ext_resource type="Script" uid="uid://x7txnewtlb36" path="res://map/inventory/InventoryUi.cs" id="1_gyfsi"]
 [ext_resource type="Texture2D" uid="uid://cw7m6fibjl32l" path="res://assets/sprites/ui/inventory/spr_inventory.png" id="1_xuai7"]
+[ext_resource type="FontFile" uid="uid://dk7sro3h40irq" path="res://assets/fonts/determination/determination.ttf" id="2_wgcgk"]
 
-[node name="Node2D" type="Node2D" unique_id=1290081347]
+[sub_resource type="LabelSettings" id="LabelSettings_gyfsi"]
+font = ExtResource("2_wgcgk")
+font_size = 23
+outline_size = 8
+outline_color = Color(0.69803923, 0.69803923, 0.69803923, 1)
+
+[node name="Inventory" type="Node2D" unique_id=1290081347]
+script = ExtResource("1_gyfsi")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1464770691]
-position = Vector2(81, 200)
+position = Vector2(159, 398)
+scale = Vector2(2, 2)
 texture = ExtResource("1_xuai7")
+
+[node name="NameLabel" type="Label" parent="." unique_id=112592524]
+offset_left = 101.0
+offset_top = 6.0
+offset_right = 279.0
+offset_bottom = 42.0
+text = "Inventory"
+label_settings = SubResource("LabelSettings_gyfsi")
+
+[node name="ItemsContained" type="Node2D" parent="." unique_id=1049020320]
+position = Vector2(29.729126, 47.67238)
