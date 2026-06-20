@@ -1,8 +1,13 @@
 [gd_scene format=3 uid="uid://cwu6jtxv71yv2"]
 
+[ext_resource type="FontFile" uid="uid://dk7sro3h40irq" path="res://assets/fonts/determination/determination.ttf" id="1_inx2l"]
 [ext_resource type="Script" uid="uid://bpp4as6d8kn4" path="res://map/inventory/InventoryItem.cs" id="1_onxho"]
-[ext_resource type="LabelSettings" uid="uid://jp62vmsnni25" path="res://main/inventoryitem.tres" id="1_wthnh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_onxho"]
+font = ExtResource("1_inx2l")
+font_size = 18
 
 [node name="InvetoryItem" type="Label" unique_id=1999487980]
-label_settings = ExtResource("1_wthnh")
+text = "asd"
+label_settings = SubResource("LabelSettings_onxho")
 script = ExtResource("1_onxho")
