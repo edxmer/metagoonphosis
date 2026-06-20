@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c611ksnhxgho"]
 
 [ext_resource type="Texture2D" uid="uid://bjw2pohc02ny3" path="res://assets/sprites/creatures/big_fat_guy/spr_creature_fat_guy_1.png" id="1_0avxw"]
-[ext_resource type="Script" uid="uid://d25pmmd8kcgpx" path="res://map/npcs/Interactable.cs" id="1_hcdsd"]
+[ext_resource type="Script" uid="uid://d25pmmd8kcgpx" path="res://map/npcs/interactable_base/Interactable.cs" id="1_hcdsd"]
 [ext_resource type="Texture2D" uid="uid://j0fbqv3iy0k1" path="res://assets/sprites/creatures/big_fat_guy/spr_creature_fat_guy_2.png" id="2_hcdsd"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_q8y6q"]

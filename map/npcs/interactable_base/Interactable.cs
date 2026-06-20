@@ -4,20 +4,22 @@ using System;
 public partial class Interactable : Area2D
 {
 	// Called when the node enters the scene tree for the first time.
-	private AnimatedSprite2D animation;
+	protected AnimatedSprite2D animation;
 	private Area2D playerLookHitbox;
-	
+	protected Player playerScene;
 	private bool amISeen=false;
 	public override void _Ready()
 	{
 		base._Ready();
+		AddToGroup("interactable");
+		AddToGroup("NPC");
 		AreaEntered += OnAreaEntered;
 		AreaExited += OnAreaExited;
 		animation=GetNode<AnimatedSprite2D>("Sprite");
-		var player = GetTree().GetFirstNodeInGroup("palayer");
-		if (player != null)
+		playerScene = GetTree().GetFirstNodeInGroup("PlayerGoon") as Player;
+		if (playerScene != null)
 		{
-			playerLookHitbox = player.GetNode<Area2D>("LookingAtHitbox");
+			playerLookHitbox = playerScene.GetNode<Area2D>("LookingAtHitbox");
 		}
 	}
 	private void OnAreaEntered(Area2D area)
@@ -37,9 +39,9 @@ public partial class Interactable : Area2D
 	}
 	public virtual void ActionOnInteract()
 	{
-			var pos=Position;
-			pos.X+=5;
-			Position=pos;
+		var pos=Position;
+		pos.X+=5;
+		Position=pos;
 	}
 	
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

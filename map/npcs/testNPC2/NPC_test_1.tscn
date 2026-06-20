@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://t3tnk64uhae5"]
+
+[ext_resource type="PackedScene" uid="uid://ci055m22kuflt" path="res://map/npcs/npc_talk_base/NPC_Talkable_Throwaway.tscn" id="1_8ucvw"]
+[ext_resource type="Script" uid="uid://pkysu3ne7484" path="res://map/npcs/testNPC2/NpcTest1.cs" id="2_xotav"]
+[ext_resource type="Texture2D" uid="uid://b35xd34m1w6jo" path="res://assets/sprites/creatures/pomodoro_man/spr_creature_pomodoro_man (1).png" id="3_7esni"]
+[ext_resource type="Texture2D" uid="uid://beh5i1b181vmw" path="res://assets/sprites/creatures/pomodoro_man/spr_creature_pomodoro_man (2).png" id="4_hlxvp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_edsao"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_7esni")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_7esni")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_hlxvp")
+}],
+"loop": true,
+"name": &"talk",
+"speed": 5.0
+}]
+
+[node name="TalkNPC" unique_id=916331531 instance=ExtResource("1_8ucvw")]
+script = ExtResource("2_xotav")
+
+[node name="Sprite" parent="." index="0" unique_id=756789201]
+sprite_frames = SubResource("SpriteFrames_edsao")
+frame_progress = 0.0

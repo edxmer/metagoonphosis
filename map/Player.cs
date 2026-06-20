@@ -11,6 +11,7 @@ public partial class Player : CharacterBody2D
 	public Vector2 facingDir;
 	public override void _Ready()
 	{
+		AddToGroup("PlayerGoon");
 		faceForward=true;
 		animationAll = GetNode<AllSpritesPlace>("AllSpritesPlace");
 		lookingAt = GetNode<Area2D>("LookingAtHitbox");
