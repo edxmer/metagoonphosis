@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="StartingOrganConfig" format=3 uid="uid://qvo8df37rumb"]
 
 [ext_resource type="Resource" uid="uid://dgadohjqtggxk" path="res://resources/organs/sad_little_heart.tres" id="1_xbapy"]
-[ext_resource type="Script" uid="uid://xgj0d1vysuaa" path="res://scripts/StartingOrganConfig.cs" id="2_56m0v"]
+[ext_resource type="Script" uid="uid://xgj0d1vysuaa" path="res://scripts/organs/StartingOrganConfig.cs" id="2_56m0v"]
 
 [resource]
 script = ExtResource("2_56m0v")

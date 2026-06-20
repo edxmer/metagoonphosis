@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ChestCavity" format=3 uid="uid://cr75pkcbucump"]
 
-[ext_resource type="Script" uid="uid://dvglhqm3ayf3s" path="res://scripts/ChestCavity.cs" id="1_v1xc6"]
+[ext_resource type="Script" uid="uid://dvglhqm3ayf3s" path="res://scripts/organs/ChestCavity.cs" id="1_v1xc6"]
 
 [resource]
 script = ExtResource("1_v1xc6")

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c8rgxsn1ny7eo"]
 
-[ext_resource type="Script" uid="uid://cys1hag4cjwqp" path="res://scripts/CavityGridUI.cs" id="1_i7p6j"]
-[ext_resource type="Script" uid="uid://ccryf1r6efekp" path="res://scripts/PlayerCavityManager.cs" id="2_betf1"]
+[ext_resource type="Script" uid="uid://cys1hag4cjwqp" path="res://scripts/organs/CavityGridUI.cs" id="1_i7p6j"]
+[ext_resource type="Script" uid="uid://ccryf1r6efekp" path="res://scripts/organs/PlayerCavityManager.cs" id="2_betf1"]
 [ext_resource type="Resource" uid="uid://b303reyacbc3h" path="res://resources/payer_starting_organs/starting_heart.tres" id="3_nnide"]
 [ext_resource type="Resource" uid="uid://ndwsvc1wv0up" path="res://resources/payer_starting_organs/starting_lung.tres" id="4_betf1"]
 [ext_resource type="Resource" uid="uid://cr75pkcbucump" path="res://resources/cavity/chest_cavity.tres" id="4_vf0v6"]

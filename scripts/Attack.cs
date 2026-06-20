@@ -21,13 +21,5 @@ public partial class Attack : Resource
     public int RealAttackDamage { get; set; } = 0;
     public int CurrentCooldown { get; set; } = 0;
 
-    public void Apply(Creature attacker, Creature attackee)
-    {
-        // attackee sounds so stupid
-        
-        // TODO: add these methods to Creature
-        //attackee.TakeDamage(attacker.GetBaseAttackDamage());
-
-        // TODO: attack effect   
-    }
+    // TODO: Apply attack function
 }

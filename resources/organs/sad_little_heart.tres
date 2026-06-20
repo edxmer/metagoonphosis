@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Organ" format=3 uid="uid://dgadohjqtggxk"]
 
-[ext_resource type="Script" uid="uid://c4a42xia0dqi5" path="res://scripts/Organ.cs" id="1_eswto"]
+[ext_resource type="Script" uid="uid://c4a42xia0dqi5" path="res://scripts/organs/Organ.cs" id="1_eswto"]
 [ext_resource type="Texture2D" uid="uid://brtrfkdkwbfgo" path="res://icon.svg" id="1_g7vy2"]
 
 [resource]
