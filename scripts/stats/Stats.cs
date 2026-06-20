@@ -54,6 +54,7 @@ public partial class Stats : Resource
 
     public void SetIntStat(IntStatTypes key, int value)
     {
+        if (value == 0 && !_intStats.ContainsKey(key)) return;
         _intStats[key] = value;
     }
 
@@ -68,6 +69,7 @@ public partial class Stats : Resource
 
     public void SetBoolStat(BoolStatTypes key, bool value)
     {
+        if (value == false && !_boolStats.ContainsKey(key)) return;
         _boolStats[key] = value;
     }
 
