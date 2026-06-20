@@ -19,7 +19,7 @@ public partial class PlayerStats : Node
 		Stats = new();
 		PlayerInventory=new();
 		// Load chest cavity from resource file
-		Cavity = GD.Load<Cavity>("res://resources/cavity/player_chest_cavity.tres");
+		Cavity = GD.Load<Cavity>("res://resources/cavity/player_cavity.tres");
 
 		// Initializing player starting organs
 		List<StartingOrganConfig> startingOrgans = [
