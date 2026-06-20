@@ -8,7 +8,7 @@ public static class InventoryItemFactory
 	public static InventoryItem CreateItem(PackedScene InventoryScene,string name,int amount)
 	{
 		var item = InventoryScene.Instantiate<InventoryItem>();
-		InventoryItem.setText(name+" x"+(string)amount);
+		item.SetText(name+" x"+amount.ToString());
 		return item;
 	}
 }
