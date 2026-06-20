@@ -17,16 +17,30 @@ public partial class InventoryUi : Node2D
 	
 	private void OnOpened()
 	{
+		Visible=true;
 		KillItemsCur();
-		ListChildren
+		PlayerStats.Instance.IsSomethingOpenInMap=true;
+		ListChildren(PlayerStats.Instance.PlayerInventory);
+	}
+	private void OnClosed()
+	{
+		KillItemsCur();
+		PlayerStats.Instance.IsSomethingOpenInMap=false;
+		Visible=false;
 	}
 	private void ListChildren(PlayerInventory inv)
 	{
 		string[] items=inv.ListItems();
+		int count=0;
 		foreach (string item in items)
 		{
-			InventoryItemFactory()
+			
+			var one=InventoryItemFactory.CreateItem(itemspos,item,inv.GetCount(item));
+			one.Position=new Vector2(itemspos.Position.X,itemspos.Position.Y+count*PosOneY);
+			count++;
+			
 		}
+		amount=count;
 	}
 	private void KillItemsCur()
 	{
@@ -42,5 +56,17 @@ public partial class InventoryUi : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		
+		if (Input.IsActionJustPressed("ui_open_inventory") )
+		{
+			if (Visible)
+			{
+				OnClosed();
+			}
+			else if (!PlayerStats.Instance.IsSomethingOpenInMap)
+			{
+				OnOpened();
+			}
+		}
 	}
 }

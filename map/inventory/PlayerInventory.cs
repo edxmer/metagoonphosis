@@ -1,7 +1,7 @@
 using Godot;
 using System;
 using System.Linq;
-
+using System.Collections.Generic;
 public class PlayerInventory
 {
 	private Dictionary<string,int> inventory;
@@ -21,7 +21,7 @@ public class PlayerInventory
 		}
 		else
 		{
-			scores[itemName] = count;
+			inventory[itemName] = count;
 		}
 	}
 	public void AddItem(string itemName)
@@ -33,7 +33,12 @@ public class PlayerInventory
 		if (HasItem( itemName,count))
 		{
 			AddItem(itemName, -count);
+			if (GetCount(itemName)<=0)
+			{
+				inventory.Remove(itemName);
+			}
 			return true;
+			
 		}
 		return false;
 	}
@@ -48,6 +53,6 @@ public class PlayerInventory
 	}
 	public bool HasItem(string itemName,int minCount)
 	{
-		return (getCount(itemName)>=minCount);
+		return (GetCount(itemName)>=minCount);
 	}
 }
