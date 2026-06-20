@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Stats" format=3 uid="uid://b25dgwnawu00"]
+
+[ext_resource type="Script" uid="uid://0kwd64utuoyb" path="res://scripts/stats/Stats.cs" id="1_chk5r"]
+[ext_resource type="Script" uid="uid://c6waearx1n122" path="res://scripts/stats/IntStatEntry.cs" id="1_cilav"]
+
+[sub_resource type="Resource" id="Resource_6qsgm"]
+script = ExtResource("1_cilav")
+metadata/_custom_type_script = "uid://c6waearx1n122"
+
+[resource]
+script = ExtResource("1_chk5r")
+IntStatEntries = Array[Resource]([SubResource("Resource_6qsgm")])
+BoolStatEntries = null
+metadata/_custom_type_script = "uid://0kwd64utuoyb"
