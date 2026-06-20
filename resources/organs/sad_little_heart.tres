@@ -1,12 +1,26 @@
 [gd_resource type="Resource" script_class="Organ" format=3 uid="uid://dgadohjqtggxk"]
 
+[ext_resource type="Script" uid="uid://c6waearx1n122" path="res://scripts/stats/IntStatEntry.cs" id="1_cnraa"]
 [ext_resource type="Script" uid="uid://c4a42xia0dqi5" path="res://scripts/organs/Organ.cs" id="1_eswto"]
 [ext_resource type="Texture2D" uid="uid://brtrfkdkwbfgo" path="res://icon.svg" id="1_g7vy2"]
+[ext_resource type="Script" uid="uid://0kwd64utuoyb" path="res://scripts/stats/Stats.cs" id="1_veri1"]
+
+[sub_resource type="Resource" id="Resource_cnraa"]
+script = ExtResource("1_cnraa")
+Value = 10
+metadata/_custom_type_script = "uid://c6waearx1n122"
+
+[sub_resource type="Resource" id="Resource_nbiux"]
+script = ExtResource("1_veri1")
+IntStatEntries = Array[Object]([SubResource("Resource_cnraa")])
+BoolStatEntries = null
+metadata/_custom_type_script = "uid://0kwd64utuoyb"
 
 [resource]
 script = ExtResource("1_eswto")
 Type = 0
 OrganName = "Sad Little Heart"
 Texture = ExtResource("1_g7vy2")
-OrganShapeString = "OOO"
+StatIncreases = SubResource("Resource_nbiux")
+OrganShapeString = "O"
 metadata/_custom_type_script = "uid://c4a42xia0dqi5"
