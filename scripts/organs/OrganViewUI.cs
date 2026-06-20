@@ -2,12 +2,12 @@ using Godot;
 using Godot.NativeInterop;
 using System;
 
-public partial class CavityOrganViewUI : TextureRect
+public partial class OrganViewUI : TextureRect
 {
-	private CavitySlot _slot;
+	private OrganSlot _slot;
 	private int _slotSizePx;
 
-	public void Initialize(CavitySlot slot, int slotSize)
+	public void Initialize(OrganSlot slot, int slotSize)
 	{
 		_slot = slot;
 		_slotSizePx = slotSize;
@@ -15,6 +15,9 @@ public partial class CavityOrganViewUI : TextureRect
 		Organ organ = _slot.Organ;
 
 		Texture = organ.Texture;
+		
+		TooltipText = organ.OrganName;
+		
 		ExpandMode = ExpandModeEnum.IgnoreSize;
 
 		CustomMinimumSize = new Vector2(organ.Width * _slotSizePx, organ.Height * _slotSizePx);
@@ -24,9 +27,9 @@ public partial class CavityOrganViewUI : TextureRect
     {
         var preview = new TextureRect
 		{
-			Texture = this.Texture,
+			Texture = Texture,
 			ExpandMode = ExpandModeEnum.IgnoreSize,
-			CustomMinimumSize = this.CustomMinimumSize,
+			CustomMinimumSize = CustomMinimumSize,
 			Modulate = new Color(1, 1, 1, 0.5f),
 		};
 
