@@ -9,11 +9,14 @@ public partial class CavityGridUI : Control
 	[Export] public int SlotSizePx { get; set; } = 64;
 
 	private Vector2 _dragPointerOffset;
+	
 	private Cavity _cavity;
+	private UnusedOrgans _unusedOrgans;
 
 	public override void _Ready()
 	{
 		_cavity = PlayerStats.Instance.Cavity;
+		_unusedOrgans = PlayerStats.Instance.UnusedOrgans;
 
 		_dragPointerOffset = new Vector2(SlotSizePx * 0.5f, SlotSizePx * 0.5f);
 		CustomMinimumSize = new Vector2(_cavity.Width * SlotSizePx, _cavity.Height * SlotSizePx);
@@ -98,9 +101,17 @@ public partial class CavityGridUI : Control
 
 		Vector2I targetGridPosition = CalculateTargetGridPosition(atPosition, offset);
 
-		_cavity.RemoveSlot(slot);
+		if (_cavity.Contains(slot)) // Changing position inside Cavity
+		{
+			_cavity.RemoveSlot(slot);
+		}
+		else // Moving from UnusedOrgan
+		{
+			_unusedOrgans.Remove(slot);
+		}
+
 		bool success = _cavity.TryPlaceSlot(slot, targetGridPosition);
-		if (!success) GD.PushWarning($"Unsuccessful slot placing at {targetGridPosition}.");
+		if (!success) GD.PushError($"Unsuccessful slot placing at {targetGridPosition}.");
     }
 
 	private Vector2I CalculateTargetGridPosition(Vector2 mousePosition, Vector2 offset)
