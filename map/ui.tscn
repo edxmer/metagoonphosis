@@ -13,4 +13,4 @@ scale = Vector2(0.8, 0.8)
 
 [node name="InventoryUI" parent="." unique_id=1290081347 instance=ExtResource("3_qf31a")]
 position = Vector2(366.99997, 13)
-scale = Vector2(2.23, 2.23)
+scale = Vector2(1.325, 1.325)
