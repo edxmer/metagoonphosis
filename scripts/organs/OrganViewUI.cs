@@ -15,8 +15,9 @@ public partial class OrganViewUI : TextureRect
 		Organ organ = _slot.Organ;
 
 		Texture = organ.Texture;
-		
-		TooltipText = organ.OrganName;
+
+
+		TooltipText = $"Name: {organ.OrganName}\nType: {organ.Type}";
 		
 		ExpandMode = ExpandModeEnum.IgnoreSize;
 
