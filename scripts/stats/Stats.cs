@@ -42,4 +42,23 @@ public partial class Stats : Resource
 
     private Godot.Collections.Array<IntStatEntry> _intStatEntries;
     private Godot.Collections.Array<BoolStatEntry> _boolStatEntries;
+
+    public static Stats GetDefaultStats()
+    {
+        Stats stats = new();
+        
+        stats.IntStats = [];
+        foreach (var type in Enum.GetValues<IntStatTypes>())
+        {
+            stats.IntStats.Add(type, 0);
+        }
+
+        stats.BoolStats = [];
+        foreach (var type in Enum.GetValues<BoolStatTypes>())
+        {
+            stats.BoolStats.Add(type, false);
+        }
+
+        return stats;
+    }
 }
