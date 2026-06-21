@@ -3,6 +3,8 @@ using System;
 
 public partial class Player : CharacterBody2D
 {
+	[Export] public PackedScene FightScene { get; set; }
+
 	[Export] public float Speed = 88.0f;
 	private bool canIPassWater=true;
 	private static int HitboxDistance=16;
