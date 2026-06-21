@@ -127,7 +127,10 @@ public partial class Cavity : Resource
 	public bool Contains(OrganSlot slot) => _slotOrigins.ContainsKey(slot);
 
 	public List<Organ> GetOrgans() => _slotOrigins.Keys.Select(x => x.Organ).ToList();
+
 	public List<KeyValuePair<OrganSlot, Vector2I>> GetItems() => _slotOrigins.ToList();
+
+	public List<Ability> GetAbilities() => _slotOrigins.Keys.Select(x => x.Organ.Ability).Where(x => x is not null).ToList();
 }
 
 #pragma warning restore CS0649
