@@ -17,7 +17,7 @@ public partial class AttackAbility : Ability
 
         PlayerStats.Instance.GetTree().CurrentScene.AddChild(effect);
 
-        to.Health -= BaseAttackDamage + from.Stats.GetIntStat(IntStatType.AttackDamage);
+        to.TakeDamage(BaseAttackDamage + from.Stats.GetIntStat(IntStatType.AttackDamage));
     }
 
     public override string ToString()

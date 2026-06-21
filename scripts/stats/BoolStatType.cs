@@ -8,4 +8,5 @@ public enum BoolStatType
 	HasCatEars,
 	HasFlySwatter,
 	HasNipples,
+	HasMusic,
 }

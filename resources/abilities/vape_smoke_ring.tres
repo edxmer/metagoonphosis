@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AttackAbility" format=3 uid="uid://c6cm6b7u1cut3"]
+
+[ext_resource type="Texture2D" uid="uid://brtrfkdkwbfgo" path="res://icon.svg" id="1_78dja"]
+[ext_resource type="Script" uid="uid://b0stf1luuqsq2" path="res://scripts/fight/AttackAbility.cs" id="2_wbgdj"]
+
+[resource]
+script = ExtResource("2_wbgdj")
+BaseAttackDamage = 5
+AttackTexture = ExtResource("1_78dja")
+AbilityName = "Vape Smoke Ring"
+AbilityDescription = "Smoking kills"
+DefaultCooldown = 3
+AnimationLength = 2.0
+metadata/_custom_type_script = "uid://b0stf1luuqsq2"

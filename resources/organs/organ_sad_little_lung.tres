@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="Organ" format=3 uid="uid://b6eqvdb07fxnv"]
 
 [ext_resource type="Script" uid="uid://dibohswhyx7vt" path="res://scripts/stats/BoolStatEntry.cs" id="1_don3q"]
+[ext_resource type="Resource" uid="uid://c6cm6b7u1cut3" path="res://resources/abilities/vape_smoke_ring.tres" id="1_ptjmk"]
 [ext_resource type="Script" uid="uid://c6waearx1n122" path="res://scripts/stats/IntStatEntry.cs" id="2_q8kyu"]
 [ext_resource type="Script" uid="uid://0kwd64utuoyb" path="res://scripts/stats/Stats.cs" id="3_4c1ox"]
 [ext_resource type="Texture2D" uid="uid://dvboypouqaipv" path="res://assets/sprites/organs/organ_lung_sad.png" id="4_axu6f"]
@@ -29,6 +30,7 @@ OrganName = "Sad Little Lung"
 OrganDescription = "Full of sad vape smoke"
 Texture = ExtResource("4_axu6f")
 StatIncreases = SubResource("Resource_wiwg0")
+Ability = ExtResource("1_ptjmk")
 OrganShapeString = "XO
 OOO
 OXO"

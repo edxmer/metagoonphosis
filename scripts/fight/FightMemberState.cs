@@ -11,6 +11,7 @@ public partial class FightMemberState : Resource
     public Marker2D AbilityOrigin { get; private set; }
 
     public int Health { get; set; }
+    public int MaxHealth { get; set; }
 
     public FightMemberState() {}
     
@@ -20,7 +21,8 @@ public partial class FightMemberState : Resource
         Abilities = abilities;
         AbilityOrigin = abilityOrigin;
 
-        Health = Stats.GetIntStat(IntStatType.Hp);
+        MaxHealth = Stats.GetIntStat(IntStatType.Hp);
+        Health = MaxHealth;
     }
 
     public bool DidLose()
@@ -36,5 +38,15 @@ public partial class FightMemberState : Resource
 		{
 			ability.TickCooldown();
 		}
+    }
+
+    public void TakeDamage(int damage)
+    {
+        Health -= Math.Max(0, damage - Stats.GetIntStat(IntStatType.Defense));
+    }
+
+    public void Heal(int amount)
+    {
+        Health = Math.Min(Health + amount, MaxHealth);
     }
 }

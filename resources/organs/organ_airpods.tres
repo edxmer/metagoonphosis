@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Organ" format=3 uid="uid://caacyq8msmwgg"]
+
+[ext_resource type="Script" uid="uid://dibohswhyx7vt" path="res://scripts/stats/BoolStatEntry.cs" id="1_un2g1"]
+[ext_resource type="Script" uid="uid://c6waearx1n122" path="res://scripts/stats/IntStatEntry.cs" id="2_u42ag"]
+[ext_resource type="Script" uid="uid://0kwd64utuoyb" path="res://scripts/stats/Stats.cs" id="3_yrec3"]
+[ext_resource type="Script" uid="uid://c4a42xia0dqi5" path="res://scripts/organs/Organ.cs" id="4_kh1ck"]
+[ext_resource type="Texture2D" uid="uid://d4bd7huutkc8b" path="res://assets/sprites/organs/organ_airpods.png" id="4_u42ag"]
+
+[sub_resource type="Resource" id="Resource_yrec3"]
+script = ExtResource("1_un2g1")
+Key = 5
+Value = true
+metadata/_custom_type_script = "uid://dibohswhyx7vt"
+
+[sub_resource type="Resource" id="Resource_kh1ck"]
+script = ExtResource("2_u42ag")
+Key = 1
+Value = 6
+metadata/_custom_type_script = "uid://c6waearx1n122"
+
+[sub_resource type="Resource" id="Resource_twxs5"]
+script = ExtResource("3_yrec3")
+IntStatEntries = Array[ExtResource("2_u42ag")]([SubResource("Resource_kh1ck")])
+BoolStatEntries = Array[ExtResource("1_un2g1")]([SubResource("Resource_yrec3")])
+metadata/_custom_type_script = "uid://0kwd64utuoyb"
+
+[resource]
+script = ExtResource("4_kh1ck")
+OrganName = "Airpods"
+OrganDescription = "Serial number: H3KLXCJFLX2Y
+Warning: Do not put in chest cavity, may cause severe music overdose"
+Texture = ExtResource("4_u42ag")
+StatIncreases = SubResource("Resource_twxs5")
+OrganShapeString = "O"
+metadata/_custom_type_script = "uid://c4a42xia0dqi5"

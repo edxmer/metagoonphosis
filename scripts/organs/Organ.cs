@@ -6,7 +6,7 @@ public partial class Organ : Resource
 {
 	[Export] public OrganType Type { get; set; } = OrganType.Other;
     [Export] public string OrganName { get; set; }
-    [Export] public string OrganDescription { get; set; }
+    [Export(PropertyHint.MultilineText)] public string OrganDescription { get; set; }
     [Export] public Texture2D Texture { get; set; }
     [Export] public Stats StatIncreases { get; set; } = new();
     [Export] public Ability Ability { get; set; }
