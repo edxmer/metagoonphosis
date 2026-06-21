@@ -30,8 +30,8 @@ public partial class CreatureFlyThree : NpcTalkableThrowaway
 			"But §§I feel like what you're doing is §§§still§§\npretty problematic\n§§§§§§I haven't even finished watching Love Island\n§§§§§§§I haven't even started it:(("
 			,"Weak Little Fly",0.05,"res://assets/sounds/talksounds/sound_talk_chirp.wav"),
 			new TalkBubblePage(
-			"How will I §§ever know what whacky adventures\nTommy Fury was up to\n:((((("
-			,"Weak Little Fly",0.05,"res://assets/sounds/talksounds/sound_talk_chirp.wav"),
+			"How will I §§ever know what kind of §§§§whacky adventures\n§§§§Tommy Fury is up to\n:((((("
+			,"Weak Little Fly",0.07,"res://assets/sounds/talksounds/sound_talk_chirp.wav"),
 			new TalkBubblePage(
 			"* A Fly was added to your Inventory"
 			,"",0.08,"res://assets/sounds/talksounds/sound_talk_sign.wav")

@@ -5,3 +5,4 @@
 
 [node name="TalkNPC" unique_id=916331531 instance=ExtResource("1_kday7")]
 script = ExtResource("2_8o5yh")
+myCurrentLines = null
