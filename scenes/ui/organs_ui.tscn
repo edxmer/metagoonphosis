@@ -38,14 +38,17 @@ grow_vertical = 2
 
 [node name="CavityUI" type="PanelContainer" parent="." unique_id=992292754]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
+anchor_bottom = 0.5
 offset_left = -273.0
-offset_top = 11.999998
+offset_top = -273.0
 offset_right = 273.0
-offset_bottom = 558.0
+offset_bottom = 273.0
 grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(1, 0.9482657)
 theme_override_styles/panel = ExtResource("1_2dh3u")
 metadata/_edit_group_ = true
