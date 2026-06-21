@@ -16,8 +16,7 @@ public partial class OrganViewUI : TextureRect
 
 		Texture = organ.Texture;
 
-
-		TooltipText = $"Name: {organ.OrganName}\nType: {organ.Type}";
+		TooltipText = $"Name: {organ.OrganName}\nType: {organ.Type}\nStats: {organ.StatIncreases.GetNonZeroStatsStringDictStyle()}";
 		
 		ExpandMode = ExpandModeEnum.IgnoreSize;
 
@@ -36,6 +35,9 @@ public partial class OrganViewUI : TextureRect
 
 		Control previewContainer = new();
 		previewContainer.AddChild(preview);
+
+		previewContainer.ZIndex = 4096;
+
 		preview.Position = -atPosition;
 
 		SetDragPreview(previewContainer);

@@ -1,0 +1,172 @@
+[gd_scene format=3 uid="uid://c8rgxsn1ny7eo"]
+
+[ext_resource type="StyleBox" uid="uid://daxyqbp1ce2da" path="res://resources/styles/black_style_box_flat.tres" id="1_2dh3u"]
+[ext_resource type="FontFile" uid="uid://dk7sro3h40irq" path="res://assets/fonts/determination/determination.ttf" id="2_t40na"]
+[ext_resource type="Script" uid="uid://cys1hag4cjwqp" path="res://scripts/organs/CavityGridUI.cs" id="3_i7dks"]
+[ext_resource type="Script" uid="uid://bdvg7q0xtfow8" path="res://scripts/organs/UnusedOrganListUI.cs" id="4_wqpms"]
+[ext_resource type="FontFile" uid="uid://jyjmqmvjhrww" path="res://assets/fonts/alagard/alagard.ttf" id="5_t40na"]
+[ext_resource type="Script" uid="uid://bawoki41g1lh3" path="res://scripts/stats/ui/StatsListLabel.cs" id="6_i7dks"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6vnwl"]
+line_spacing = -15.0
+font = ExtResource("2_t40na")
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_i7p6j"]
+line_spacing = -10.0
+font = ExtResource("2_t40na")
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_t40na"]
+line_spacing = -10.0
+font = ExtResource("2_t40na")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_i7dks"]
+line_spacing = 6.0
+font = ExtResource("5_t40na")
+font_size = 24
+
+[node name="OrgansUI" type="Control" unique_id=1984681221]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CavityUI" type="PanelContainer" parent="." unique_id=992292754]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.9482657)
+theme_override_styles/panel = ExtResource("1_2dh3u")
+metadata/_edit_group_ = true
+
+[node name="LabelMarginContainer" type="MarginContainer" parent="CavityUI" unique_id=1869526821]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="ChestCavityLabel" type="Label" parent="CavityUI/LabelMarginContainer" unique_id=230932123]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "Chest
+Cavity"
+label_settings = SubResource("LabelSettings_6vnwl")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CavityUI" unique_id=147345809]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="CavityGridUI" type="Control" parent="CavityUI/MarginContainer" unique_id=1220805766]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("3_i7dks")
+metadata/_custom_type_script = "uid://cys1hag4cjwqp"
+
+[node name="UnusedOrgansUI" type="PanelContainer" parent="." unique_id=678212517]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -231.0
+offset_top = 10.0
+offset_right = -12.0
+offset_bottom = -17.837402
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(1, 1.0142502)
+theme_override_styles/panel = ExtResource("1_2dh3u")
+metadata/_edit_group_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="UnusedOrgansUI" unique_id=1478646016]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="UnusedOrganListUI" type="ScrollContainer" parent="UnusedOrgansUI/MarginContainer" unique_id=1274496501]
+layout_mode = 2
+script = ExtResource("4_wqpms")
+metadata/_custom_type_script = "uid://bdvg7q0xtfow8"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UnusedOrgansUI/MarginContainer/UnusedOrganListUI" unique_id=174627786]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="UnusedOrgansLabel" type="Label" parent="UnusedOrgansUI/MarginContainer/UnusedOrganListUI/VBoxContainer" unique_id=1766275902]
+layout_mode = 2
+text = "Unused
+Organs"
+label_settings = SubResource("LabelSettings_i7p6j")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Stats" type="PanelContainer" parent="." unique_id=2054331247]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = 11.0
+offset_right = 197.0
+offset_bottom = -9.0
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("1_2dh3u")
+
+[node name="StatsMarginContainer" type="MarginContainer" parent="Stats" unique_id=5332159]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Stats/StatsMarginContainer" unique_id=776077770]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="StatsTitle" type="Label" parent="Stats/StatsMarginContainer/VBoxContainer" unique_id=1667037476]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Stats"
+label_settings = SubResource("LabelSettings_i7p6j")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Separation" type="Label" parent="Stats/StatsMarginContainer/VBoxContainer" unique_id=980775804]
+layout_mode = 2
+size_flags_vertical = 0
+text = "–"
+label_settings = SubResource("LabelSettings_t40na")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="StatsListLabel" type="Label" parent="Stats/StatsMarginContainer/VBoxContainer" unique_id=1665438603]
+layout_mode = 2
+size_flags_vertical = 0
+label_settings = SubResource("LabelSettings_i7dks")
+horizontal_alignment = 1
+vertical_alignment = 2
+script = ExtResource("6_i7dks")

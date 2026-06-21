@@ -124,4 +124,36 @@ public partial class Stats : Resource
 
         return string.Join("; ", keyValueStringPairs);
     }
+
+    public string GetNonZeroStatsStringDictStyle()
+    {
+        List<string> keyValueStringPairs = [];
+        foreach (var key in Enum.GetValues<IntStatType>())
+        {
+            if (GetIntStat(key) != 0) keyValueStringPairs.Add($"{key}:{GetIntStat(key)}");
+        }
+
+        foreach (var key in Enum.GetValues<BoolStatType>())
+        {
+            if (GetBoolStat(key)) keyValueStringPairs.Add($"{key}:{GetBoolStat(key)}");
+        }
+
+        return "{" + string.Join("; ", keyValueStringPairs) + "}";
+    }
+
+    public string GetNonZeroStatsStringNormalStyle()
+    {
+        List<string> keyValueStringPairs = [];
+        foreach (var key in Enum.GetValues<IntStatType>())
+        {
+            if (GetIntStat(key) != 0) keyValueStringPairs.Add($"{key}: {GetIntStat(key)}");
+        }
+
+        foreach (var key in Enum.GetValues<BoolStatType>())
+        {
+            if (GetBoolStat(key)) keyValueStringPairs.Add($"{key}: {GetBoolStat(key)}");
+        }
+
+        return string.Join("\n", keyValueStringPairs);
+    }
 }

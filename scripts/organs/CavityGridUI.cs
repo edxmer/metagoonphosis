@@ -28,7 +28,8 @@ public partial class CavityGridUI : Control
 
     public override void _Draw()
     {
-		Color lineColor = new Color(1, 1, 1, 0.2f);
+		float lineColorStrength = 0.7f;
+		Color lineColor = new Color(lineColorStrength, lineColorStrength, lineColorStrength, 1f);
 
         for (int x=0; x<_cavity.Width; ++x) for (int y=0; y<_cavity.Height; ++y)
 		if (_cavity.Shape[x, y])
