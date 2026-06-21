@@ -105,13 +105,13 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oajqt"]
-size = Vector2(15, 17)
+size = Vector2(15, 15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oycjb"]
 size = Vector2(5, 6)
 
 [node name="Player" type="CharacterBody2D" unique_id=1403057204]
-collision_mask = 9
+collision_mask = 25
 script = ExtResource("1_g6b87")
 
 [node name="AllSpritesPlace" type="Node2D" parent="." unique_id=1812498363]
@@ -126,7 +126,7 @@ sprite_frames = SubResource("SpriteFrames_vvtxx")
 animation = &"walk_forward"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=910602540]
-position = Vector2(-2.5, 1.5)
+position = Vector2(-2.5, 2.5)
 shape = SubResource("RectangleShape2D_oajqt")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1046681063]

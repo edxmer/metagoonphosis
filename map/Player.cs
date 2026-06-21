@@ -3,7 +3,7 @@ using System;
 
 public partial class Player : CharacterBody2D
 {
-	[Export] public float Speed = 48.0f;
+	[Export] public float Speed = 88.0f;
 	private bool canIPassWater=true;
 	private static int HitboxDistance=16;
 	private AllSpritesPlace animationAll;

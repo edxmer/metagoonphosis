@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://cfacw4ya310ey"]
+
+[ext_resource type="PackedScene" uid="uid://t3tnk64uhae5" path="res://map/npcs/testNPC2/NPC_test_1.tscn" id="1_j525x"]
+[ext_resource type="Script" uid="uid://dewftd8a864vw" path="res://map/npcs/turtles/TurtleWife.cs" id="2_n5v6o"]
+[ext_resource type="Texture2D" uid="uid://bwyctwpgtgsfa" path="res://assets/sprites/creatures/turtle wife/spr_creature_turtle_wife (1).png" id="3_2kfl8"]
+[ext_resource type="Texture2D" uid="uid://vu20x1dv3ma0" path="res://assets/sprites/creatures/turtle wife/spr_creature_turtle_wife (2).png" id="4_etg1l"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n5v6o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_2kfl8")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.7,
+"texture": ExtResource("3_2kfl8")
+}, {
+"duration": 0.7,
+"texture": ExtResource("4_etg1l")
+}],
+"loop": true,
+"name": &"talk",
+"speed": 5.0
+}]
+
+[node name="TalkNPC" unique_id=916331531 instance=ExtResource("1_j525x")]
+script = ExtResource("2_n5v6o")
+myCurrentLines = null
+
+[node name="Sprite" parent="." index="0" unique_id=756789201]
+sprite_frames = SubResource("SpriteFrames_n5v6o")
+frame_progress = 0.29290533
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=1166412815]
+position = Vector2(-0.5, 1)
