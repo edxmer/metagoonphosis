@@ -23,7 +23,11 @@ public partial class TalkBubble : Node2D
 	private void closeUp()
 	{
 		Visible=false;
-		PlayerStats.Instance.IsSomethingOpenInMap=false;
+		if (PlayerStats.Instance!=null)
+		{
+			PlayerStats.Instance.IsSomethingOpenInMap=false;
+		}
+		
 		displayName="";
 		displayText="";
 		audioPath="mute";
@@ -32,6 +36,10 @@ public partial class TalkBubble : Node2D
 	
 	public void openUp()
 	{
+		if (PlayerStats.Instance==null)
+		{
+			return;
+		}
 		 PlayerStats.Instance.IsSomethingOpenInMap=true;
 	}
 	

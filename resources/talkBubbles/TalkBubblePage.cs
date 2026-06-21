@@ -20,6 +20,6 @@ public partial class TalkBubblePage : Resource
 		this.myText=myText;
 		this.myName=myName;
 		this.myTalkSpeed=myTalkSpeed;
-		this.audioPath="mute";
+		this.audioPath="res://assets/sounds/talksounds/sound_talk_sign.wav";
 	}
 }
