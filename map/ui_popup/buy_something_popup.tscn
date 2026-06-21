@@ -1,3 +1,17 @@
 [gd_scene format=3 uid="uid://dwcv54nil508r"]
 
+[ext_resource type="Texture2D" uid="uid://b0xg4bsnbk3vo" path="res://assets/sprites/ui/popupButton/popupButtonBackground.png" id="1_floe6"]
+[ext_resource type="Texture2D" uid="uid://dhkigjwiewgrj" path="res://assets/sprites/ui/popupButton/popupButtonAccept.png" id="2_286e7"]
+
 [node name="BuySomethingPopup" type="Node2D" unique_id=1398055415]
+
+[node name="PopupBackground" type="Sprite2D" parent="." unique_id=1422596445]
+position = Vector2(96, 32)
+texture = ExtResource("1_floe6")
+
+[node name="Button" type="Button" parent="." unique_id=1613985061]
+offset_left = 5.0
+offset_top = 22.0
+offset_right = 41.0
+offset_bottom = 49.0
+icon = ExtResource("2_286e7")

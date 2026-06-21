@@ -3,7 +3,9 @@ using Godot;
 
 public enum BoolStatType
 {
-    HasHair,
+	HasHair,
 	CanSwim,
 	HasCatEars,
+	HasFlySwatter,
+	HasNipples,
 }
