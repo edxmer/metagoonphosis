@@ -43,7 +43,7 @@ public partial class PlayerStats : Node
 
 		foreach (var organ in Cavity.GetOrgans())
 		{
-			GD.Print($"Stat increased of organ '{organ.OrganName}'{organ.StatIncreases}");
+			//GD.Print($"Stat increased of organ '{organ.OrganName}'{organ.StatIncreases}");
 			Stats += organ.StatIncreases;
 		}
 	}
