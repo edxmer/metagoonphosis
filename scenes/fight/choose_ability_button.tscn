@@ -3,7 +3,7 @@
 [ext_resource type="FontFile" uid="uid://jyjmqmvjhrww" path="res://assets/fonts/alagard/alagard.ttf" id="1_gmqdl"]
 [ext_resource type="StyleBox" uid="uid://chmv5tihw1hst" path="res://resources/styles/button_normal_box_flat.tres" id="2_lft1b"]
 [ext_resource type="StyleBox" uid="uid://dhfx3ygod2ihj" path="res://resources/styles/button_hover_box_flat.tres" id="3_lft1b"]
-[ext_resource type="Script" uid="uid://dpkpf2065lkkf" path="res://scenes/fight/ChooseAbilityButton.cs" id="3_r4ma8"]
+[ext_resource type="Script" uid="uid://dpkpf2065lkkf" path="res://scripts/fight/ChooseAbilityButton.cs" id="3_r4ma8"]
 
 [node name="Button" type="Button" unique_id=623761879]
 size_flags_vertical = 0
