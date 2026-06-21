@@ -9,9 +9,7 @@
 position = Vector2(96, 32)
 texture = ExtResource("1_floe6")
 
-[node name="Button" type="Button" parent="." unique_id=1613985061]
-offset_left = 5.0
-offset_top = 22.0
-offset_right = 41.0
-offset_bottom = 49.0
-icon = ExtResource("2_286e7")
+[node name="TextureButton" type="TextureButton" parent="." unique_id=1076687298]
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("2_286e7")
