@@ -75,6 +75,7 @@ public partial class Stats : Resource
     {
         if (value == 0 && !_intStats.ContainsKey(key)) return;
         _intStats[key] = value;
+        ApplyStatRules();
     }
 
     public bool GetBoolStat(BoolStatType key)
@@ -90,6 +91,7 @@ public partial class Stats : Resource
     {
         if (value == false && !_boolStats.ContainsKey(key)) return;
         _boolStats[key] = value;
+        ApplyStatRules();
     }
 
     public static Stats operator + (Stats left, Stats right)
@@ -155,5 +157,10 @@ public partial class Stats : Resource
         }
 
         return string.Join("\n", keyValueStringPairs);
+    }
+
+    private void ApplyStatRules()
+    {
+        if (GetIntStat(IntStatType.Bouyance) >= 10) SetBoolStat(BoolStatType.CanSwim, true);
     }
 }
