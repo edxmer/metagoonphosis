@@ -86,25 +86,4 @@ public partial class Player : CharacterBody2D
 		//4 is water
 		SetCollisionMaskValue(4, !canIPassWater);
 	}
-
-	public void StartFight(EnemyData enemyData)
-	{
-		GetTree().Paused = true;
-
-		FightManager manager = FightScene.Instantiate<FightManager>();
-
-		GetTree().Root.AddChild(manager);
-
-		manager.FightEnded += OnFightEnded;
-
-		manager.InitalizeFight(enemyData);
-
-	}
-
-	private void OnFightEnded(bool result)
-	{
-		GetTree().Paused = false;
-
-		PlayerStats.Instance.PlayerWonLastFight = result;	
-	}
 }
