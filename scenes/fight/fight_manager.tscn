@@ -1,0 +1,253 @@
+[gd_scene format=4 uid="uid://bt0fspsxp0py7"]
+
+[ext_resource type="TileSet" uid="uid://gjslkcp5wqsa" path="res://assets/sprites/tilesets/spr_tileset_mapmain/tileset_map_main.tres" id="1_n4171"]
+[ext_resource type="Texture2D" uid="uid://d2kclnl6rbuq5" path="res://assets/sprites/goon/idle_backwards/spr_goon_idle_backwards.png" id="1_qxmn2"]
+[ext_resource type="Texture2D" uid="uid://bjw2pohc02ny3" path="res://assets/sprites/creatures/big_fat_guy/spr_creature_fat_guy_1.png" id="2_2sgx1"]
+[ext_resource type="FontFile" uid="uid://jyjmqmvjhrww" path="res://assets/fonts/alagard/alagard.ttf" id="3_wcevn"]
+[ext_resource type="StyleBox" uid="uid://daxyqbp1ce2da" path="res://resources/styles/black_style_box_flat.tres" id="4_4mgba"]
+[ext_resource type="Script" uid="uid://l72oq11uhuo0" path="res://scripts/fight/FightManager.cs" id="4_r66f3"]
+[ext_resource type="PackedScene" uid="uid://bpr3f7v2tjvf3" path="res://scenes/fight/choose_ability_button.tscn" id="4_y73cr"]
+[ext_resource type="FontFile" uid="uid://dk7sro3h40irq" path="res://assets/fonts/determination/determination.ttf" id="5_lbxbr"]
+
+[sub_resource type="Gradient" id="Gradient_n4171"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qsq4k"]
+gradient = SubResource("Gradient_n4171")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.62, 0.19)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wcevn"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r66f3"]
+bg_color = Color(0.8634101, 0.00021682904, 0.00011897922, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_n4171"]
+font = ExtResource("5_lbxbr")
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_r66f3"]
+font = ExtResource("3_wcevn")
+font_size = 64
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wra2d"]
+bg_color = Color(0, 0.5529412, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wsu1o"]
+line_spacing = -10.0
+font = ExtResource("5_lbxbr")
+font_size = 40
+
+[node name="FightManager" type="Node" unique_id=357594744 node_paths=PackedStringArray("EnemySprite", "EnemyLabel", "PlayerHealthBar", "PlayerHealthLabel", "EnemyHealthBar", "EnemyHealthLabel", "PlayerAttackOrigin", "EnemyAttackOrigin", "ButtonsContainer", "ChooseAbilityButtonsParent")]
+script = ExtResource("4_r66f3")
+EnemySprite = NodePath("EnemySprite")
+EnemyLabel = NodePath("UI/EnemyInfo/EnemyLabel")
+PlayerHealthBar = NodePath("UI/GoonInfo/PlayerHealthBar")
+PlayerHealthLabel = NodePath("UI/GoonInfo/PlayerHealthBar/PlayerHealthLabel")
+EnemyHealthBar = NodePath("UI/EnemyInfo/EnemyHealthBar")
+EnemyHealthLabel = NodePath("UI/EnemyInfo/EnemyHealthBar/EnemyHealthLabel")
+PlayerAttackOrigin = NodePath("GoonSprite/GoonAttackMarker")
+EnemyAttackOrigin = NodePath("EnemySprite/EnemyAttackMarker")
+ButtonsContainer = NodePath("UI/ChooseAbility/PanelContainer")
+ChooseAbilityButtonsParent = NodePath("UI/ChooseAbility/PanelContainer/ScrollContainer/AbilityButtonContainer")
+ChooseAbilityButton = ExtResource("4_y73cr")
+metadata/_custom_type_script = "uid://l72oq11uhuo0"
+
+[node name="BackgroundTileMapLayer" type="TileMapLayer" parent="." unique_id=1352178836]
+scale = Vector2(5, 5)
+tile_map_data = PackedByteArray("AAD+//7/AAAHAAAAAAD+////AAAHAAAAAAD+/wAAAAAHAAAAAAD+/wEAAAAHAAAAAAD+/wIAAAAHAAAAAAD+/wMAAAAHAAAAAAD+/wQAAAAHAAAAAAD+/wUAAAAHAAAAAAD+/wYAAAAHAAAAAAD+/wcAAAAHAAAAAAD+/wgAAAAHAAAAAAD+/wkAAAAHAAAAAAD///7/AAAHAAAAAAD/////AAAHAAAAAAD//wAAAAAHAAAAAAD//wEAAAAHAAAAAAD//wIAAAAHAAAAAAD//wMAAAAHAAAAAAD//wQAAAAHAAAAAAD//wUAAAAHAAAAAAD//wYAAAAHAAAAAAD//wcAAAAHAAAAAAD//wgAAAAHAAAAAAD//wkAAAAHAAAAAAAAAP7/AAAHAAAAAAAAAP//AAAHAAAAAAAAAAAAAAAHAAAAAAAAAAEAAAAHAAAAAAAAAAIAAAAHAAAAAAAAAAMAAAAHAAAAAAAAAAQAAAAHAAAAAAAAAAUAAAAHAAAAAAAAAAYAAAAHAAAAAAAAAAcAAAAHAAAAAAAAAAgAAAAHAAAAAAAAAAkAAAAHAAAAAAABAP7/AAAHAAAAAAABAP//AAAHAAAAAAABAAAAAAAHAAAAAAABAAEAAAAHAAAAAAABAAIAAAAHAAAAAAABAAMAAAAHAAAAAAABAAQAAAAHAAAAAAABAAUAAAAHAAAAAAABAAYAAAAHAAAAAAABAAcAAAAHAAAAAAABAAgAAAAHAAAAAAABAAkAAAAHAAAAAAACAP7/AAAHAAAAAAACAP//AAAHAAAAAAACAAAAAAAHAAAAAAACAAEAAAAHAAAAAAACAAIAAAAHAAAAAAACAAMAAAAHAAAAAAACAAQAAAAHAAAAAAACAAUAAAAHAAAAAAACAAYAAAAHAAAAAAACAAcAAAAHAAAAAAACAAgAAAAHAAAAAAACAAkAAAAHAAAAAAADAP7/AAAHAAAAAAADAP//AAAHAAAAAAADAAAAAAAHAAAAAAADAAEAAAAHAAAAAAADAAIAAAAHAAAAAAADAAMAAAAHAAAAAAADAAQAAAAHAAAAAAADAAUAAAAHAAAAAAADAAYAAAAHAAAAAAADAAcAAAAHAAAAAAADAAgAAAAHAAAAAAADAAkAAAAHAAAAAAAEAP7/AAAHAAAAAAAEAP//AAAHAAAAAAAEAAAAAAAHAAAAAAAEAAEAAAAHAAAAAAAEAAIAAAAHAAAAAAAEAAMAAAAHAAAAAAAEAAQAAAAHAAAAAAAEAAUAAAAHAAAAAAAEAAYAAAAHAAAAAAAEAAcAAAAHAAAAAAAEAAgAAAAHAAAAAAAEAAkAAAAHAAAAAAAFAP7/AAAHAAAAAAAFAP//AAAHAAAAAAAFAAAAAAAHAAAAAAAFAAEAAAAHAAAAAAAFAAIAAAAHAAAAAAAFAAMAAAAHAAAAAAAFAAQAAAAHAAAAAAAFAAUAAAAHAAAAAAAFAAYAAAAHAAAAAAAFAAcAAAAHAAAAAAAFAAgAAAAHAAAAAAAFAAkAAAAHAAAAAAAGAP7/AAAHAAAAAAAGAP//AAAHAAAAAAAGAAAAAAAHAAAAAAAGAAEAAAAHAAAAAAAGAAIAAAAHAAAAAAAGAAMAAAAHAAAAAAAGAAQAAAAHAAAAAAAGAAUAAAAHAAAAAAAGAAYAAAAHAAAAAAAGAAcAAAAHAAAAAAAGAAgAAAAHAAAAAAAGAAkAAAAHAAAAAAAHAP7/AAAHAAAAAAAHAP//AAAHAAAAAAAHAAAAAAAHAAAAAAAHAAEAAAAHAAAAAAAHAAIAAAAHAAAAAAAHAAMAAAAHAAAAAAAHAAQAAAAHAAAAAAAHAAUAAAAHAAAAAAAHAAYAAAAHAAAAAAAHAAcAAAAHAAAAAAAHAAgAAAAHAAAAAAAHAAkAAAAHAAAAAAAIAP7/AAAHAAAAAAAIAP//AAAHAAAAAAAIAAAAAAAHAAAAAAAIAAEAAAAHAAAAAAAIAAIAAAAHAAAAAAAIAAMAAAAHAAAAAAAIAAQAAAAHAAAAAAAIAAUAAAAHAAAAAAAIAAYAAAAHAAAAAAAIAAcAAAAHAAAAAAAIAAgAAAAHAAAAAAAIAAkAAAAHAAAAAAAJAP7/AAAHAAAAAAAJAP//AAAHAAAAAAAJAAAAAAAHAAAAAAAJAAEAAAAHAAAAAAAJAAIAAAAHAAAAAAAJAAMAAAAHAAAAAAAJAAQAAAAHAAAAAAAJAAUAAAAHAAAAAAAJAAYAAAAHAAAAAAAJAAcAAAAHAAAAAAAJAAgAAAAHAAAAAAAJAAkAAAAHAAAAAAAKAP7/AAAHAAAAAAAKAP//AAAHAAAAAAAKAAAAAAAHAAAAAAAKAAEAAAAHAAAAAAAKAAIAAAAHAAAAAAAKAAMAAAAHAAAAAAAKAAQAAAAHAAAAAAAKAAUAAAAHAAAAAAAKAAYAAAAHAAAAAAAKAAcAAAAHAAAAAAAKAAgAAAAHAAAAAAAKAAkAAAAHAAAAAAALAP7/AAAHAAAAAAALAP//AAAHAAAAAAALAAAAAAAHAAAAAAALAAEAAAAHAAAAAAALAAIAAAAHAAAAAAALAAMAAAAHAAAAAAALAAQAAAAHAAAAAAALAAUAAAAHAAAAAAALAAYAAAAHAAAAAAALAAcAAAAHAAAAAAALAAgAAAAHAAAAAAALAAkAAAAHAAAAAAAMAP7/AAAHAAAAAAAMAP//AAAHAAAAAAAMAAAAAAAHAAAAAAAMAAEAAAAHAAAAAAAMAAIAAAAHAAAAAAAMAAMAAAAHAAAAAAAMAAQAAAAHAAAAAAAMAAUAAAAHAAAAAAAMAAYAAAAHAAAAAAAMAAcAAAAHAAAAAAAMAAgAAAAHAAAAAAAMAAkAAAAHAAAAAAANAP7/AAAHAAAAAAANAP//AAAHAAAAAAANAAAAAAAHAAAAAAANAAEAAAAHAAAAAAANAAIAAAAHAAAAAAANAAMAAAAHAAAAAAANAAQAAAAHAAAAAAANAAUAAAAHAAAAAAANAAYAAAAHAAAAAAANAAcAAAAHAAAAAAANAAgAAAAHAAAAAAANAAkAAAAHAAAAAAAOAP7/AAAHAAAAAAAOAP//AAAHAAAAAAAOAAAAAAAHAAAAAAAOAAEAAAAHAAAAAAAOAAIAAAAHAAAAAAAOAAMAAAAHAAAAAAAOAAQAAAAHAAAAAAAOAAUAAAAHAAAAAAAOAAYAAAAHAAAAAAAOAAcAAAAHAAAAAAAOAAgAAAAHAAAAAAAOAAkAAAAHAAAAAAAPAP7/AAAHAAAAAAAPAP//AAAHAAAAAAAPAAAAAAAHAAAAAAAPAAEAAAAHAAAAAAAPAAIAAAAHAAAAAAAPAAMAAAAHAAAAAAAPAAQAAAAHAAAAAAAPAAUAAAAHAAAAAAAPAAYAAAAHAAAAAAAPAAcAAAAHAAAAAAAPAAgAAAAHAAAAAAAPAAkAAAAHAAAAAAAQAP7/AAAHAAAAAAAQAP//AAAHAAAAAAAQAAAAAAAHAAAAAAAQAAEAAAAHAAAAAAAQAAIAAAAHAAAAAAAQAAMAAAAHAAAAAAAQAAQAAAAHAAAAAAAQAAUAAAAHAAAAAAAQAAYAAAAHAAAAAAAQAAcAAAAHAAAAAAAQAAgAAAAHAAAAAAAQAAkAAAAHAAAAAAA=")
+tile_set = ExtResource("1_n4171")
+
+[node name="GoonShadow" type="Sprite2D" parent="." unique_id=584323571]
+position = Vector2(118.00001, 593)
+scale = Vector2(5.5390635, 2.7421885)
+texture = SubResource("GradientTexture2D_qsq4k")
+
+[node name="GoonSprite" type="Sprite2D" parent="." unique_id=1027268525]
+position = Vector2(153, 494)
+scale = Vector2(12, 12)
+texture = ExtResource("1_qxmn2")
+
+[node name="GoonAttackMarker" type="Marker2D" parent="GoonSprite" unique_id=52165487]
+position = Vector2(1.25, -3.0000012)
+scale = Vector2(0.083333336, 0.083333336)
+
+[node name="EnemyShadow" type="Sprite2D" parent="GoonSprite" unique_id=1864430755]
+position = Vector2(61.83334, -15.583331)
+scale = Vector2(1.0823569, 0.5126953)
+texture = SubResource("GradientTexture2D_qsq4k")
+
+[node name="EnemySprite" type="Sprite2D" parent="." unique_id=1737111408]
+position = Vector2(885, 209.00002)
+scale = Vector2(12, 12)
+texture = ExtResource("2_2sgx1")
+
+[node name="EnemyAttackMarker" type="Marker2D" parent="EnemySprite" unique_id=2094801343]
+position = Vector2(-11.416668, 0.99999905)
+scale = Vector2(0.083333336, 0.083333336)
+
+[node name="UI" type="Control" parent="." unique_id=1519129856]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="EnemyInfo" type="Control" parent="UI" unique_id=826831638]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 205.0
+offset_top = 28.0
+offset_right = 205.0
+offset_bottom = 28.0
+
+[node name="EnemyHealthBar" type="ProgressBar" parent="UI/EnemyInfo" unique_id=388346845]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -184.0
+offset_top = 77.0
+offset_right = 184.0
+offset_bottom = 104.0
+grow_horizontal = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_wcevn")
+theme_override_styles/fill = SubResource("StyleBoxFlat_r66f3")
+value = 50.0
+show_percentage = false
+metadata/_edit_lock_ = true
+
+[node name="EnemyHealthLabel" type="Label" parent="UI/EnemyInfo/EnemyHealthBar" unique_id=2077930731]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -98.0
+offset_right = 98.0
+offset_bottom = 27.0
+grow_horizontal = 2
+text = "55/100"
+label_settings = SubResource("LabelSettings_n4171")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EnemyLabel" type="Label" parent="UI/EnemyInfo" unique_id=885578947]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -98.0
+offset_top = 16.0
+offset_right = 98.0
+offset_bottom = 76.0
+grow_horizontal = 2
+text = "Enemy"
+label_settings = SubResource("LabelSettings_r66f3")
+horizontal_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="GoonInfo" type="Control" parent="UI" unique_id=1245884879]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -221.0
+offset_top = -127.0
+offset_right = -221.0
+offset_bottom = -127.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="PlayerHealthBar" type="ProgressBar" parent="UI/GoonInfo" unique_id=1121216182]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -183.0
+offset_top = 75.0
+offset_right = 185.0
+offset_bottom = 102.0
+grow_horizontal = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_wcevn")
+theme_override_styles/fill = SubResource("StyleBoxFlat_wra2d")
+value = 50.0
+show_percentage = false
+
+[node name="PlayerHealthLabel" type="Label" parent="UI/GoonInfo/PlayerHealthBar" unique_id=1331933288]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -98.0
+offset_top = 1.0
+offset_right = 98.0
+offset_bottom = 28.0
+grow_horizontal = 2
+text = "55/100"
+label_settings = SubResource("LabelSettings_n4171")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GoonLabel" type="Label" parent="UI/GoonInfo" unique_id=274773668]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -126.0
+offset_top = 16.0
+offset_right = 126.0
+offset_bottom = 76.0
+grow_horizontal = 2
+text = "Goostave"
+label_settings = SubResource("LabelSettings_r66f3")
+horizontal_alignment = 1
+
+[node name="ChooseAbility" type="Control" parent="UI" unique_id=1808444618]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="UI/ChooseAbility" unique_id=1934370596]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -369.75
+offset_top = -220.0
+offset_right = 369.75
+offset_bottom = 220.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("4_4mgba")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/ChooseAbility/PanelContainer" unique_id=1367640269]
+layout_mode = 2
+
+[node name="AbilityButtonContainer" type="VBoxContainer" parent="UI/ChooseAbility/PanelContainer/ScrollContainer" unique_id=486701253]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = -3
+
+[node name="AbilitiesLabel" type="Label" parent="UI/ChooseAbility/PanelContainer/ScrollContainer/AbilityButtonContainer" unique_id=764256302]
+layout_mode = 2
+text = "Abilities"
+label_settings = SubResource("LabelSettings_wsu1o")
+horizontal_alignment = 1
+vertical_alignment = 2
