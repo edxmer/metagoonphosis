@@ -20,7 +20,7 @@ public partial class TalkBubble : Node2D
 	private Label myNameNode;
 	private Label myTextNode;
 	private AudioStreamPlayer2D mySoundPlayer;
-	private void closeUp()
+	public void closeUp()
 	{
 		Visible=false;
 		if (PlayerStats.Instance!=null)

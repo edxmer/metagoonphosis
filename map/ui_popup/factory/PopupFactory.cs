@@ -18,7 +18,7 @@ public static class PopupFactory
 		item.setMyText();
 		return item;
 	}
-		public static BuySomethingPopup CreatePopupFight(Node2D parent,EnemyData enemyData,string text,int rewardMoney,Organ? rewardOrgan)
+	public static BuySomethingPopup CreatePopupFight(Node2D parent,EnemyData enemyData,string text,int rewardMoney,Organ? rewardOrgan)
 	{
 			
 		var item =  popupFightScene.Instantiate<BuySomethingPopupFight>();

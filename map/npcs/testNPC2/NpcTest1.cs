@@ -21,7 +21,8 @@ public partial class NpcTest1 : NpcTalkableThrowaway
 	}
 	public override void ActionOnInteract()
 	{
-		PopupFactory.CreatePopupItem(this,0,"szex",1);
+		//CreatePopupFight(Node2D parent,EnemyData enemyData,string text,int rewardMoney,Organ? rewardOrgan)
+		PopupFactory.CreatePopupFight(this,GD.Load<EnemyData>("res://map/npcs/organ_dealer/organ_dealer_enemy_data.tres"),"szex",10,null);
 		TalkBubblePage[] current_text={new TalkBubblePage("What do you want?§§§§\nDon't you see im busy§§§§§§§§§\nI'm too busy thinking.","Lajos",0.2)};
 		myCurrentLines=new TalkBubbleArray(current_text);
 		SaySomething();

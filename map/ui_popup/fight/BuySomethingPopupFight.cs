@@ -12,6 +12,7 @@ public partial class BuySomethingPopupFight: BuySomethingPopup
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		base._Ready();
 		myTalker=GetTree().GetFirstNodeInGroup("talkBubble") as TalkBubble;
 		enemyData=null;
 		rewardOrgan=null;
@@ -48,6 +49,7 @@ public partial class BuySomethingPopupFight: BuySomethingPopup
 	}
 	public async void startFight()
 	{
+		myTalker.closeUp();
 		var signalArgs = await PlayerStats.Instance.StartFight(enemyData);
 		bool result = (bool)signalArgs[0];
 		FightHappening=false;
