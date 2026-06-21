@@ -18,6 +18,9 @@ public partial class AttackSprite2D : Sprite2D
         Texture = texture;
 
         Position = from;
+
+        ZIndex = 4092;
+        ProcessMode = ProcessModeEnum.Always;
     }
 
     public override void _Process(double delta)

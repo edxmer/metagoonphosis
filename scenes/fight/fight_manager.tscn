@@ -40,7 +40,7 @@ line_spacing = -10.0
 font = ExtResource("5_lbxbr")
 font_size = 40
 
-[node name="FightManager" type="Node" unique_id=357594744 node_paths=PackedStringArray("EnemySprite", "EnemyLabel", "PlayerHealthBar", "PlayerHealthLabel", "EnemyHealthBar", "EnemyHealthLabel", "PlayerAttackOrigin", "EnemyAttackOrigin", "ButtonsContainer", "ChooseAbilityButtonsParent")]
+[node name="FightManager" type="Node" unique_id=357594744 node_paths=PackedStringArray("EnemySprite", "EnemyLabel", "PlayerHealthBar", "PlayerHealthLabel", "EnemyHealthBar", "EnemyHealthLabel", "PlayerAttackOrigin", "EnemyAttackOrigin", "ButtonsContainer", "ChooseAbilityButtonsParent", "FightCamera")]
 script = ExtResource("4_r66f3")
 EnemySprite = NodePath("EnemySprite")
 EnemyLabel = NodePath("UI/EnemyInfo/EnemyLabel")
@@ -53,7 +53,11 @@ EnemyAttackOrigin = NodePath("EnemySprite/EnemyAttackMarker")
 ButtonsContainer = NodePath("UI/ChooseAbility/PanelContainer")
 ChooseAbilityButtonsParent = NodePath("UI/ChooseAbility/PanelContainer/ScrollContainer/AbilityButtonContainer")
 ChooseAbilityButton = ExtResource("4_y73cr")
+FightCamera = NodePath("Camera2D")
 metadata/_custom_type_script = "uid://l72oq11uhuo0"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=890922994]
+position = Vector2(579, 325)
 
 [node name="BackgroundTileMapLayer" type="TileMapLayer" parent="." unique_id=1352178836]
 scale = Vector2(5, 5)
