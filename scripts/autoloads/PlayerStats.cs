@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 public partial class PlayerStats : Node
 {
@@ -60,7 +61,7 @@ public partial class PlayerStats : Node
 		UnusedOrgans.Add(new OrganSlot(organ));
 	}
 
-	public void StartFight(EnemyData enemyData)
+	public SignalAwaiter StartFight(EnemyData enemyData)
 	{
 		GetTree().Paused = true;
 
@@ -71,6 +72,8 @@ public partial class PlayerStats : Node
 		fightManager.FightEnded += OnFightEnded;
 
 		fightManager.InitalizeFight(enemyData);
+
+		return ToSignal(fightManager, FightManager.SignalName.FightEnded);
 	}
 
 	private void OnFightEnded(bool result)
