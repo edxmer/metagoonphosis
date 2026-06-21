@@ -48,7 +48,7 @@ public partial class Interactable : Area2D
 	public override void _Process(double delta)
 	{
 		base._Process(delta);
-		if (amISeen &&Input.IsActionJustPressed("ui_accept"))
+		if (amISeen &&Input.IsActionJustPressed("ui_accept") && !PlayerStats.Instance.IsSomethingOpenInMap)
 		{
 			
 			ActionOnInteract();

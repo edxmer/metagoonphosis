@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://c6kqni3dwjtyd"]
+
+[ext_resource type="Resource" uid="uid://p20fmbxjkien" path="res://resources/abilities/sad_little_song.tres" id="1_f4lxq"]
+[ext_resource type="Script" uid="uid://bvcwf4jcdppe1" path="res://scripts/fight/EnemyData.cs" id="1_mdk65"]
+[ext_resource type="Texture2D" uid="uid://cabpetifc7x6w" path="res://assets/sprites/creatures/organ_dealer/spr_creature_organ_dealer (1).png" id="1_oiq4p"]
+[ext_resource type="Script" uid="uid://dibohswhyx7vt" path="res://scripts/stats/BoolStatEntry.cs" id="1_x5ibv"]
+[ext_resource type="Script" uid="uid://c6waearx1n122" path="res://scripts/stats/IntStatEntry.cs" id="2_f4lxq"]
+[ext_resource type="Script" uid="uid://0kwd64utuoyb" path="res://scripts/stats/Stats.cs" id="3_arcnd"]
+
+[sub_resource type="Resource" id="Resource_ithg4"]
+script = ExtResource("2_f4lxq")
+Value = 15
+metadata/_custom_type_script = "uid://c6waearx1n122"
+
+[sub_resource type="Resource" id="Resource_arcnd"]
+script = ExtResource("2_f4lxq")
+Key = 5
+Value = 3
+metadata/_custom_type_script = "uid://c6waearx1n122"
+
+[sub_resource type="Resource" id="Resource_1q8fe"]
+script = ExtResource("3_arcnd")
+IntStatEntries = Array[ExtResource("2_f4lxq")]([SubResource("Resource_ithg4"), SubResource("Resource_arcnd"), null])
+metadata/_custom_type_script = "uid://0kwd64utuoyb"
+
+[resource]
+script = ExtResource("1_mdk65")
+EnemyName = "Organ Dealer"
+EnemyTexture = ExtResource("1_oiq4p")
+EnemyStats = SubResource("Resource_1q8fe")
+Abilities = Array[Object]([ExtResource("1_f4lxq")])
+metadata/_custom_type_script = "uid://bvcwf4jcdppe1"
