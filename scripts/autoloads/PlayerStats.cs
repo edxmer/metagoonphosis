@@ -11,6 +11,8 @@ public partial class PlayerStats : Node
 	public UnusedOrgans UnusedOrgans { get; private set; } = new();
 	public PlayerInventory PlayerInventory { get;set; } = new();
 
+	public bool PlayerWonLastFight { get; set; }
+
 	public bool IsSomethingOpenInMap { get; set; } = false;
 
 	public override void _Ready()
