@@ -62,8 +62,8 @@ public partial class FightManager : Node
 
 		EnemyLabel.Text = enemyData.EnemyName;
 
-		PlayerHealthBar.MaxValue = _playerState.Health; // By default health is max
-		EnemyHealthBar.MaxValue = _enemyState.Health;
+		PlayerHealthBar.MaxValue = _playerState.MaxHealth; // By default health is max
+		EnemyHealthBar.MaxValue = _enemyState.MaxHealth;
 
 		UpdateUI();
 
@@ -75,10 +75,10 @@ public partial class FightManager : Node
 	public void UpdateUI()
 	{
 		PlayerHealthBar.Value = _playerState.Health;
-		PlayerHealthLabel.Text = $"{PlayerHealthBar.Value}/{PlayerHealthBar.MaxValue}";
+		PlayerHealthLabel.Text = $"{_playerState.Health}/{_playerState.MaxHealth}";
 		
 		EnemyHealthBar.Value = _enemyState.Health;
-		EnemyHealthLabel.Text = $"{EnemyHealthBar.Value}/{EnemyHealthBar.MaxValue}";
+		EnemyHealthLabel.Text = $"{_enemyState.Health}/{_enemyState.MaxHealth}";
 	}
 
 	private async void PlayerTurn()
