@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bxkcgoanncbu7"]
+
+[ext_resource type="PackedScene" uid="uid://dwcv54nil508r" path="res://map/ui_popup/base/buy_something_popup.tscn" id="1_8u03q"]
+[ext_resource type="Script" uid="uid://d2yv8uejrf0ni" path="res://map/ui_popup/organ/BuySomethingPopupOrgan.cs" id="2_d44yd"]
+
+[node name="BuySomethingPopup" unique_id=1398055415 instance=ExtResource("1_8u03q")]
+script = ExtResource("2_d44yd")

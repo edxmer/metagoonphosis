@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://4100cx66qjiq"]
+
+[ext_resource type="PackedScene" uid="uid://dwcv54nil508r" path="res://map/ui_popup/base/buy_something_popup.tscn" id="1_grr20"]
+[ext_resource type="Script" uid="uid://vqe1le6o75mt" path="res://map/ui_popup/item/BuySomethingPopupItem.cs" id="2_v5eyb"]
+
+[node name="BuySomethingPopup" unique_id=1398055415 instance=ExtResource("1_grr20")]
+script = ExtResource("2_v5eyb")
+
+[node name="Deny" parent="." index="2" unique_id=1626384426]
+offset_left = 67.0
+offset_top = 29.0
+offset_right = 107.0
+offset_bottom = 69.0

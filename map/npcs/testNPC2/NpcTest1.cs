@@ -21,6 +21,7 @@ public partial class NpcTest1 : NpcTalkableThrowaway
 	}
 	public override void ActionOnInteract()
 	{
+		PopupFactory.CreatePopupItem(this,1,"17",1);
 		TalkBubblePage[] current_text={new TalkBubblePage("What do you want?§§§§\nDon't you see im busy§§§§§§§§§\nI'm too busy thinking.","Lajos",0.2)};
 		myCurrentLines=new TalkBubbleArray(current_text);
 		SaySomething();
