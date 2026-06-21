@@ -2,6 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://dwcv54nil508r" path="res://map/ui_popup/base/buy_something_popup.tscn" id="1_8u03q"]
 [ext_resource type="Script" uid="uid://d2yv8uejrf0ni" path="res://map/ui_popup/organ/BuySomethingPopupOrgan.cs" id="2_d44yd"]
+[ext_resource type="FontFile" uid="uid://dk7sro3h40irq" path="res://assets/fonts/determination/determination.ttf" id="3_j0phv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_d44yd"]
+font = ExtResource("3_j0phv")
 
 [node name="BuySomethingPopup" unique_id=1398055415 instance=ExtResource("1_8u03q")]
 script = ExtResource("2_d44yd")
+
+[node name="Whattosay" parent="." index="4" unique_id=1240182015]
+label_settings = SubResource("LabelSettings_d44yd")

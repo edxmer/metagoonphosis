@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://uea7mv7mghnh"]
+
+[ext_resource type="PackedScene" uid="uid://b46x51q3xynmk" path="res://map/npcs/fly/creature_fly_2.tscn" id="1_sucx6"]
+[ext_resource type="Script" uid="uid://d2354hehudna" path="res://map/npcs/organ_dealer/OrganDealer.cs" id="2_uo4v5"]
+
+[node name="TalkNPC" unique_id=916331531 instance=ExtResource("1_sucx6")]
+script = ExtResource("2_uo4v5")
+myCurrentLines = null

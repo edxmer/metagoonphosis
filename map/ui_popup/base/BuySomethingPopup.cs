@@ -6,12 +6,17 @@ public partial class BuySomethingPopup : Node2D
 	
 	public int neededMoney=0;
 	protected Label myLabel;
-	public string myText="";
+	public bool setText=false;
 	protected TextureButton myButtonDen;
 	protected TextureButton myButtonAcc;
 	protected bool itsOver=false;
 	private AudioStreamPlayer2D mySoundPlayer;
-
+	public string myText="";
+	
+	public virtual void setMyText()
+	{
+		myLabel.Text=myText+" "+neededMoney.ToString()+"$";
+	}
 	public override void _Ready()
 	{
 		itsOver=false;
@@ -42,10 +47,10 @@ public partial class BuySomethingPopup : Node2D
 	}
 	public void PlayAcceptSound()
 	{
-		mySoundPlayer.Stream = GD.Load<AudioStream>("res://assets/sounds/talksounds/sound_buy.mp3");
+		mySoundPlayer.Stream = GD.Load<AudioStream>("res://assets/sounds/talksounds/sound_buy.wav");
 		mySoundPlayer.Play();
 	}
-	protected void Kill()
+	protected virtual void Kill()
 	{
 		QueueFree();
 	}
@@ -84,6 +89,11 @@ public partial class BuySomethingPopup : Node2D
 		{
 			Kill();
 		}
-		myLabel.Text=myText+" "+neededMoney.ToString()+"$";
+		if (!PlayerStats.Instance.IsSomethingOpenInMap)
+		{
+			Kill();
+		}
+			setMyText();
+		
 	}
 }

@@ -13,7 +13,8 @@ public static class PopupFactory
 		item.rewardItem=rewardItem;
 		item.rewardAmount=rewardAmount;
 		item.neededMoney=cost;
-		item.Position=parent.Position;
+		item.Position=new Vector2(parent.Position.X,parent.Position.Y+35);
+		item.setMyText();
 		return item;
 	}
 	public static BuySomethingPopup CreatePopupItem(Node2D parent,int cost,string rewardItem)
@@ -25,9 +26,10 @@ public static class PopupFactory
 		var item = popupOrganScene.Instantiate<BuySomethingPopupOrgan>();
 		parent.AddChild(item);
 		item.neededMoney=cost;
-		item.Position=parent.Position;
+		item.Position=new Vector2(parent.Position.X,parent.Position.Y+35);
 		item.givenOrgan=organ;
 		item.myText=name+"\n";
+		item.setMyText();
 		return item;
 	}
 }
