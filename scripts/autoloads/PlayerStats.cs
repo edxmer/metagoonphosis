@@ -24,6 +24,7 @@ public partial class PlayerStats : Node
 		// Initializing player starting organs
 		List<StartingOrganConfig> startingOrgans = [
 				GD.Load<StartingOrganConfig>("res://resources/payer_starting_organs/starting_heart.tres"),
+				GD.Load<StartingOrganConfig>("res://resources/payer_starting_organs/starting_lung.tres"),
 		];
 		foreach (var organConfig in startingOrgans)
 		{

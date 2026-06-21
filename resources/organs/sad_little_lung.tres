@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Organ" format=3 uid="uid://b6eqvdb07fxnv"]
+
+[ext_resource type="Script" uid="uid://dibohswhyx7vt" path="res://scripts/stats/BoolStatEntry.cs" id="1_don3q"]
+[ext_resource type="Script" uid="uid://c6waearx1n122" path="res://scripts/stats/IntStatEntry.cs" id="2_q8kyu"]
+[ext_resource type="Script" uid="uid://0kwd64utuoyb" path="res://scripts/stats/Stats.cs" id="3_4c1ox"]
+[ext_resource type="Texture2D" uid="uid://dvboypouqaipv" path="res://assets/sprites/organs/organ_lung_sad.png" id="4_axu6f"]
+[ext_resource type="Script" uid="uid://c4a42xia0dqi5" path="res://scripts/organs/Organ.cs" id="4_yrucf"]
+
+[sub_resource type="Resource" id="Resource_axu6f"]
+script = ExtResource("2_q8kyu")
+Value = 5
+metadata/_custom_type_script = "uid://c6waearx1n122"
+
+[sub_resource type="Resource" id="Resource_ptjmk"]
+script = ExtResource("2_q8kyu")
+Key = 1
+Value = -5
+metadata/_custom_type_script = "uid://c6waearx1n122"
+
+[sub_resource type="Resource" id="Resource_wiwg0"]
+script = ExtResource("3_4c1ox")
+IntStatEntries = Array[ExtResource("2_q8kyu")]([SubResource("Resource_axu6f"), SubResource("Resource_ptjmk")])
+metadata/_custom_type_script = "uid://0kwd64utuoyb"
+
+[resource]
+script = ExtResource("4_yrucf")
+Type = 1
+OrganName = "Sad Little Lung"
+OrganDescription = "Full of sad vape smoke"
+Texture = ExtResource("4_axu6f")
+StatIncreases = SubResource("Resource_wiwg0")
+OrganShapeString = "XO
+OOO
+OXO"
+metadata/_custom_type_script = "uid://c4a42xia0dqi5"

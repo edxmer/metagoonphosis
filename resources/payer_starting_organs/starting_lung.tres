@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="StartingOrganConfig" format=3 uid="uid://bf6vdaglkhvv8"]
+
+[ext_resource type="Resource" uid="uid://b6eqvdb07fxnv" path="res://resources/organs/sad_little_lung.tres" id="1_haled"]
+[ext_resource type="Script" uid="uid://xgj0d1vysuaa" path="res://scripts/organs/StartingOrganConfig.cs" id="2_8njv0"]
+
+[resource]
+script = ExtResource("2_8njv0")
+Organ = ExtResource("1_haled")
+Origin = Vector2i(0, 1)
+metadata/_custom_type_script = "uid://xgj0d1vysuaa"

@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" uid="uid://c6waearx1n122" path="res://scripts/stats/IntStatEntry.cs" id="1_cnraa"]
 [ext_resource type="Script" uid="uid://c4a42xia0dqi5" path="res://scripts/organs/Organ.cs" id="1_eswto"]
-[ext_resource type="Texture2D" uid="uid://brtrfkdkwbfgo" path="res://icon.svg" id="1_g7vy2"]
+[ext_resource type="Script" uid="uid://dibohswhyx7vt" path="res://scripts/stats/BoolStatEntry.cs" id="1_nbiux"]
 [ext_resource type="Script" uid="uid://0kwd64utuoyb" path="res://scripts/stats/Stats.cs" id="1_veri1"]
+[ext_resource type="Texture2D" uid="uid://pi7xln32uslr" path="res://assets/sprites/organs/organ_heart_sad.png" id="3_cnraa"]
 
 [sub_resource type="Resource" id="Resource_cnraa"]
 script = ExtResource("1_cnraa")
@@ -13,14 +14,13 @@ metadata/_custom_type_script = "uid://c6waearx1n122"
 [sub_resource type="Resource" id="Resource_nbiux"]
 script = ExtResource("1_veri1")
 IntStatEntries = Array[ExtResource("1_cnraa")]([SubResource("Resource_cnraa")])
-BoolStatEntries = null
 metadata/_custom_type_script = "uid://0kwd64utuoyb"
 
 [resource]
 script = ExtResource("1_eswto")
 Type = 0
 OrganName = "Sad Little Heart"
-Texture = ExtResource("1_g7vy2")
+Texture = ExtResource("3_cnraa")
 StatIncreases = SubResource("Resource_nbiux")
 OrganShapeString = "O"
 metadata/_custom_type_script = "uid://c4a42xia0dqi5"
