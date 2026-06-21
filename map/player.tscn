@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://f3e5oa0makq6" path="res://assets/sprites/goon/walk_backwards/spr_goon_walk_backwards_3.png" id="6_kf1ei"]
 [ext_resource type="Texture2D" uid="uid://bxgw0peom4c1i" path="res://assets/sprites/goon/walk_backwards/spr_goon_walk_backwards_4.png" id="7_w5q0d"]
 [ext_resource type="Texture2D" uid="uid://clpi73e5bkd4j" path="res://assets/sprites/goon/shadow/spr_goon_shadow.png" id="13_vvtxx"]
+[ext_resource type="Script" uid="uid://bjjjikmjqpom6" path="res://map/PlayerCamera.cs" id="14_138gh"]
 [ext_resource type="Script" uid="uid://bi2lvofgin6fl" path="res://map/LookingAtHitbox.cs" id="14_kf1ei"]
 [ext_resource type="Texture2D" uid="uid://bep13wmgqmfp5" path="res://assets/sprites/creatures/alien_octopus/spr_creature_alien_octopus_1.png" id="15_w5q0d"]
 
@@ -132,6 +133,7 @@ shape = SubResource("RectangleShape2D_oajqt")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1046681063]
 position = Vector2(0, 2)
 zoom = Vector2(3.5, 3.5)
+script = ExtResource("14_138gh")
 
 [node name="LookingAtHitbox" type="Area2D" parent="." unique_id=877398258]
 collision_layer = 2
