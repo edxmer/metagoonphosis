@@ -3,11 +3,15 @@
 [ext_resource type="Texture2D" uid="uid://d2kclnl6rbuq5" path="res://assets/sprites/goon/idle_backwards/spr_goon_idle_backwards.png" id="1_qxmn2"]
 [ext_resource type="Texture2D" uid="uid://bjw2pohc02ny3" path="res://assets/sprites/creatures/big_fat_guy/spr_creature_fat_guy_1.png" id="2_2sgx1"]
 [ext_resource type="FontFile" uid="uid://jyjmqmvjhrww" path="res://assets/fonts/alagard/alagard.ttf" id="3_wcevn"]
+[ext_resource type="StyleBox" uid="uid://daxyqbp1ce2da" path="res://resources/styles/black_style_box_flat.tres" id="4_4mgba"]
 [ext_resource type="Script" uid="uid://l72oq11uhuo0" path="res://scripts/fight/FightManager.cs" id="4_r66f3"]
+[ext_resource type="PackedScene" uid="uid://bpr3f7v2tjvf3" path="res://scenes/fight/choose_ability_button.tscn" id="4_y73cr"]
 [ext_resource type="Script" uid="uid://dibohswhyx7vt" path="res://scripts/stats/BoolStatEntry.cs" id="5_2de2i"]
+[ext_resource type="FontFile" uid="uid://dk7sro3h40irq" path="res://assets/fonts/determination/determination.ttf" id="5_lbxbr"]
 [ext_resource type="Script" uid="uid://bvcwf4jcdppe1" path="res://scripts/fight/EnemyData.cs" id="5_wra2d"]
 [ext_resource type="Script" uid="uid://c6waearx1n122" path="res://scripts/stats/IntStatEntry.cs" id="6_y73cr"]
 [ext_resource type="Script" uid="uid://0kwd64utuoyb" path="res://scripts/stats/Stats.cs" id="7_4mgba"]
+[ext_resource type="Resource" uid="uid://p20fmbxjkien" path="res://resources/abilities/sad_little_song.tres" id="7_wsu1o"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wcevn"]
 bg_color = Color(0, 0, 0, 1)
@@ -21,6 +25,11 @@ font_size = 64
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wra2d"]
 bg_color = Color(0, 0.86, 0.02866664, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wsu1o"]
+line_spacing = -10.0
+font = ExtResource("5_lbxbr")
+font_size = 40
 
 [sub_resource type="Resource" id="Resource_lbxbr"]
 script = ExtResource("6_y73cr")
@@ -37,7 +46,7 @@ script = ExtResource("5_wra2d")
 EnemyName = "Daddy Apple"
 EnemyTexture = ExtResource("2_2sgx1")
 EnemyStats = SubResource("Resource_wsu1o")
-Abilities = null
+Abilities = Array[Resource]([ExtResource("7_wsu1o")])
 metadata/_custom_type_script = "uid://bvcwf4jcdppe1"
 
 [node name="FightScene" type="Node" unique_id=195671726]
@@ -163,22 +172,36 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="UI/ChooseAbility" unique_id=735365836]
+[node name="PanelContainer" type="PanelContainer" parent="UI/ChooseAbility" unique_id=1934370596]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -9.5
-offset_top = -15.5
-offset_right = 9.5
-offset_bottom = 15.5
+offset_left = -221.5
+offset_top = -172.0
+offset_right = 221.5
+offset_bottom = 172.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Attack"
+theme_override_styles/panel = ExtResource("4_4mgba")
 
-[node name="FightManager" type="Node" parent="." unique_id=357594744 node_paths=PackedStringArray("EnemySprite", "EnemyLabel", "PlayerHealthBar", "EnemyHealthBar", "PlayerAttackOrigin", "EnemyAttackOrigin")]
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/ChooseAbility/PanelContainer" unique_id=1367640269]
+layout_mode = 2
+
+[node name="AbilityButtonContainer" type="VBoxContainer" parent="UI/ChooseAbility/PanelContainer/ScrollContainer" unique_id=486701253]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="UnusedOrgansLabel" type="Label" parent="UI/ChooseAbility/PanelContainer/ScrollContainer/AbilityButtonContainer" unique_id=764256302]
+layout_mode = 2
+text = "Abilities"
+label_settings = SubResource("LabelSettings_wsu1o")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="FightManager" type="Node" parent="." unique_id=357594744 node_paths=PackedStringArray("EnemySprite", "EnemyLabel", "PlayerHealthBar", "EnemyHealthBar", "PlayerAttackOrigin", "EnemyAttackOrigin", "ButtonsContainer", "ChooseAbilityButtonsParent")]
 script = ExtResource("4_r66f3")
 EnemyData = SubResource("Resource_yq07y")
 EnemySprite = NodePath("../EnemySprite")
@@ -187,4 +210,7 @@ PlayerHealthBar = NodePath("../UI/GoonInfo/PlayerHealthBar")
 EnemyHealthBar = NodePath("../UI/EnemyInfo/EnemyHealthBar")
 PlayerAttackOrigin = NodePath("../GoonSprite/GoonAttackMarker")
 EnemyAttackOrigin = NodePath("../EnemySprite/EnemyAttackMarker")
+ButtonsContainer = NodePath("../UI/ChooseAbility/PanelContainer")
+ChooseAbilityButtonsParent = NodePath("../UI/ChooseAbility/PanelContainer/ScrollContainer/AbilityButtonContainer")
+ChooseAbilityButton = ExtResource("4_y73cr")
 metadata/_custom_type_script = "uid://l72oq11uhuo0"

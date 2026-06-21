@@ -22,16 +22,23 @@ public partial class FightManager : Node
 	[Export] public Marker2D PlayerAttackOrigin { get; set; }
 	[Export] public Marker2D EnemyAttackOrigin { get; set; }
 
+	[Export] public Control ButtonsContainer { get; set; }
+	[Export] public Control ChooseAbilityButtonsParent { get; set; }
+	[Export] public PackedScene ChooseAbilityButton { get; set; }
+
 	private FightMemberState _playerState;
 	private FightMemberState _enemyState;
 
 	public override void _Ready()
 	{
-		InitiateFight(EnemyData); //TODO: Temporary, Would be called from an outside script
+		InitalizeFight(EnemyData); //TODO: Temporary, Would be called from an outside script
 	}
 
-	public void InitiateFight(EnemyData enemyData)
+	public void InitalizeFight(EnemyData enemyData)
 	{
+
+		ButtonsContainer.Hide();
+
 		_playerState = new(
 			PlayerStats.Instance.Stats, 
 			PlayerStats.Instance.Cavity.GetAbilities().Select(x => (Ability)x.Duplicate()).ToList(), 
@@ -54,30 +61,38 @@ public partial class FightManager : Node
 		PlayerTurn();
 	}
 
-	public async void PlayerTurn()
+	public async Task UpdateUI()
+	{
+		PlayerHealthBar.Value = _playerState.Health;
+		EnemyHealthBar.Value = _enemyState.Health;
+
+		await ToSignal(GetTree().CreateTimer(0.5), SceneTreeTimer.SignalName.Timeout);
+	}
+
+	private async void PlayerTurn()
 	{
 		_playerState.TickCooldowns();
 
 		List<Ability> availableAbilities = _playerState.GetAvailableAbilities();
 
-		Node abilityUI = ShowChooseAbilityUI(availableAbilities);
+		ShowChooseAbilityUI(availableAbilities);
 
 		var signalArgs = await ToSignal(this, SignalName.PlayerAbilitySelected);
 		Ability chosenAbility = (Ability)signalArgs[0];
 		
-		abilityUI.QueueFree();
+		FreeChooseAbilityUI();
 
 		chosenAbility.CastAbility(_playerState, _enemyState);
 
 		await ToSignal(GetTree().CreateTimer(chosenAbility.AnimationLength), SceneTreeTimer.SignalName.Timeout);
 
-		UpdateUI();
+		await UpdateUI();
 
 		if (_enemyState.DidLose()) EndFight(true);
 		else EnemyTurn();
 	}
 
-	public async void EnemyTurn()
+    private async void EnemyTurn()
 	{
 		_enemyState.TickCooldowns();
 
@@ -98,23 +113,43 @@ public partial class FightManager : Node
 			await ToSignal(GetTree().CreateTimer(1.0), SceneTreeTimer.SignalName.Timeout);
 		}
 
+		await UpdateUI();
+
 		if (_playerState.DidLose()) EndFight(false);
-		else EnemyTurn();
+		else PlayerTurn();
 	}
 
-	public void UpdateUI()
-	{
-		PlayerHealthBar.Value = _playerState.Health;
-		EnemyHealthBar.Value = _enemyState.Health;
-	}
-
-	public void EndFight(bool playerWon)
-	{
-		
-	}
-
-	public Node ShowChooseAbilityUI(List<Ability> abilities)
+	private void EndFight(bool playerWon)
 	{
 		throw new NotImplementedException();
+	}
+
+	private void ShowChooseAbilityUI(List<Ability> abilities)
+	{
+		ButtonsContainer.Show();
+
+		foreach (Ability ability in abilities)
+		{
+			ChooseAbilityButton button = ChooseAbilityButton.Instantiate<ChooseAbilityButton>();
+
+			button.Initialize(ability, this);
+
+			ChooseAbilityButtonsParent.AddChild(button);
+		}
+	}
+
+	private void FreeChooseAbilityUI()
+    {	
+        foreach(Node node in ChooseAbilityButtonsParent.GetChildren())
+		{
+			if (node is ChooseAbilityButton) node.QueueFree();
+		}
+
+		ButtonsContainer.Hide();
+    }
+
+	private async void FightStartAnimation()
+	{
+		
 	}
 }
