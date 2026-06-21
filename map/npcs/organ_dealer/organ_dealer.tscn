@@ -2,7 +2,43 @@
 
 [ext_resource type="PackedScene" uid="uid://b46x51q3xynmk" path="res://map/npcs/fly/creature_fly_2.tscn" id="1_sucx6"]
 [ext_resource type="Script" uid="uid://d2354hehudna" path="res://map/npcs/organ_dealer/OrganDealer.cs" id="2_uo4v5"]
+[ext_resource type="Texture2D" uid="uid://cabpetifc7x6w" path="res://assets/sprites/creatures/organ_dealer/spr_creature_organ_dealer (1).png" id="3_oslgp"]
+[ext_resource type="Texture2D" uid="uid://c16m5wfbi18ib" path="res://assets/sprites/creatures/organ_dealer/spr_creature_organ_dealer (2).png" id="4_pk41f"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hxcml"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"disappear",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_oslgp")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_oslgp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_pk41f")
+}],
+"loop": true,
+"name": &"talk",
+"speed": 5.0
+}]
 
 [node name="TalkNPC" unique_id=916331531 instance=ExtResource("1_sucx6")]
 script = ExtResource("2_uo4v5")
 myCurrentLines = null
+
+[node name="Sprite" parent="." index="0" unique_id=756789201]
+sprite_frames = SubResource("SpriteFrames_hxcml")
+animation = &"talk"
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=1166412815]
+position = Vector2(-5, 7)
