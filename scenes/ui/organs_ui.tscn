@@ -3,6 +3,7 @@
 [ext_resource type="StyleBox" uid="uid://daxyqbp1ce2da" path="res://resources/styles/black_style_box_flat.tres" id="1_2dh3u"]
 [ext_resource type="FontFile" uid="uid://dk7sro3h40irq" path="res://assets/fonts/determination/determination.ttf" id="2_t40na"]
 [ext_resource type="Script" uid="uid://cys1hag4cjwqp" path="res://scripts/organs/CavityGridUI.cs" id="3_i7dks"]
+[ext_resource type="Texture2D" uid="uid://dh3x8xtlqxkxk" path="res://assets/sprites/organs/goon_chestcavity.png" id="4_6gn6a"]
 [ext_resource type="Script" uid="uid://bdvg7q0xtfow8" path="res://scripts/organs/UnusedOrganListUI.cs" id="4_wqpms"]
 [ext_resource type="FontFile" uid="uid://jyjmqmvjhrww" path="res://assets/fonts/alagard/alagard.ttf" id="5_t40na"]
 [ext_resource type="Script" uid="uid://bawoki41g1lh3" path="res://scripts/stats/ui/StatsListLabel.cs" id="6_i7dks"]
@@ -42,15 +43,28 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -273.0
+offset_top = -273.0
+offset_right = 273.0
+offset_bottom = 273.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1, 0.9482657)
 theme_override_styles/panel = ExtResource("1_2dh3u")
 metadata/_edit_group_ = true
+
+[node name="CavityTextureMarginContainer" type="MarginContainer" parent="CavityUI" unique_id=1548852173]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="TextureRect" type="TextureRect" parent="CavityUI/CavityTextureMarginContainer" unique_id=516242923]
+custom_minimum_size = Vector2(512, 512)
+layout_mode = 2
+texture = ExtResource("4_6gn6a")
+expand_mode = 1
 
 [node name="LabelMarginContainer" type="MarginContainer" parent="CavityUI" unique_id=1869526821]
 layout_mode = 2
@@ -69,14 +83,14 @@ label_settings = SubResource("LabelSettings_6vnwl")
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="CavityUI" unique_id=147345809]
+[node name="CavityGridMarginContainer" type="MarginContainer" parent="CavityUI" unique_id=147345809]
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="CavityGridUI" type="Control" parent="CavityUI/MarginContainer" unique_id=1220805766]
+[node name="CavityGridUI" type="Control" parent="CavityUI/CavityGridMarginContainer" unique_id=1220805766]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -89,7 +103,7 @@ anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -293.0
+offset_left = -289.0
 offset_top = 10.0
 offset_right = -12.0
 offset_bottom = -17.837402
@@ -130,7 +144,7 @@ anchors_preset = 9
 anchor_bottom = 1.0
 offset_left = 9.0
 offset_top = 11.0
-offset_right = 265.0
+offset_right = 286.0
 offset_bottom = -9.0
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("1_2dh3u")

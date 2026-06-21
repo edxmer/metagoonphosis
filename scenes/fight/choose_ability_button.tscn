@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bpr3f7v2tjvf3"]
+
+[ext_resource type="FontFile" uid="uid://jyjmqmvjhrww" path="res://assets/fonts/alagard/alagard.ttf" id="1_gmqdl"]
+[ext_resource type="StyleBox" uid="uid://chmv5tihw1hst" path="res://resources/styles/button_normal_box_flat.tres" id="2_lft1b"]
+[ext_resource type="StyleBox" uid="uid://dhfx3ygod2ihj" path="res://resources/styles/button_hover_box_flat.tres" id="3_lft1b"]
+[ext_resource type="Script" uid="uid://dpkpf2065lkkf" path="res://scenes/fight/ChooseAbilityButton.cs" id="3_r4ma8"]
+
+[node name="Button" type="Button" unique_id=623761879]
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_gmqdl")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("2_lft1b")
+theme_override_styles/pressed = ExtResource("2_lft1b")
+theme_override_styles/hover = ExtResource("3_lft1b")
+theme_override_styles/hover_pressed = ExtResource("2_lft1b")
+text = "Cast Ability: Weak Punch
+
+Damage: 15"
+alignment = 0
+autowrap_trim_flags = 0
+script = ExtResource("3_r4ma8")
