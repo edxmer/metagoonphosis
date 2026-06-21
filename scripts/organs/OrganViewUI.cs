@@ -16,7 +16,9 @@ public partial class OrganViewUI : TextureRect
 
 		Texture = organ.Texture;
 
-		TooltipText = $"Name: {organ.OrganName}\nType: {organ.Type}\nStats: {organ.StatIncreases.GetNonZeroStatsStringDictStyle()}";
+		string abilityName = organ.Ability is null ? "-" : organ.Ability.AbilityName;
+
+		TooltipText = $"Name: {organ.OrganName}\nType: {organ.Type}\nDescription: {organ.OrganDescription}\nAbility: {abilityName}\nStats: {organ.StatIncreases.GetNonZeroStatsStringDictStyle()}";
 		
 		ExpandMode = ExpandModeEnum.IgnoreSize;
 
