@@ -9,6 +9,8 @@ public partial class Ability : Resource
     [Export] public Texture2D AttackTexture { get; set; }
 
     [Export] public int DefaultCooldown { get; set; } = 1;
+    
+    [Export] public double AnimationLength { get; set; } = 1.0;
 
     public int Cooldown { get; private set; } = 0;
 
