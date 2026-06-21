@@ -35,6 +35,9 @@ public partial class FightManager : Node
 	[Export] public Control ChooseAbilityButtonsParent { get; set; }
 	[Export] public PackedScene ChooseAbilityButton { get; set; }
 
+	[ExportGroup("Camera")]
+	[Export] public Camera2D FightCamera { get; set; }
+
 	private FightMemberState _playerState;
 	private FightMemberState _enemyState;
 

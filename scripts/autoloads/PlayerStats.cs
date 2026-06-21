@@ -68,10 +68,14 @@ public partial class PlayerStats : Node
 		FightManager fightManager = _fightManagerPrefab.Instantiate<FightManager>();
 
 		GetTree().Root.AddChild(fightManager);
-
+		
+		fightManager.ProcessMode = ProcessModeEnum.Always;
+		
 		fightManager.FightEnded += OnFightEnded;
 
 		fightManager.InitalizeFight(enemyData);
+
+		fightManager.FightCamera.MakeCurrent();
 
 		return ToSignal(fightManager, FightManager.SignalName.FightEnded);
 	}
@@ -79,6 +83,7 @@ public partial class PlayerStats : Node
 	private void OnFightEnded(bool result)
 	{
 		GetTree().Paused = false;
+		GetTree().CallGroup("PlayerCamera", "SetCamera");
 		PlayerWonLastFight = result;
 	}
 }
