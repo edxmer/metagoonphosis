@@ -2,10 +2,15 @@
 
 [ext_resource type="Script" uid="uid://0158mfvrpuw4" path="res://map/Ui.cs" id="1_0p6dh"]
 [ext_resource type="PackedScene" uid="uid://c0efo3v62dwrm" path="res://map/talkBubbles/talkBubble.tscn" id="1_hx7fn"]
+[ext_resource type="Script" uid="uid://b2bc85a0dc25x" path="res://scenes/ui/OrgansUi.cs" id="3_4qdos"]
 [ext_resource type="PackedScene" uid="uid://c4kebterq0ene" path="res://map/inventory/inventory_ui.tscn" id="3_qf31a"]
+[ext_resource type="PackedScene" uid="uid://c8rgxsn1ny7eo" path="res://scenes/ui/organs_ui.tscn" id="4_nbi0a"]
 
 [node name="UI" type="CanvasLayer" unique_id=1266661091]
 script = ExtResource("1_0p6dh")
+
+[node name="OrgansUI" parent="." unique_id=1984681221 instance=ExtResource("4_nbi0a")]
+script = ExtResource("3_4qdos")
 
 [node name="TalkBubble" parent="." unique_id=1088389143 instance=ExtResource("1_hx7fn")]
 position = Vector2(151, 390)
