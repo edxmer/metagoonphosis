@@ -10,18 +10,27 @@ public partial class FightManager : Node
 	[Signal]
 	public delegate void PlayerAbilitySelectedEventHandler(Ability ability);
 
-	// TODO: Temporary, later this should be set by calling the InitiateFight method
-	[Export] public EnemyData EnemyData { get; set; }
+	[Signal]
+	public delegate void FightEndedEventHandler(bool playerWon);
 
+	// TODO: Temporary, later this should be set by calling the InitiateFight method
+	//[Export] public EnemyData EnemyData { get; set; }
+
+	[ExportGroup("Enemy Visuals")]
 	[Export] public Sprite2D EnemySprite { get; set; }
 	[Export] public Label EnemyLabel { get; set; }
 
+	[ExportGroup("Health Bars")]
 	[Export] public ProgressBar PlayerHealthBar { get; set; }
+	[Export] public Label PlayerHealthLabel { get; set; }
 	[Export] public ProgressBar EnemyHealthBar { get; set; }
-
+	[Export] public Label EnemyHealthLabel { get; set; }
+	
+	[ExportGroup("Attack Origins")]
 	[Export] public Marker2D PlayerAttackOrigin { get; set; }
 	[Export] public Marker2D EnemyAttackOrigin { get; set; }
-
+	
+	[ExportGroup("Ability Selection Button")]
 	[Export] public Control ButtonsContainer { get; set; }
 	[Export] public Control ChooseAbilityButtonsParent { get; set; }
 	[Export] public PackedScene ChooseAbilityButton { get; set; }
@@ -31,7 +40,7 @@ public partial class FightManager : Node
 
 	public override void _Ready()
 	{
-		InitalizeFight(EnemyData); //TODO: Temporary, Would be called from an outside script
+		//InitalizeFight(EnemyData); //TODO: Temporary, Would be called from an outside script
 	}
 
 	public void InitalizeFight(EnemyData enemyData)
@@ -56,17 +65,20 @@ public partial class FightManager : Node
 		PlayerHealthBar.MaxValue = _playerState.Health; // By default health is max
 		EnemyHealthBar.MaxValue = _enemyState.Health;
 
+		UpdateUI();
+
 		EnemySprite.Texture = enemyData.EnemyTexture;
 
 		PlayerTurn();
 	}
 
-	public async Task UpdateUI()
+	public void UpdateUI()
 	{
 		PlayerHealthBar.Value = _playerState.Health;
+		PlayerHealthLabel.Text = $"{PlayerHealthBar.Value}/{PlayerHealthBar.MaxValue}";
+		
 		EnemyHealthBar.Value = _enemyState.Health;
-
-		await ToSignal(GetTree().CreateTimer(0.5), SceneTreeTimer.SignalName.Timeout);
+		EnemyHealthLabel.Text = $"{EnemyHealthBar.Value}/{EnemyHealthBar.MaxValue}";
 	}
 
 	private async void PlayerTurn()
@@ -86,7 +98,8 @@ public partial class FightManager : Node
 
 		await ToSignal(GetTree().CreateTimer(chosenAbility.AnimationLength), SceneTreeTimer.SignalName.Timeout);
 
-		await UpdateUI();
+		UpdateUI();
+		await ToSignal(GetTree().CreateTimer(0.5), SceneTreeTimer.SignalName.Timeout);
 
 		if (_enemyState.DidLose()) EndFight(true);
 		else EnemyTurn();
@@ -113,15 +126,20 @@ public partial class FightManager : Node
 			await ToSignal(GetTree().CreateTimer(1.0), SceneTreeTimer.SignalName.Timeout);
 		}
 
-		await UpdateUI();
+		UpdateUI();
+		await ToSignal(GetTree().CreateTimer(0.5), SceneTreeTimer.SignalName.Timeout);
 
 		if (_playerState.DidLose()) EndFight(false);
 		else PlayerTurn();
 	}
 
-	private void EndFight(bool playerWon)
+	private async void EndFight(bool playerWon)
 	{
-		throw new NotImplementedException();
+		await ToSignal(GetTree().CreateTimer(2), SceneTreeTimer.SignalName.Timeout);
+
+		EmitSignal(SignalName.FightEnded, playerWon);
+
+		QueueFree();
 	}
 
 	private void ShowChooseAbilityUI(List<Ability> abilities)
