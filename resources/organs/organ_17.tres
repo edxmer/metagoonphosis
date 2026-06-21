@@ -1,0 +1,76 @@
+[gd_resource type="Resource" script_class="Organ" format=3 uid="uid://d2aa3m67tcb2l"]
+
+[ext_resource type="Resource" uid="uid://bsd434cx0h713" path="res://resources/abilities/17.tres" id="1_5j8a8"]
+[ext_resource type="Script" uid="uid://dibohswhyx7vt" path="res://scripts/stats/BoolStatEntry.cs" id="1_8k2r7"]
+[ext_resource type="Script" uid="uid://c6waearx1n122" path="res://scripts/stats/IntStatEntry.cs" id="2_7emw2"]
+[ext_resource type="Script" uid="uid://0kwd64utuoyb" path="res://scripts/stats/Stats.cs" id="3_5j8a8"]
+[ext_resource type="Texture2D" uid="uid://dgl1cwcn0lvs5" path="res://assets/sprites/organs/organ_17.png" id="4_7emw2"]
+[ext_resource type="Script" uid="uid://c4a42xia0dqi5" path="res://scripts/organs/Organ.cs" id="4_l7507"]
+
+[sub_resource type="Resource" id="Resource_5j8a8"]
+script = ExtResource("2_7emw2")
+Value = 17
+metadata/_custom_type_script = "uid://c6waearx1n122"
+
+[sub_resource type="Resource" id="Resource_l7507"]
+script = ExtResource("2_7emw2")
+Key = 1
+Value = 17
+metadata/_custom_type_script = "uid://c6waearx1n122"
+
+[sub_resource type="Resource" id="Resource_6nlk4"]
+script = ExtResource("2_7emw2")
+Key = 2
+Value = 17
+metadata/_custom_type_script = "uid://c6waearx1n122"
+
+[sub_resource type="Resource" id="Resource_jowcl"]
+script = ExtResource("2_7emw2")
+Key = 3
+Value = 17
+metadata/_custom_type_script = "uid://c6waearx1n122"
+
+[sub_resource type="Resource" id="Resource_hu2ax"]
+script = ExtResource("2_7emw2")
+Key = 4
+Value = 17
+metadata/_custom_type_script = "uid://c6waearx1n122"
+
+[sub_resource type="Resource" id="Resource_xvobc"]
+script = ExtResource("2_7emw2")
+Key = 5
+Value = 17
+metadata/_custom_type_script = "uid://c6waearx1n122"
+
+[sub_resource type="Resource" id="Resource_b77i3"]
+script = ExtResource("2_7emw2")
+Key = 6
+Value = 17
+metadata/_custom_type_script = "uid://c6waearx1n122"
+
+[sub_resource type="Resource" id="Resource_iwef7"]
+script = ExtResource("2_7emw2")
+Key = 7
+Value = 17
+metadata/_custom_type_script = "uid://c6waearx1n122"
+
+[sub_resource type="Resource" id="Resource_6g8bd"]
+script = ExtResource("2_7emw2")
+Key = 8
+Value = 17
+metadata/_custom_type_script = "uid://c6waearx1n122"
+
+[sub_resource type="Resource" id="Resource_7bc4c"]
+script = ExtResource("3_5j8a8")
+IntStatEntries = Array[ExtResource("2_7emw2")]([SubResource("Resource_5j8a8"), SubResource("Resource_l7507"), SubResource("Resource_6nlk4"), SubResource("Resource_jowcl"), SubResource("Resource_hu2ax"), SubResource("Resource_xvobc"), SubResource("Resource_b77i3"), SubResource("Resource_iwef7"), SubResource("Resource_6g8bd")])
+metadata/_custom_type_script = "uid://0kwd64utuoyb"
+
+[resource]
+script = ExtResource("4_l7507")
+OrganName = "17"
+OrganDescription = "Seventeen"
+Texture = ExtResource("4_7emw2")
+StatIncreases = SubResource("Resource_7bc4c")
+Ability = ExtResource("1_5j8a8")
+OrganShapeString = "O"
+metadata/_custom_type_script = "uid://c4a42xia0dqi5"

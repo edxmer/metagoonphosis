@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AttackAbility" format=3 uid="uid://bsd434cx0h713"]
+
+[ext_resource type="Script" uid="uid://b0stf1luuqsq2" path="res://scripts/fight/AttackAbility.cs" id="1_khlhr"]
+[ext_resource type="Texture2D" uid="uid://dgl1cwcn0lvs5" path="res://assets/sprites/organs/organ_17.png" id="1_rfv1b"]
+
+[resource]
+script = ExtResource("1_khlhr")
+BaseAttackDamage = 17
+AttackTexture = ExtResource("1_rfv1b")
+AbilityName = "17"
+AbilityDescription = "17"
+DefaultCooldown = 17
+AnimationLength = 17.0
+metadata/_custom_type_script = "uid://b0stf1luuqsq2"

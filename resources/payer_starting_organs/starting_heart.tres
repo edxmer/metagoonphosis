@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="StartingOrganConfig" format=3 uid="uid://b303reyacbc3h"]
 
-[ext_resource type="Resource" uid="uid://dgadohjqtggxk" path="res://resources/organs/sad_little_heart.tres" id="1_7l30r"]
+[ext_resource type="Resource" uid="uid://dgadohjqtggxk" path="res://resources/organs/organ_sad_little_heart.tres" id="1_7l30r"]
 [ext_resource type="Script" uid="uid://xgj0d1vysuaa" path="res://scripts/organs/StartingOrganConfig.cs" id="2_osheg"]
 
 [resource]
